@@ -64,6 +64,10 @@ CITIES = [
  ("Pittsburgh", "PA", None), ("Buffalo", "NY", None), ("Los Angeles", "CA", None), ("San Diego", "CA", None), ("Sacramento", "CA", None),
  ("Seattle", "WA", None), ("Las Vegas", "NV", None), ("Charleston", "SC", "hurricane"), ("New Orleans", "LA", None), ("Minneapolis", "MN", None),
  ("Kansas City", "MO", None), ("St. Louis", "MO", None),
+ ("Fort Myers", "FL", None), ("West Palm Beach", "FL", None), ("El Paso", "TX", "desert"), ("Memphis", "TN", None),
+ ("Cincinnati", "OH", None), ("Grand Rapids", "MI", None), ("Rochester", "NY", None), ("Fresno", "CA", "desert"),
+ ("Spokane", "WA", "snow"), ("Reno", "NV", None), ("Baton Rouge", "LA", None), ("Savannah", "GA", "hurricane"),
+ ("Columbia", "SC", None), ("Mesa", "AZ", None), ("St. Paul", "MN", None),
 ]
 
 def slug(s):

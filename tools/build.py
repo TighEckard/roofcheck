@@ -5,6 +5,7 @@ Run: python3 tools/build.py   (set PREVIEW=0 to drop the noindex tag at launch)
 import json, os, html
 import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from places import CLIMATES, STATES, CITIES, slug
+from local import STATE_LICENSE, CITY_LOCAL
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://bedrockroof.com"
@@ -41,7 +42,7 @@ LOGO = ('<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rec
         '<path d="M5 17.5 16 8l11 9.5" fill="none" stroke="#e8a33d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
         '<path d="M9 16v8h14v-8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg>')
 
-NAV = [("/how-it-works/", "How it works"), ("/roof-replacement-cost/", "Roof costs"),
+NAV = [("/how-it-works/", "How it works"), ("/guides/", "Guides"),
        ("/choosing-a-roofer/", "Choosing a roofer"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
 
 ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SITE + "/",
@@ -87,7 +88,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <p>A free referral service that connects homeowners across the U.S. with independent local roofing contractors.</p>
 <p class="disc"><b>Bedrock Roof is not a roofing contractor</b> and does not perform, guarantee or warranty any roofing work. Contractors are independent businesses and may pay us for introductions. Always check a contractor's license, insurance and references before you sign anything.</p></div>
 <div><h4>Homeowners</h4><a href="/get-quotes/">Get a free quote</a><a href="/how-it-works/">How it works</a><a href="/roofers/">Find a roofer by state</a><a href="/faq/">FAQ</a></div>
-<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/roof-repair-or-replace/">Repair or replace?</a></div>
+<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/insurance-roof-replacement/">Insurance and roofs</a><a href="/guides/">All guides</a></div>
 <div><h4>Company</h4><a href="/about/">About us</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </div><div class="wrap legal">&copy; 2026 {BRAND}. Photos from <a href="https://unsplash.com" rel="nofollow">Unsplash</a>, shown for illustration.</div></footer>
 <script src="/assets/site.js?v=1" defer></script>
@@ -279,6 +280,99 @@ rr = article("/roof-repair-or-replace/", "Roof Repair or Replacement? How to Dec
 <h2>Get an honest opinion</h2><p>Ask the roofer to show you photos of what they found and explain why they recommend repair or replacement. For a big decision, a second opinion is always reasonable.</p>""",
  "Repair or replace", P["home5"], rr_faq)
 
+
+# ------------------------------------------------------------------ more guides
+leak_faq = [
+ ("Can I put a tarp on my roof myself?", "Only if it's safe. Wet and steep roofs are dangerous. Many roofers offer emergency tarping, and your insurer may expect reasonable steps to prevent more damage."),
+ ("Will homeowners insurance pay for a roof leak?", "It depends on the cause. Sudden damage, like a tree limb or wind, is often covered, while leaks from age or wear usually aren't. Your policy and insurer decide."),
+]
+leak = article("/roof-leak/", "Roof Leaking? What to Do Right Now | Bedrock Roof", "Roof leaking? What to do right now",
+ "Step-by-step help for a leaking roof: limit the damage, find the source, and get it repaired properly.",
+ "A drip from the ceiling is stressful. Here's how to limit the damage today and get the leak fixed for good.",
+ """<h2>Right now: limit the damage</h2><ol><li>Move furniture and electronics out of the way and put a bucket under the drip.</li><li>If a ceiling stain is bulging, water may be pooling above it. Carefully poke a small hole in the center to let it drain into a bucket, which can keep the ceiling from collapsing.</li><li>If water is near light fixtures or outlets, turn off power to that area at the breaker if you can do so safely.</li><li>Take photos and video of the leak and any damage.</li></ol>
+<h2>Common causes of roof leaks</h2><ul><li><b>Flashing</b> around chimneys, vents, skylights and walls that has cracked, rusted or pulled away.</li><li><b>Missing or damaged shingles</b> after wind or hail.</li><li><b>Pipe boots</b> (the rubber seals around plumbing vents) that have cracked with age.</li><li><b>Ice dams</b> in cold climates that push water under shingles.</li><li><b>Clogged gutters</b> that back water up under the roof edge.</li><li><b>An aging roof</b> where the shingles and underlayment have simply worn out.</li></ul>
+<h2>Get it inspected</h2><p>Water often travels along rafters before it drips, so the leak on your ceiling may be several feet from the hole in the roof. A roofer can trace it and tell you whether a repair will do or whether the roof is near the end of its life. See <a href="/roof-repair-or-replace/">repair or replace?</a></p>""",
+ "Roof leak", P["home5"], leak_faq)
+
+hail_faq = [
+ ("Can hail damage a roof without causing a leak?", "Yes. Hail can bruise shingles and knock off the protective granules, which shortens the roof's life and can lead to leaks later."),
+ ("How long do I have to file a hail claim?", "It depends on your policy and state. Many policies set a deadline for reporting damage, so check yours and report promptly."),
+ ("What are impact-resistant shingles?", "Shingles tested to resist hail impacts, often labeled Class 4. They cost more, but some insurers in hail-prone states offer premium discounts for them."),
+]
+hail = article("/hail-damage-roof/", "Hail Damage on Your Roof: Signs and Next Steps | Bedrock Roof", "How to tell if hail damaged your roof",
+ "How to spot hail damage on a roof, what to do after a hailstorm, and how insurance claims usually work.",
+ "Hail damage is easy to miss from the ground. Here are the signs to look for after a storm and what to do next.",
+ """<h2>Signs to look for from the ground</h2><ul><li>Dents in gutters, downspouts, vents and air-conditioning units.</li><li>Granules from shingles collecting in gutters or at the bottom of downspouts.</li><li>Damaged siding, window screens or outdoor furniture.</li><li>Shingle pieces in the yard.</li></ul>
+<h2>What hail does to shingles</h2><p>Hail can leave dark spots where granules were knocked off, soft "bruises" that feel like a bruised apple, and cracks or punctures. Damage that looks minor can still shorten a roof's life. Please don't climb on the roof yourself. A roofer can inspect safely and photograph what they find.</p>
+<h2>After a hailstorm</h2><ol><li>Photograph damage you can see from the ground, along with the hail itself if you can, with dates.</li><li>Get a roofer's inspection and written findings.</li><li>Report the damage to your insurer and ask about your deductible. Some states and policies have separate wind and hail deductibles.</li><li>Be careful with storm chasers knocking on doors. Check the license and local address of anyone you hire. See <a href="/choosing-a-roofer/">how to choose a roofer</a>.</li></ol>""",
+ "Hail damage", P["roofsky"], hail_faq)
+
+ins_faq = [
+ ("Will insurance replace an old roof?", "Usually only if a covered event, like a storm, damaged it. Normal wear and tear from age generally isn't covered. Some policies pay less on older roofs, so read yours."),
+ ("What's the difference between replacement cost and actual cash value?", "Replacement cost coverage pays to replace the roof with similar materials, minus your deductible. Actual cash value subtracts depreciation for the roof's age, so it pays less."),
+ ("Should a roofer handle my insurance claim?", "A roofer can document damage and give you an estimate, but your claim is between you and your insurer. Be careful about signing anything that hands over your insurance benefits before you understand it, and never agree to have your deductible waived."),
+]
+ins = article("/insurance-roof-replacement/", "Does Homeowners Insurance Cover Roof Replacement? | Bedrock Roof", "Does homeowners insurance cover roof replacement?",
+ "When homeowners insurance usually pays for roof damage, when it doesn't, and how the claim process works.",
+ "Insurance can pay for a new roof in some cases, but not all. Here's how it usually works, in plain English.",
+ """<p class="note"><i>This is general information, not insurance or legal advice. Your policy and your insurer decide what's covered.</i></p>
+<h2>What's usually covered</h2><p>Most standard homeowners policies cover sudden, accidental damage from covered events, such as wind, hail, fire or a falling tree. If a storm damages your roof, your policy may pay to repair or replace it, minus your deductible.</p>
+<h2>What usually isn't</h2><ul><li>Wear and tear from age.</li><li>Damage from lack of maintenance, like long-term leaks that weren't fixed.</li><li>Problems from poor installation.</li><li>Events your policy excludes, such as flood (which needs separate flood insurance).</li></ul>
+<h2>Things that affect your payout</h2><ul><li><b>Your deductible.</b> Some policies, especially in coastal and hail-prone states, have separate percentage deductibles for wind, hail or hurricanes.</li><li><b>Replacement cost or actual cash value.</b> Actual cash value pays less because it subtracts depreciation for the roof's age.</li><li><b>Roof age.</b> Some insurers limit coverage on older roofs or ask about roof age before renewing a policy.</li></ul>
+<h2>How a roof claim usually works</h2><ol><li>Document the damage with dated photos.</li><li>Report it to your insurer promptly.</li><li>An adjuster inspects the roof.</li><li>Get a roofer's written estimate so you can compare it with the adjuster's.</li><li>If you disagree with the decision, ask your insurer how to dispute it.</li></ol>
+<p>See also: <a href="/storm-damage/">what to do after storm damage</a> and <a href="/hail-damage-roof/">hail damage</a>.</p>""",
+ "Insurance and roofs", P["home4"], ins_faq)
+
+signs_faq = [
+ ("Is a roof inspection worth it if I don't see a leak?", "Often yes, especially after a big storm or if the roof is getting older. Small problems are cheaper to fix before they become leaks."),
+ ("Are black streaks on my roof a problem?", "They're usually algae. It's mostly cosmetic, though it can be cleaned, and algae-resistant shingles prevent it."),
+]
+signs = article("/signs-you-need-a-new-roof/", "9 Signs You Need a New Roof | Bedrock Roof", "9 signs you might need a new roof",
+ "Warning signs that your roof may need repair or replacement, from curling shingles to a sagging roof line.",
+ "Roofs rarely fail all at once. These are the signs roofers look for when deciding whether it's time for a new one.",
+ """<ol><li><b>Age.</b> If your roof is approaching the typical lifespan for its material, it's worth an inspection. See <a href="/how-long-does-a-roof-last/">how long roofs last</a>.</li>
+<li><b>Curling or cupping shingles.</b> Edges that turn up or centers that sink are signs of wear or poor ventilation.</li>
+<li><b>Cracked or missing shingles</b>, especially across several areas of the roof.</li>
+<li><b>Granules in the gutters.</b> Shingles shed granules as they age, and heavy loss means less protection.</li>
+<li><b>Daylight in the attic</b> or water stains on rafters and decking.</li>
+<li><b>Ceiling stains or leaks</b> inside the home.</li>
+<li><b>A sagging roof line</b>, which can mean water damage or structural problems and should be checked soon.</li>
+<li><b>Damaged flashing</b> around chimneys, vents and skylights.</li>
+<li><b>Rising energy bills</b> together with an old roof can point to ventilation or insulation problems.</li></ol>
+<p>One sign alone doesn't always mean you need a whole new roof. A good roofer will explain what they see and whether a repair is enough.</p>""",
+ "Signs you need a new roof", P["tearoff"], signs_faq)
+
+life_faq = [
+ ("What makes a roof wear out faster?", "Intense sun and heat, poor attic ventilation, storms, trees rubbing or dropping debris, and poor installation all shorten a roof's life."),
+ ("Does a warranty tell me how long my roof will last?", "Not exactly. Manufacturer warranties cover material defects and often have conditions. Ask your roofer to explain what's covered and for how long."),
+]
+life = article("/how-long-does-a-roof-last/", "How Long Does a Roof Last? Lifespan by Material | Bedrock Roof", "How long does a roof last?",
+ "Typical lifespans for asphalt shingle, metal, tile, slate and wood roofs, and what shortens them.",
+ "Every roof wears out eventually. Here's roughly how long common roofing materials last and what affects their lifespan.",
+ """<p>These are general ranges. Climate, installation quality, ventilation and maintenance can move the real number a lot in either direction.</p>
+<table><thead><tr><th>Material</th><th>Typical lifespan</th></tr></thead><tbody>
+<tr><td>Asphalt shingles</td><td>Roughly 15 to 30 years, with architectural shingles at the longer end</td></tr>
+<tr><td>Metal</td><td>Often 40 years or more</td></tr>
+<tr><td>Wood shakes</td><td>Roughly 20 to 40 years with upkeep</td></tr>
+<tr><td>Clay or concrete tile</td><td>50 years or more for the tiles, though the underlayment may need replacing sooner</td></tr>
+<tr><td>Slate</td><td>Often 75 years or more</td></tr>
+<tr><td>Flat roofs (TPO, EPDM, modified bitumen)</td><td>Roughly 15 to 30 years depending on the system</td></tr></tbody></table>
+<h2>What shortens a roof's life</h2><ul><li>Hot, sunny climates and strong UV.</li><li>Hail, wind and storms.</li><li>Poor attic ventilation that traps heat and moisture.</li><li>Overhanging trees, clogged gutters and moss.</li><li>Poor installation.</li></ul>
+<h2>How to make it last</h2><ul><li>Keep gutters clean and trim back branches.</li><li>Have the roof checked after major storms.</li><li>Fix small problems like loose flashing or cracked pipe boots early.</li><li>Make sure the attic is properly ventilated and insulated.</li></ul>""",
+ "Roof lifespan", P["home2"], life_faq)
+
+GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", "National price ranges and how to compare quotes."),
+ ("/choosing-a-roofer/", "How to choose a roofer you can trust", "License, insurance, warranties and red flags."),
+ ("/storm-damage/", "What to do after storm damage", "Safety, photos, insurance and storm chasers."),
+ ("/hail-damage-roof/", "How to tell if hail damaged your roof", "Signs to look for and what to do next."),
+ ("/roof-leak/", "Roof leaking? What to do right now", "Limit the damage and find the cause."),
+ ("/insurance-roof-replacement/", "Does insurance cover roof replacement?", "What's usually covered and how claims work."),
+ ("/signs-you-need-a-new-roof/", "9 signs you might need a new roof", "What roofers look for."),
+ ("/how-long-does-a-roof-last/", "How long does a roof last?", "Lifespan by material."),
+ ("/roof-repair-or-replace/", "Should you repair or replace your roof?", "How to decide.")]
+guides_idx = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Guides</p><h1>Homeowner roofing guides</h1><p class="sub">Plain-English answers to the questions homeowners ask before hiring a roofer.</p></div></section>
+<div class="wrap narrow states">""" + "".join(f'<div class="srow"><h3><a href="{u}">{t}</a></h3><p>{d}</p></div>' for u, t, d in GUIDES) + "</div>" + cta()
+
 faq_all = HOME_FAQ + [
  ("What happens after I submit the form?", "We pass your request to an independent roofer serving your ZIP code, who will call or text you to set up a free inspection."),
  ("Is the inspection really free?", "Roofers in our referrals offer free inspections and quotes for homeowners who request them. If a roofer ever asks to charge you for an inspection, you're free to say no."),
@@ -342,6 +436,9 @@ PAGES = [
  ("/choosing-a-roofer/", choose, "0.8"),
  ("/storm-damage/", storm, "0.8"),
  ("/roof-repair-or-replace/", rr, "0.7"),
+ ("/roof-leak/", leak, "0.8"), ("/hail-damage-roof/", hail, "0.8"), ("/insurance-roof-replacement/", ins, "0.8"),
+ ("/signs-you-need-a-new-roof/", signs, "0.7"), ("/how-long-does-a-roof-last/", life, "0.7"),
+ ("/guides/", page("/guides/", "Homeowner Roofing Guides | Bedrock Roof", "Free, plain-English roofing guides for homeowners: costs, hiring a roofer, storm and hail damage, leaks and insurance.", guides_idx, None, [("Guides", "/guides/")]), "0.7"),
  ("/faq/", page("/faq/", "Roofing FAQ | Bedrock Roof", "Answers to common homeowner questions about Bedrock Roof, free roof quotes and hiring a roofer.", faq, [faq_schema(faq_all)], [("FAQ", "/faq/")]), "0.7"),
  ("/about/", page("/about/", "About Bedrock Roof", "Bedrock Roof is a free referral service connecting U.S. homeowners with independent local roofing contractors.", about, None, [("About", "/about/")]), "0.5"),
  ("/privacy/", page("/privacy/", "Privacy Policy | Bedrock Roof", "How Bedrock Roof collects, uses and shares information.", privacy, None, [("Privacy policy", "/privacy/")]), "0.2"),
@@ -353,13 +450,20 @@ PAGES = [
 def city_path(c, st): return f"/roofers/{slug(c)}-{st.lower()}/"
 def state_path(st): return f"/roofers/{slug(STATES[st][0])}/"
 
+def city_guides(clim):
+    first = {"hail": "/hail-damage-roof/", "hurricane": "/storm-damage/", "snow": "/roof-leak/"}.get(clim, "/signs-you-need-a-new-roof/")
+    urls = [first] + [u for u in ["/roof-replacement-cost/", "/choosing-a-roofer/", "/insurance-roof-replacement/"] if u != first]
+    t = {u: t for u, t, _ in GUIDES}
+    return "".join(f'<a href="{u}">{t[u]}</a>' for u in urls)
+
 def city_page(c, st, clim):
     sname = STATES[st][0]; cl = CLIMATES[clim]; path = city_path(c, st)
     risks = "".join(f"<li>{r[0].upper()+r[1:]}.</li>" for r in cl["risks"])
     others = [x for x in CITIES if x[1] == st and x[0] != c]
     near = "".join(f'<a href="{city_path(o[0], o[1])}">{o[0]}</a>' for o in others)
     fq = [
-     (f"How do I find a good roofer in {c}?", f"Get two or three written quotes, check each contractor's license with the {sname} or local licensing authority, ask for proof of liability and workers' comp insurance, and read the warranty terms. Our <a href='/choosing-a-roofer/'>roofer checklist</a> walks you through it."),
+     (f"Do roofers need a license in {sname}?", STATE_LICENSE[st]),
+     (f"How do I find a good roofer in {c}?", f"Get two or three written quotes, check each contractor's license or registration, ask for proof of liability and workers' comp insurance, and read the warranty terms. Our <a href='/choosing-a-roofer/'>roofer checklist</a> walks you through it."),
      (f"How much does a new roof cost in {c}?", f"It depends on the size, pitch and material of your roof and on local labor costs. Nationally, Angi data reported by NerdWallet puts the average around $9,500, with most jobs between about $5,800 and $46,000. A written quote after an inspection is the only way to know your price in {c}."),
      (f"Is the roof inspection free?", "Yes. Requests through Bedrock Roof are for a free inspection and quote, with no obligation to hire."),
      (f"Do I need a permit to replace my roof in {c}?", f"Most U.S. cities require a building permit for a full roof replacement. Ask your roofer to pull the permit with the {c} or county building department and show it to you."),
@@ -369,11 +473,13 @@ def city_page(c, st, clim):
 <p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}. Free for homeowners, no obligation.</p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
-<h2>Roofing in {c}: what to know</h2><p>{c} sits in the {cl['label']}, and that shapes what wears roofs out here and what homeowners tend to install. The most common causes of roof damage in this kind of climate are:</p><ul>{risks}</ul>
+<h2>Roofing in {c}: what to know</h2><p>{CITY_LOCAL[c]}</p><p>More broadly, {c} is in the {cl['label']}. The most common causes of roof damage in this kind of climate are:</p><ul>{risks}</ul>
 <h2>Popular roof types around {c}</h2><p>{cl['materials']}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
-<h2>Before you hire a roofer in {c}</h2><ol><li>Verify the contractor's license with the {sname} or local licensing authority. Rules differ by state and city.</li><li>Ask for current certificates of liability and workers' compensation insurance.</li><li>Get a written, itemized quote and compare at least two.</li><li>Make sure the roofer pulls the permit with the local building department.</li><li>Get the material and workmanship warranties in writing.</li></ol>
+<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p>
+<h2>Before you hire a roofer in {c}</h2><ol><li>Verify the license or registration as described above, and make sure the name matches the contract.</li><li>Ask for current certificates of liability and workers' compensation insurance.</li><li>Get a written, itemized quote and compare at least two.</li><li>Make sure the roofer pulls the permit with the local building department.</li><li>Get the material and workmanship warranties in writing.</li></ol>
 <p>Bedrock Roof is a referral service, not a roofing contractor. We connect {c} homeowners with independent local roofers, who may pay us for the introduction. Read <a href="/how-it-works/">how it works</a>.</p>
+<h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
 {f'<h2>Other {sname} cities</h2><p class="links">{near}</p>' if near else ''}</div>
 {faq_block(fq, f'{c} roofing questions')}{cta(f'Get a free roof quote in {c}')}"""
     sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed={"@type": "City", "name": f"{c}, {sname}"}), faq_schema(fq)]
@@ -392,7 +498,7 @@ def state_page(st):
 <p>Don't see your city? Homeowners anywhere in {sname} can <a href="/get-quotes/">request a free quote</a>. If we can't find a roofer serving your ZIP code, we'll let you know.</p>
 <h2>Roofing in {sname}</h2><p>Much of {sname} falls in the {cl['label']}. Common roof problems include:</p><ul>{risks}</ul><p>{cl['materials']}</p>
 <div class="callout"><b>Tip:</b> {cl['tip']}</div>
-<h2>Checking a roofer's license in {sname}</h2><p>Licensing rules for roofers differ by state and sometimes by city or county. Ask every contractor for their license number and look it up with the {sname} licensing authority or your local building department before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>{cta()}"""
+<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>{cta()}"""
     return path, page(path, f"Roofers in {sname}: Free Roof Quotes by City | {BRAND}",
         f"Find roofers in {sname}. Get a free roof inspection and quote from an independent local roofing contractor in your city.",
         body, [dict(SVC, name=f"Free roofer referrals in {sname}", areaServed={"@type": "State", "name": sname})], [(sname, path)])
@@ -406,7 +512,7 @@ def hub_page():
 LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(c, st, cl or STATES[st][1]) for c, st, cl in CITIES]
 
 def llms():
-    g = "\n".join(f"- [{t}]({SITE}{u})" for u, t in [("/roof-replacement-cost/", "How much does a roof replacement cost?"), ("/choosing-a-roofer/", "How to choose a roofer you can trust"), ("/storm-damage/", "What to do after storm damage to your roof"), ("/roof-repair-or-replace/", "Should you repair or replace your roof?"), ("/faq/", "FAQ"), ("/how-it-works/", "How it works")])
+    g = "\n".join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in GUIDES)
     st = "\n".join(f"- [Roofers in {STATES[s][0]}]({SITE}{state_path(s)})" for s in sorted(STATES, key=lambda k: STATES[k][0]))
     return f"""# {BRAND}
 
