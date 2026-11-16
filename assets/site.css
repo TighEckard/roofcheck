@@ -96,3 +96,5 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}th,td{tex
 .foot a{color:#c3cbd6;text-decoration:none;display:block;margin:6px 0}.foot a:hover{color:#fff}.foot .logo{display:flex}
 .disc{font-size:13px;color:#93a0b2}
 .legal{border-top:1px solid #1e3150;margin-top:36px;padding-top:18px;padding-bottom:22px;font-size:13px;color:#7f8ca0}.legal a{display:inline;color:inherit;text-decoration:underline}
+
+.snap th{width:38%;background:#f6f7f9;font-weight:600}.snap{margin:12px 0 8px}.mi{color:#8a94a3;font-size:14px;margin-right:10px}
