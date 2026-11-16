@@ -15,7 +15,7 @@ EMAIL = "hello@bedrockroof.com"
 PREVIEW = os.environ.get("PREVIEW", "1") == "1"
 BASE = os.environ.get("BASE", "")  # "/roofcheck" for the github.io preview, "" on bedrockroof.com
 PHONE = os.environ.get("PHONE", "")  # e.g. "+13055550123" once the Twilio number exists
-UPDATED = "2026-11-15"
+UPDATED = "2026-11-16"
 
 def img(id_, w, h=None, q=60):
     s = f"https://images.unsplash.com/photo-{id_}?fm=webp&fit=crop&q={q}&w={w}"
@@ -464,6 +464,8 @@ def city_page(r):
     c, st, clim = r["n"], r["st"], r["clim"]
     sname = STATES[st][0]; cl = CLIMATES[clim]; path = city_path(c, st)
     rl = citygen.risks(r, [x[0].upper() + x[1:] for x in cl["risks"]])
+    short = [citygen.RISK_SHORT[f] for f in r["flags"]][:3] or [x.split(" that ")[0].lower() for x in rl[:3]]
+    risk_phrase = citygen.join(short)
     risks = "".join(f"<li>{x}.</li>" for x in rl)
     mats = citygen.materials(r, cl["materials"])
     near = [(n, s2, mi) for n, s2, mi in r["nearby"] if (slug(n), s2) in PAGE_KEYS]
@@ -471,43 +473,53 @@ def city_page(r):
     more = [x for x in RECS if x["st"] == st and x is not r and (x["n"], x["st"]) not in {(n, s2) for n, s2, _ in near}][:10]
     more_html = "".join(f'<a href="{city_path(x["n"], st)}">{x["n"]}</a>' for x in more)
     rows = []
+    cty = citygen.county(r)
+    if cty: rows.append(("County", cty))
     if r["pop"]: rows.append(("Population", f"About {citygen.fmt_pop(r['pop'])}"))
     if r["kg"] in citygen.KOPPEN: rows.append(("Climate", citygen.KOPPEN[r["kg"]].split(",")[0].capitalize() + f" (K&ouml;ppen {r['kg']})"))
     if r["coast_km"] is not None and r.get("ocean") and r["coast_km"] <= 80:
         rows.append(("Nearest coast", f"About {max(1, citygen.km_mi(r['coast_km']))} miles to the {citygen.OCEAN[r['ocean']]}"))
     elif r["lat"]: rows.append(("Nearest coast", "Well inland"))
-    rows.append(("Main roof risks", ", ".join(x.split(" that ")[0].split(" and the ")[0].split(" bringing")[0].lower() for x in rl[:3]).capitalize()))
+    rows.append(("Main roof risks", "RISKROW"))
     rows.append(("Roofer licensing", f"<a href=\"#license\">See {sname} rules</a>"))
+    rows = [(k, v if v != "RISKROW" else risk_phrase[0].upper() + risk_phrase[1:]) for k, v in rows]
     table = "<table class=\"snap\"><tbody>" + "".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k, v in rows) + "</tbody></table>"
     weather_a = f"Around {c}, the most common causes of roof damage are " + "; ".join(x[0].lower() + x[1:] for x in rl[:3]) + "."
+    when_a = citygen.season(r)
+    lic1 = STATE_LICENSE[st].split(". ")[0].rstrip(".") + "."
+    mshort = [citygen.MAT_SHORT[f] for f in r["flags"] if f in citygen.MAT_SHORT][:2]
+    quick = (f"The main roof risks in {c} are {risk_phrase}"
+             + (f", so roofers here often suggest {', as well as '.join(mshort)}." if mshort else ".")
+             + f" {lic1} Compare at least two written quotes before you hire.")
     fq = [
-     (f"What kind of weather damages roofs most in {c}?", weather_a),
-     (f"Do roofers need a license in {sname}?", STATE_LICENSE[st]),
-     (f"How much does a new roof cost in {c}?", f"It depends on the size, pitch and material of your roof and on local labor costs. Nationally, Angi data reported by NerdWallet puts the average around $9,500, with most jobs between about $5,800 and $46,000. A written quote after an inspection is the only way to know your price in {c}."),
-     (f"Is the roof inspection free?", "Yes. Requests through Bedrock Roof are for a free inspection and quote, with no obligation to hire."),
-     (f"Do I need a permit to replace my roof in {c}?", f"Most U.S. cities require a building permit for a full roof replacement. Ask your roofer to pull the permit with the {c} or county building department and show it to you."),
+     (f"How much does a new roof cost in {c}?", f"Nationally, Angi data reported by NerdWallet puts the average near $9,500, with most jobs between about $5,800 and $46,000. Your price in {c} depends on size, pitch, material and local labor, so get a written quote."),
+     (f"Will insurance pay for roof damage in {c}?", citygen.insurance(r, c)),
+     (f"Do I need a permit to replace my roof in {c}?", f"Usually, yes. Your roofer should pull it with the {c} building department{f' or {cty}' if cty else ''} and show it to you before work starts."),
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
 <p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}. Free for homeowners, no obligation.</p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
+<div class="callout quick"><b>Quick answer:</b> {quick}</div>
 <h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
 <h3>{c} roofing snapshot</h3>{table}
 <h2>What wears out roofs around {c}</h2><ul>{risks}</ul>
-<h2>Popular roof choices around {c}</h2><p>{mats}</p>
+<h2>Best roofing materials for {c}</h2><p>{mats}</p>
+<h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
-<h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p>
-<h2>Before you hire a roofer in {c}</h2><ol><li>Verify the license or registration as described above, and make sure the name matches the contract.</li><li>Ask for current certificates of liability and workers' compensation insurance.</li><li>Get a written, itemized quote and compare at least two.</li><li>Make sure the roofer pulls the permit with the local building department.</li><li>Get the material and workmanship warranties in writing.</li></ol>
-<p>Bedrock Roof is a referral service, not a roofing contractor. We connect {c} homeowners with independent local roofers, who may pay us for the introduction. Read <a href="/how-it-works/">how it works</a>.</p>
+<h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
+<p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
 {f'<h2>Roofers in nearby cities</h2><p class="links">{near_html}</p>' if near_html else ''}
 {f'<h2>More {sname} cities</h2><p class="links">{more_html}</p>' if more_html else ''}
-<p class="small">City facts: population is an approximate figure from GeoNames; climate type is the K&ouml;ppen-Geiger classification for the city's location.</p></div>
+<p class="small">Sources: GeoNames (population), K&ouml;ppen-Geiger (climate), U.S. Census (county). Updated {UPDATED}.</p></div>
 {faq_block(fq, f'{c} roofing questions')}{cta(f'Get a free roof quote in {c}')}"""
-    sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed={"@type": "City", "name": f"{c}, {sname}"}), faq_schema(fq)]
+    city = {"@type": "City", "name": f"{c}, {sname}", "containedInPlace": {"@type": "State", "name": sname}}
+    if r["lat"]: city["geo"] = {"@type": "GeoCoordinates", "latitude": round(r["lat"], 4), "longitude": round(r["lon"], 4)}
+    sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed=city), faq_schema(fq)]
     return path, page(path, f"Roofers Near {c}, {st}: Free Roof Inspection & Quote | {BRAND}",
-        f"Looking for roofers near {c}, {sname}? Get a free roof inspection and written quote from an independent local roofing contractor. Free, no obligation.",
+        f"Free roof inspection and quote from an independent roofer near {c}, {st}. Main local roof risk: {short[0]}. Plus {st} license rules and FAQs.",
         body, sch, [(sname, state_path(st)), (c, path)], og_img=P[cl['photo']])
 
 def state_page(st):
