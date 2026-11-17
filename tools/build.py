@@ -47,7 +47,9 @@ LOGO = ('<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rec
 NAV = [("/how-it-works/", "How it works"), ("/guides/", "Guides"),
        ("/commercial-roofing/", "Commercial"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
 
-ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SITE + "/",
+ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternateName": ["Bedrock Roofing", "BedrockRoof", "bedrockroof.com"], "url": SITE + "/",
+       "sameAs": ["https://www.facebook.com/profile.php?id=61596870171615"],
+       "areaServed": {"@type": "Country", "name": "United States"},
        "logo": SITE + "/assets/logo.svg", "email": EMAIL, **({"telephone": PHONE} if PHONE else {}),
        "description": "Bedrock Roof is a free referral service that connects U.S. homeowners with independent local roofing contractors for inspections and quotes. Bedrock Roof does not perform roofing work."}
 
@@ -940,6 +942,8 @@ def main():
     open(os.path.join(ROOT, "llms.txt"), "w").write(llms())
     open(os.path.join(ROOT, "llms-full.txt"), "w").write(llms_full())
     open(os.path.join(ROOT, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
+    # Google Search Console ownership file; keep it or verification is lost
+    open(os.path.join(ROOT, "google1dfcdf84782c73c9.html"), "w").write("google-site-verification: google1dfcdf84782c73c9.html")
     open(os.path.join(ROOT, "robots.txt"), "w").write(rb)
     print("built", len(PAGES) + 1, "pages; preview mode" if PREVIEW else "; launch mode")
 
