@@ -52,6 +52,14 @@ STATES = {
  "IL": ("Illinois", "snow"), "OH": ("Ohio", "snow"), "MI": ("Michigan", "snow"), "PA": ("Pennsylvania", "snow"),
  "NY": ("New York", "snow"), "CA": ("California", "wildfire"), "WA": ("Washington", "rain"), "NV": ("Nevada", "desert"),
  "SC": ("South Carolina", "humid"), "LA": ("Louisiana", "hurricane"), "MN": ("Minnesota", "snow"), "MO": ("Missouri", "hail"),
+ "AL": ("Alabama", "humid"), "AK": ("Alaska", "snow"), "AR": ("Arkansas", "humid"), "CT": ("Connecticut", "snow"),
+ "DE": ("Delaware", "humid"), "DC": ("District of Columbia", "humid"), "HI": ("Hawaii", "humid"), "ID": ("Idaho", "snow"),
+ "IN": ("Indiana", "snow"), "IA": ("Iowa", "hail"), "KS": ("Kansas", "hail"), "KY": ("Kentucky", "humid"),
+ "ME": ("Maine", "snow"), "MD": ("Maryland", "humid"), "MA": ("Massachusetts", "snow"), "MS": ("Mississippi", "hurricane"),
+ "MT": ("Montana", "snow"), "NE": ("Nebraska", "hail"), "NH": ("New Hampshire", "snow"), "NJ": ("New Jersey", "snow"),
+ "NM": ("New Mexico", "desert"), "ND": ("North Dakota", "snow"), "OR": ("Oregon", "rain"), "RI": ("Rhode Island", "snow"),
+ "SD": ("South Dakota", "hail"), "UT": ("Utah", "snow"), "VT": ("Vermont", "snow"), "VA": ("Virginia", "humid"),
+ "WV": ("West Virginia", "snow"), "WI": ("Wisconsin", "snow"), "WY": ("Wyoming", "hail"),
 }
 
 # (city, state, climate override or None)

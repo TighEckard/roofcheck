@@ -6,6 +6,7 @@ import json, os, html
 import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from places import CLIMATES, STATES, CITIES, slug
 from local import STATE_LICENSE, CITY_LOCAL
+import citygen
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://bedrockroof.com"
@@ -14,7 +15,7 @@ EMAIL = "hello@bedrockroof.com"
 PREVIEW = os.environ.get("PREVIEW", "1") == "1"
 BASE = os.environ.get("BASE", "")  # "/roofcheck" for the github.io preview, "" on bedrockroof.com
 PHONE = os.environ.get("PHONE", "")  # e.g. "+13055550123" once the Twilio number exists
-UPDATED = "2026-11-15"
+UPDATED = "2026-11-16"
 
 def img(id_, w, h=None, q=60):
     s = f"https://images.unsplash.com/photo-{id_}?fm=webp&fit=crop&q={q}&w={w}"
@@ -456,47 +457,87 @@ def city_guides(clim):
     t = {u: t for u, t, _ in GUIDES}
     return "".join(f'<a href="{u}">{t[u]}</a>' for u in urls)
 
-def city_page(c, st, clim):
+RECS = citygen.load()
+PAGE_KEYS = {(slug(r["n"]), r["st"]) for r in RECS}
+
+def city_page(r):
+    c, st, clim = r["n"], r["st"], r["clim"]
     sname = STATES[st][0]; cl = CLIMATES[clim]; path = city_path(c, st)
-    risks = "".join(f"<li>{r[0].upper()+r[1:]}.</li>" for r in cl["risks"])
-    others = [x for x in CITIES if x[1] == st and x[0] != c]
-    near = "".join(f'<a href="{city_path(o[0], o[1])}">{o[0]}</a>' for o in others)
+    rl = citygen.risks(r, [x[0].upper() + x[1:] for x in cl["risks"]])
+    short = [citygen.RISK_SHORT[f] for f in r["flags"]][:3] or [x.split(" that ")[0].lower() for x in rl[:3]]
+    risk_phrase = citygen.join(short)
+    risks = "".join(f"<li>{x}.</li>" for x in rl)
+    mats = citygen.materials(r, cl["materials"])
+    near = [(n, s2, mi) for n, s2, mi in r["nearby"] if (slug(n), s2) in PAGE_KEYS]
+    near_html = "".join(f'<a href="{city_path(n, s2)}">{n}</a> <span class="mi">({mi} mi)</span>' for n, s2, mi in near)
+    more = [x for x in RECS if x["st"] == st and x is not r and (x["n"], x["st"]) not in {(n, s2) for n, s2, _ in near}][:10]
+    more_html = "".join(f'<a href="{city_path(x["n"], st)}">{x["n"]}</a>' for x in more)
+    rows = []
+    cty = citygen.county(r)
+    if cty: rows.append(("County", cty))
+    if r["pop"]: rows.append(("Population", f"About {citygen.fmt_pop(r['pop'])}"))
+    if r["kg"] in citygen.KOPPEN: rows.append(("Climate", citygen.KOPPEN[r["kg"]].split(",")[0].capitalize() + f" (K&ouml;ppen {r['kg']})"))
+    if r["coast_km"] is not None and r.get("ocean") and r["coast_km"] <= 80:
+        rows.append(("Nearest coast", f"About {max(1, citygen.km_mi(r['coast_km']))} miles to the {citygen.OCEAN[r['ocean']]}"))
+    elif r["lat"]: rows.append(("Nearest coast", "Well inland"))
+    rows.append(("Main roof risks", "RISKROW"))
+    rows.append(("Roofer licensing", f"<a href=\"#license\">See {sname} rules</a>"))
+    rows = [(k, v if v != "RISKROW" else risk_phrase[0].upper() + risk_phrase[1:]) for k, v in rows]
+    table = "<table class=\"snap\"><tbody>" + "".join(f"<tr><th>{k}</th><td>{v}</td></tr>" for k, v in rows) + "</tbody></table>"
+    weather_a = f"Around {c}, the most common causes of roof damage are " + "; ".join(x[0].lower() + x[1:] for x in rl[:3]) + "."
+    when_a = citygen.season(r)
+    lic1 = STATE_LICENSE[st].split(". ")[0].rstrip(".") + "."
+    mshort = [citygen.MAT_SHORT[f] for f in r["flags"] if f in citygen.MAT_SHORT][:2]
+    quick = (f"The main roof risks in {c} are {risk_phrase}"
+             + (f", so roofers here often suggest {', as well as '.join(mshort)}." if mshort else ".")
+             + f" {lic1} Compare at least two written quotes before you hire.")
     fq = [
-     (f"Do roofers need a license in {sname}?", STATE_LICENSE[st]),
-     (f"How do I find a good roofer in {c}?", f"Get two or three written quotes, check each contractor's license or registration, ask for proof of liability and workers' comp insurance, and read the warranty terms. Our <a href='/choosing-a-roofer/'>roofer checklist</a> walks you through it."),
-     (f"How much does a new roof cost in {c}?", f"It depends on the size, pitch and material of your roof and on local labor costs. Nationally, Angi data reported by NerdWallet puts the average around $9,500, with most jobs between about $5,800 and $46,000. A written quote after an inspection is the only way to know your price in {c}."),
-     (f"Is the roof inspection free?", "Yes. Requests through Bedrock Roof are for a free inspection and quote, with no obligation to hire."),
-     (f"Do I need a permit to replace my roof in {c}?", f"Most U.S. cities require a building permit for a full roof replacement. Ask your roofer to pull the permit with the {c} or county building department and show it to you."),
+     (f"How much does a new roof cost in {c}?", f"Nationally, Angi data reported by NerdWallet puts the average near $9,500, with most jobs between about $5,800 and $46,000. Your price in {c} depends on size, pitch, material and local labor, so get a written quote."),
+     (f"Will insurance pay for roof damage in {c}?", citygen.insurance(r, c)),
+     (f"Do I need a permit to replace my roof in {c}?", f"Usually, yes. Your roofer should pull it with the {c} building department{f' or {cty}' if cty else ''} and show it to you before work starts."),
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
 <p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}. Free for homeowners, no obligation.</p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
-<h2>Roofing in {c}: what to know</h2><p>{CITY_LOCAL[c]}</p><p>More broadly, {c} is in the {cl['label']}. The most common causes of roof damage in this kind of climate are:</p><ul>{risks}</ul>
-<h2>Popular roof types around {c}</h2><p>{cl['materials']}</p>
+<div class="callout quick"><b>Quick answer:</b> {quick}</div>
+<h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
+<h3>{c} roofing snapshot</h3>{table}
+<h2>What wears out roofs around {c}</h2><ul>{risks}</ul>
+<h2>Best roofing materials for {c}</h2><p>{mats}</p>
+<h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
-<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p>
-<h2>Before you hire a roofer in {c}</h2><ol><li>Verify the license or registration as described above, and make sure the name matches the contract.</li><li>Ask for current certificates of liability and workers' compensation insurance.</li><li>Get a written, itemized quote and compare at least two.</li><li>Make sure the roofer pulls the permit with the local building department.</li><li>Get the material and workmanship warranties in writing.</li></ol>
-<p>Bedrock Roof is a referral service, not a roofing contractor. We connect {c} homeowners with independent local roofers, who may pay us for the introduction. Read <a href="/how-it-works/">how it works</a>.</p>
+<h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
+<p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
-{f'<h2>Other {sname} cities</h2><p class="links">{near}</p>' if near else ''}</div>
+{f'<h2>Roofers in nearby cities</h2><p class="links">{near_html}</p>' if near_html else ''}
+{f'<h2>More {sname} cities</h2><p class="links">{more_html}</p>' if more_html else ''}
+<p class="small">Sources: GeoNames (population), K&ouml;ppen-Geiger (climate), U.S. Census (county). Updated {UPDATED}.</p></div>
 {faq_block(fq, f'{c} roofing questions')}{cta(f'Get a free roof quote in {c}')}"""
-    sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed={"@type": "City", "name": f"{c}, {sname}"}), faq_schema(fq)]
+    city = {"@type": "City", "name": f"{c}, {sname}", "containedInPlace": {"@type": "State", "name": sname}}
+    if r["lat"]: city["geo"] = {"@type": "GeoCoordinates", "latitude": round(r["lat"], 4), "longitude": round(r["lon"], 4)}
+    sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed=city), faq_schema(fq)]
     return path, page(path, f"Roofers Near {c}, {st}: Free Roof Inspection & Quote | {BRAND}",
-        f"Looking for roofers near {c}, {sname}? Get a free roof inspection and written quote from an independent local roofing contractor. Free, no obligation.",
+        f"Free roof inspection and quote from an independent roofer near {c}, {st}. Main local roof risk: {short[0]}. Plus {st} license rules and FAQs.",
         body, sch, [(sname, state_path(st)), (c, path)], og_img=P[cl['photo']])
 
 def state_page(st):
     sname, clim = STATES[st]; cl = CLIMATES[clim]; path = state_path(st)
-    cities = [x for x in CITIES if x[1] == st]
-    links = "".join(f'<a class="chip" href="{city_path(c, s)}">Roofers near {c}</a>' for c, s, _ in cities)
-    risks = "".join(f"<li>{r[0].upper()+r[1:]}.</li>" for r in cl["risks"])
+    cities = [x for x in RECS if x["st"] == st]
+    cities.sort(key=lambda x: -x["pop"])
+    links = "".join(f'<a class="chip" href="{city_path(x["n"], st)}">Roofers near {x["n"]}</a>' for x in cities)
+    from collections import Counter
+    fc = Counter(f for x in cities for f in x["flags"])
+    top = [f for f, _ in fc.most_common(4)]
+    rl = [citygen.RISK_TEXT[f] for f in top] or [x[0].upper() + x[1:] for x in cl["risks"]]
+    risks = "".join(f"<li>{x}.</li>" for x in rl)
+    city_block = (f'<h2>{sname} cities</h2><p class="chips">{links}</p>' if links else "")
     body = f"""<section class="phero"><div class="wrap narrow"><p class="kick"><a href="/roofers/">All states</a> &rsaquo; {sname}</p><h1>Roofers in {sname}</h1>
-<p class="sub">Free roof inspections and quotes from independent roofing contractors across {sname}. Pick your city or <a href="/get-quotes/">send a request</a> from anywhere in the state.</p></div></section>
-<div class="wrap narrow prose"><h2>{sname} cities</h2><p class="chips">{links}</p>
+<p class="sub">Free roof inspections and quotes from independent roofing contractors across {sname}. {"Pick your city or " if links else ""}<a href="/get-quotes/">send a request</a> from anywhere in the state.</p></div></section>
+<div class="wrap narrow prose">{city_block}
 <p>Don't see your city? Homeowners anywhere in {sname} can <a href="/get-quotes/">request a free quote</a>. If we can't find a roofer serving your ZIP code, we'll let you know.</p>
-<h2>Roofing in {sname}</h2><p>Much of {sname} falls in the {cl['label']}. Common roof problems include:</p><ul>{risks}</ul><p>{cl['materials']}</p>
+<h2>Common roof problems in {sname}</h2><ul>{risks}</ul><p>{cl['materials']}</p>
 <div class="callout"><b>Tip:</b> {cl['tip']}</div>
 <h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>{cta()}"""
     return path, page(path, f"Roofers in {sname}: Free Roof Quotes by City | {BRAND}",
@@ -504,12 +545,12 @@ def state_page(st):
         body, [dict(SVC, name=f"Free roofer referrals in {sname}", areaServed={"@type": "State", "name": sname})], [(sname, path)])
 
 def hub_page():
-    rows = "".join(f'<div class="srow"><h3><a href="{state_path(st)}">{STATES[st][0]}</a></h3><p>' + " &middot; ".join(f'<a href="{city_path(c, s)}">{c}</a>' for c, s, _ in CITIES if s == st) + '</p></div>' for st in sorted(STATES, key=lambda k: STATES[k][0]))
+    rows = "".join(f'<div class="srow"><h3><a href="{state_path(st)}">{STATES[st][0]}</a></h3><p>' + " &middot; ".join(f'<a href="{city_path(x["n"], st)}">{x["n"]}</a>' for x in sorted([x for x in RECS if x["st"] == st], key=lambda x: -x["pop"])) + '</p></div>' for st in sorted(STATES, key=lambda k: STATES[k][0]))
     body = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Find a roofer</p><h1>Roofers near you, by state and city</h1><p class="sub">Homeowners anywhere in the U.S. can <a href="/get-quotes/">request a free quote</a>. Or start with your state below.</p></div></section>
 <div class="wrap narrow states">{rows}</div>{cta()}"""
     return "/roofers/", page("/roofers/", f"Find Roofers Near You by State and City | {BRAND}", "Find local roofers by state and city and get a free roof inspection and quote.", body, None, [("Find a roofer", "/roofers/")])
 
-LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(c, st, cl or STATES[st][1]) for c, st, cl in CITIES]
+LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(r) for r in RECS]
 
 def llms():
     g = "\n".join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in GUIDES)
