@@ -45,7 +45,7 @@ LOGO = ('<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rec
         '<path d="M9 16v8h14v-8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg>')
 
 NAV = [("/how-it-works/", "How it works"), ("/guides/", "Guides"),
-       ("/choosing-a-roofer/", "Choosing a roofer"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
+       ("/commercial-roofing/", "Commercial"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
 
 ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SITE + "/",
        "logo": SITE + "/assets/logo.svg", "email": EMAIL, **({"telephone": PHONE} if PHONE else {}),
@@ -102,7 +102,11 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 """
 
 FORM = """<form class="qform" novalidate data-form>
-<h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time.</p>
+<h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time. Homes and commercial buildings.</p>
+<fieldset class="need prop"><legend>Property type</legend>
+<label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
+<label><input type="radio" name="prop" value="commercial"><span>Commercial</span></label>
+<label><input type="radio" name="prop" value="multifamily"><span>Apts / HOA</span></label></fieldset>
 <fieldset class="need"><legend>What do you need?</legend>
 <label><input type="radio" name="need" value="replacement" checked><span>New roof</span></label>
 <label><input type="radio" name="need" value="repair"><span>Repair or leak</span></label>
@@ -138,7 +142,7 @@ def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
             "image": img(photo, 1200, 630)}]
     if faq: sch.append(faq_schema(faq))
-    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Homeowner guide</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated November 15, 2026 &middot; By the {BRAND} team</p></div></section>
+    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated November 15, 2026 &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
@@ -150,6 +154,7 @@ HOME_FAQ = [
  ("Is Bedrock Roof a roofing company?", "No. We are a referral service. We don't install or repair roofs. We connect you with an independent local roofing contractor, and any work is between you and that contractor."),
  ("How many roofers will contact me?", "We try to match each request with one local roofer instead of sending your number to a long list of companies. You can always get more quotes on your own, and we recommend at least two or three for a full replacement."),
  ("Do I have to hire the roofer?", "No. The inspection and quote are free and there's no obligation to hire anyone."),
+ ("Do you help with commercial roofs?", "Yes. Owners and managers of commercial buildings, apartments, condos and HOAs can request a free inspection and quote from an independent commercial roofer. See our <a href=\"/commercial-roofing/\">commercial roofing guide</a>."),
  ("Which areas do you serve?", "Homeowners anywhere in the United States can send a request. If we can't find a roofer serving your ZIP code, we'll tell you."),
  ("Can a roofer help with an insurance claim?", "Many roofers will document storm damage with photos and a written estimate you can give your insurer. Whether a claim is covered is up to your insurance company, and nobody can promise approval."),
 ]
@@ -165,7 +170,8 @@ home = f"""
 <section class="band"><div class="wrap three">
 <div><h3>Replacement</h3><p>Old, curling or missing shingles? Get a written quote for a full tear-off and new roof.</p></div>
 <div><h3>Repairs and leaks</h3><p>Water stains on the ceiling or a drip in the attic? Get a roofer out before it spreads.</p></div>
-<div><h3>Storm damage</h3><p>Hail or wind damage? A roofer can inspect and document it for your insurance claim.</p></div></div></section>
+<div><h3>Storm damage</h3><p>Hail or wind damage? A roofer can inspect and document it for your insurance claim.</p></div></div>
+<div class="wrap"><p class="center"><b>Own or manage a commercial building, apartments or an HOA?</b> We connect you with commercial roofers too. <a href="/commercial-roofing/">Commercial roofing &rarr;</a></p></div></section>
 
 <section class="how wrap"><p class="kick">How it works</p><h2>Three simple steps</h2><div class="steps">
 <div class="step">{pic(P['home1'], 'Two-story suburban home', 720, 0.66)}<b>1</b><h3>Tell us about your roof</h3><p>Pick what you need and enter your name, phone and ZIP code.</p></div>
@@ -476,6 +482,83 @@ editorial = f"""<section class="phero"><div class="wrap narrow"><p class="kick">
 <h2>Corrections</h2><p>If something on this site is wrong or out of date, email <a href="mailto:{EMAIL}">{EMAIL}</a>. We review every report and update the page and its date when we make a change.</p>
 <p class="small">Last reviewed {UPDATED}.</p></div>{cta()}"""
 
+# ------------------------------------------------------------------ commercial roofing
+com_faq = [
+ ("Does Bedrock Roof help with commercial roofs?", "Yes. Owners and managers of commercial buildings, apartment and condo buildings, HOAs, churches, warehouses and retail properties can request a free inspection and quote from an independent commercial roofing contractor."),
+ ("What types of commercial roofs are there?", "Most commercial buildings have low-slope or flat roofs covered with a single-ply membrane (TPO, EPDM or PVC), modified bitumen or built-up roofing. Metal roofs are common on warehouses and newer buildings. Roof coatings can extend the life of many of these systems."),
+ ("How often should a commercial roof be inspected?", "Many roofing manufacturers and industry groups recommend an inspection at least twice a year, typically in spring and fall, and after any major storm. Regular inspections are often a condition of keeping a manufacturer's warranty in force."),
+ ("Can a commercial roof be restored instead of replaced?", "Often, if the existing roof is still mostly dry and sound. A roofer can check for trapped moisture, for example with core samples or an infrared or moisture survey, and tell you whether a coating or restoration system is an option."),
+ ("Do commercial roofers need a different license?", "It depends on the state. Some states license commercial roofing separately from residential work, or require a general contractor license for commercial jobs. Our state pages explain each state's rules."),
+]
+commercial = article("/commercial-roofing/", "Commercial Roofing: Free Inspections and Quotes | Bedrock Roof", "Commercial roofing: free inspections and quotes",
+ "Free commercial roof inspections and quotes for property managers, HOAs and building owners: flat roofs, TPO, EPDM, PVC, metal and roof coatings.",
+ "For property managers, HOAs, landlords and business owners. Tell us about the building and we'll connect you with an independent commercial roofer.",
+ """<div class="callout quick"><b>Quick answer:</b> Bedrock Roof connects owners and managers of commercial buildings, apartment and condo buildings, HOAs and churches with independent commercial roofing contractors for a free inspection and quote. Most commercial roofs are low-slope systems (TPO, EPDM, PVC, modified bitumen or built-up roofing) or metal, and many can be repaired or restored with a coating instead of fully replaced.</div>
+<h2>Who we help</h2><ul><li><b>Property managers</b> handling one building or a portfolio.</li><li><b>HOAs and condo associations</b> planning repairs or a reserve-funded replacement.</li><li><b>Apartment and multifamily owners</b>.</li><li><b>Business owners</b>: retail, restaurants, offices, medical buildings.</li><li><b>Warehouses and industrial buildings</b>, often with metal or large single-ply roofs.</li><li><b>Churches, schools and nonprofits</b>.</li></ul>
+<h2>Common commercial roof types</h2>
+<ul><li><b>TPO</b>: a white single-ply membrane, widely used on new low-slope roofs. It reflects sunlight and has heat-welded seams.</li><li><b>EPDM</b>: a black synthetic rubber membrane with a long track record, common in colder climates.</li><li><b>PVC</b>: a single-ply membrane with heat-welded seams that resists chemicals and grease, which is why it's used on restaurants.</li><li><b>Modified bitumen</b>: asphalt-based sheets applied in layers, common on smaller flat roofs.</li><li><b>Built-up roofing (BUR)</b>: the traditional "tar and gravel" roof made of alternating layers of bitumen and felt.</li><li><b>Metal</b>: standing-seam or through-fastened panels, common on warehouses and pre-engineered buildings.</li><li><b>Roof coatings</b>: silicone, acrylic or polyurethane coatings applied over a sound existing roof to seal it and reflect heat.</li></ul>
+<p>See <a href="/flat-roof-types/">flat roof types compared</a> and <a href="/commercial-roof-coatings/">commercial roof coatings</a> for details.</p>
+<h2>What a commercial inspection usually covers</h2><ol><li>The membrane or roof surface, seams and penetrations (HVAC curbs, pipes, vents).</li><li>Drainage: drains, scuppers, gutters and any areas where water ponds.</li><li>Flashing at walls, parapets and edges.</li><li>Signs of trapped moisture in the insulation, sometimes checked with core cuts or an infrared or moisture survey.</li><li>Rooftop equipment and foot-traffic damage.</li><li>The age and warranty status of the roof.</li></ol>
+<h2>Before you hire a commercial roofer</h2><ul><li>Check the contractor's state license or registration for commercial work. Rules differ by state; see our <a href="/roofers/">state pages</a>.</li><li>Ask for certificates of general liability and workers' comp insurance, and to be named as an additional insured if your lease or lender requires it.</li><li>Ask whether the contractor is certified by the membrane manufacturer, which is often required for a manufacturer's system warranty.</li><li>Get a written scope that lists the roof system, insulation, flashing details, warranty terms and how tenants and operations will be protected during the work.</li><li>Ask for references from similar buildings.</li></ul>
+<h2>Maintenance matters more on flat roofs</h2><p>Flat and low-slope roofs don't shed water as quickly as steep roofs, so small problems like a clogged drain or an open seam turn into leaks faster. A twice-yearly inspection and prompt repairs are usually the cheapest way to make a commercial roof last. See our <a href="/commercial-roof-maintenance/">commercial roof maintenance checklist</a>.</p>""",
+ "Commercial roofing", P["metal"], com_faq)
+
+flat_faq = [
+ ("Which is better, TPO or EPDM?", "Neither is best everywhere. TPO is white and reflective with heat-welded seams, which suits hot climates and cooling-heavy buildings. EPDM is a durable rubber membrane with a long track record, popular in colder climates. Installation quality and the details at seams and edges matter as much as the membrane."),
+ ("How long does a flat roof last?", "Single-ply and modified bitumen roofs commonly last about 15 to 30 years, depending on the product, thickness, installation, climate and maintenance."),
+ ("Is ponding water on a flat roof a problem?", "Water that stands for more than about 48 hours after rain is generally a sign of a drainage or structural issue. It speeds up wear, can void some warranties and adds weight, so it's worth having a roofer look at it."),
+]
+flat_rows = [
+ ("TPO", "White, reflective; heat-welded seams", "Hot climates; most new low-slope roofs", "15 to 30 years"),
+ ("EPDM", "Black (or white) rubber; glued or taped seams", "Cold climates; long track record", "20 to 30+ years"),
+ ("PVC", "Heat-welded; resists grease and chemicals", "Restaurants, chemical exposure", "20 to 30 years"),
+ ("Modified bitumen", "Asphalt sheets in layers", "Small flat roofs, foot traffic", "15 to 25 years"),
+ ("Built-up roof (BUR)", "Layers of bitumen and felt, often with gravel", "Older commercial buildings", "20 to 30 years"),
+ ("Coating over existing roof", "Silicone, acrylic or polyurethane", "Extending a sound existing roof", "10 to 20 years, can be renewed"),
+]
+flat_table = "<table class=\"snap\"><thead><tr><th>System</th><th>What it is</th><th>Often used for</th><th>Typical lifespan</th></tr></thead><tbody>" + "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, b, c, d in flat_rows) + "</tbody></table>"
+flat = article("/flat-roof-types/", "Flat Roof Types Compared: TPO vs EPDM vs PVC vs Modified Bitumen | Bedrock Roof", "Flat roof types compared: TPO, EPDM, PVC and more",
+ "Compare flat and low-slope roofing systems for homes and commercial buildings: TPO, EPDM, PVC, modified bitumen, built-up roofing and coatings.",
+ "Flat and low-slope roofs need different materials than shingled roofs. Here's how the main systems compare.",
+ f"""<div class="callout quick"><b>Quick answer:</b> The most common flat-roof systems are TPO (white, reflective, heat-welded seams), EPDM (durable rubber, popular in cold climates), PVC (heat-welded and grease-resistant, common on restaurants), modified bitumen and built-up roofing. Most last about 15 to 30 years. Installation quality, drainage and seam details matter as much as the material.</div>
+<h2>Side-by-side comparison</h2>{flat_table}
+<p class="small">Lifespans are typical ranges and depend on membrane thickness, installation, climate, drainage and maintenance.</p>
+<h2>What matters besides the membrane</h2><ul><li><b>Drainage.</b> Tapered insulation, drains and scuppers keep water from ponding.</li><li><b>Insulation.</b> Replacing a roof is often the time to bring insulation up to the current energy code, which may be required.</li><li><b>Attachment.</b> Membranes can be mechanically fastened, fully adhered or ballasted. Wind zone and building type drive the choice.</li><li><b>Edges and flashing.</b> Most flat-roof leaks start at seams, edges, walls and penetrations, not in the middle of the membrane.</li><li><b>Warranty.</b> Manufacturer warranties vary from material-only to full system coverage and often require a certified installer and regular maintenance.</li></ul>
+<h2>Homes with flat roofs</h2><p>Rowhouses, mid-century modern homes and additions often have flat or low-slope sections. The same materials apply, and shingles should never be used on a roof that's too flat for them.</p>
+<p>Related: <a href="/commercial-roofing/">commercial roofing</a> and <a href="/commercial-roof-coatings/">roof coatings</a>.</p>""",
+ "Flat roof types", P["metal"], flat_faq)
+
+coat_faq = [
+ ("Can you put a coating on a leaking roof?", "Coatings aren't a fix for an active leak or a wet roof. Leaks need to be repaired and wet insulation replaced first. A coating then goes over a sound, dry roof."),
+ ("Silicone or acrylic coating?", "Silicone holds up well to ponding water and UV. Acrylic is usually less expensive and very reflective but is generally not recommended where water ponds. The existing roof type and local climate decide which is a better fit."),
+ ("Does a roof coating qualify as a new roof?", "Usually not. It's a restoration that extends the life of the existing roof. Some coating systems come with their own manufacturer warranty, and the terms vary."),
+]
+coat = article("/commercial-roof-coatings/", "Commercial Roof Coatings: Restore or Replace? | Bedrock Roof", "Commercial roof coatings: restore or replace?",
+ "When a silicone, acrylic or polyurethane roof coating makes sense, when it doesn't, and how to compare restoration with full roof replacement.",
+ "A coating can add years to a commercial roof for less than a replacement, but only if the roof underneath is in good shape.",
+ """<div class="callout quick"><b>Quick answer:</b> A roof coating (silicone, acrylic or polyurethane) can extend the life of a commercial roof that is still mostly dry and sound, usually for less than a full replacement and with less disruption. It's not a fix for a roof with widespread wet insulation, failing seams everywhere or structural problems. A roofer should check for trapped moisture before recommending one.</div>
+<h2>When a coating can make sense</h2><ul><li>The roof is aging but still watertight, with only isolated problems that can be repaired first.</li><li>A moisture survey or core cuts show the insulation is mostly dry.</li><li>You want a reflective surface to cut cooling loads.</li><li>You want to delay a full tear-off for budget or tenant reasons.</li></ul>
+<h2>When replacement is the better call</h2><ul><li>Large areas of wet insulation.</li><li>Widespread seam failure, blistering or shrinkage.</li><li>Deck damage or structural sagging.</li><li>The roof already has the maximum number of layers allowed by code.</li></ul>
+<h2>Main coating types</h2><ul><li><b>Silicone</b>: handles ponding water and UV well. Recoating later usually requires silicone again.</li><li><b>Acrylic</b>: water-based, reflective and usually less expensive. Best where water drains well.</li><li><b>Polyurethane and SPF</b>: tough coatings, and spray polyurethane foam can add insulation and fix low spots.</li></ul>
+<h2>Questions to ask</h2><ol><li>How did you check the roof for trapped moisture?</li><li>What repairs will be made before coating, including seams, flashing and drains?</li><li>What coating thickness will be applied, and how will you verify it?</li><li>What warranty comes with the system, and what maintenance does it require?</li></ol>
+<p>Related: <a href="/flat-roof-types/">flat roof types compared</a> and <a href="/commercial-roof-maintenance/">commercial roof maintenance checklist</a>.</p>""",
+ "Roof coatings", P["metal"], coat_faq)
+
+maint_faq = [
+ ("Who is responsible for the roof in a commercial lease?", "It depends on the lease. Many leases make the landlord responsible for the roof structure and replacement, and some assign routine maintenance to the tenant. Check the lease before scheduling work."),
+ ("How should an HOA plan for roof replacement?", "Many associations use a reserve study to estimate when roofs will need replacing and how much to set aside. Regular inspections help keep that estimate accurate and catch problems early."),
+]
+maint = article("/commercial-roof-maintenance/", "Commercial Roof Maintenance Checklist for Property Managers and HOAs | Bedrock Roof", "Commercial roof maintenance checklist",
+ "A practical roof maintenance checklist for property managers, HOAs and building owners: what to inspect, how often, and what to document.",
+ "Most commercial roof leaks start small. A simple routine catches them early and helps protect your warranty.",
+ """<div class="callout quick"><b>Quick answer:</b> Have a commercial roof inspected at least twice a year, typically in spring and fall, and after major storms. Keep drains and gutters clear, limit rooftop foot traffic, fix small seam and flashing problems quickly, and keep a log with photos. Many manufacturer warranties require documented maintenance.</div>
+<h2>Twice-a-year checklist</h2><ul><li>Clear drains, scuppers, gutters and downspouts of debris.</li><li>Look for ponding water that stays more than about two days after rain.</li><li>Check seams, edges and flashing at walls, curbs and penetrations.</li><li>Look for blisters, cracks, punctures, shrinkage or loose fasteners.</li><li>Check sealant at pitch pans, pipes and rooftop equipment.</li><li>Inspect walkway pads around HVAC units and service areas.</li><li>Look for interior signs: ceiling stains, wet insulation, musty smells.</li></ul>
+<h2>After a storm</h2><ul><li>Check for blown-off edge metal, debris, punctures from hail or branches, and damaged rooftop units.</li><li>Photograph damage with dates before any cleanup.</li><li>Report damage to your insurer promptly. See <a href="/roof-insurance-claim/">filing a roof insurance claim</a>.</li></ul>
+<h2>Keep a roof file</h2><p>Keep the installation date, contractor, roof system and warranty, plus every inspection report, repair invoice and photo. It makes warranty claims, insurance claims and budgeting much easier.</p>
+<h2>For HOAs and multifamily</h2><p>Coordinate access with residents, plan work around weather and occupancy, and keep your reserve study up to date with current roof conditions.</p>
+<p>Related: <a href="/commercial-roofing/">commercial roofing</a>, <a href="/flat-roof-types/">flat roof types</a> and <a href="/commercial-roof-coatings/">roof coatings</a>.</p>""",
+ "Commercial roof maintenance", P["metal"], maint_faq)
+
 GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", "National price ranges and how to compare quotes."),
  ("/choosing-a-roofer/", "How to choose a roofer you can trust", "License, insurance, warranties and red flags."),
  ("/storm-damage/", "What to do after storm damage", "Safety, photos, insurance and storm chasers."),
@@ -488,7 +571,11 @@ GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", 
  ("/roof-insurance-claim/", "How to file a roof insurance claim, step by step", "Documenting damage, the adjuster visit, ACV vs RCV and disputes."),
  ("/roofing-scams/", "Roofing scams and red flags", "Storm chasers, deductible offers and how to check a roofer."),
  ("/roofing-materials/", "Roofing materials compared", "Asphalt, metal, tile and slate: lifespan, cost and best climates."),
- ("/impact-resistant-shingles/", "Are Class 4 impact-resistant shingles worth it?", "Hail ratings, insurance discounts and who should buy them.")]
+ ("/impact-resistant-shingles/", "Are Class 4 impact-resistant shingles worth it?", "Hail ratings, insurance discounts and who should buy them."),
+ ("/commercial-roofing/", "Commercial roofing: free inspections and quotes", "For property managers, HOAs and building owners."),
+ ("/flat-roof-types/", "Flat roof types compared", "TPO, EPDM, PVC, modified bitumen and built-up roofs."),
+ ("/commercial-roof-coatings/", "Commercial roof coatings: restore or replace?", "When silicone, acrylic or polyurethane coatings make sense."),
+ ("/commercial-roof-maintenance/", "Commercial roof maintenance checklist", "What property managers and HOAs should inspect, and how often.")]
 guides_idx = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Guides</p><h1>Homeowner roofing guides</h1><p class="sub">Plain-English answers to the questions homeowners ask before hiring a roofer.</p></div></section>
 <div class="wrap narrow states">""" + "".join(f'<div class="srow"><h3><a href="{u}">{t}</a></h3><p>{d}</p></div>' for u, t, d in GUIDES) + "</div>" + cta()
 
@@ -544,7 +631,8 @@ notfound = """<section class="phero"><div class="wrap narrow"><h1>Page not found
 
 SVC = {"@type": "Service", "name": "Free roofing contractor referrals", "serviceType": "Roofing contractor referral",
        "provider": {"@id": SITE + "/#org"}, "areaServed": {"@type": "Country", "name": "United States"},
-       "audience": {"@type": "Audience", "audienceType": "Homeowners"},
+       "audience": [{"@type": "Audience", "audienceType": "Homeowners"}, {"@type": "BusinessAudience", "audienceType": "Commercial property owners, property managers and HOAs"}],
+       "category": ["Residential roofing", "Commercial roofing"],
        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for homeowners"}}
 
 PAGES = [
@@ -558,6 +646,7 @@ PAGES = [
  ("/roof-repair-or-replace/", rr, "0.7"),
  ("/roof-leak/", leak, "0.8"), ("/hail-damage-roof/", hail, "0.8"), ("/insurance-roof-replacement/", ins, "0.8"),
  ("/signs-you-need-a-new-roof/", signs, "0.7"), ("/how-long-does-a-roof-last/", life, "0.7"),
+ ("/commercial-roofing/", commercial, "0.9"), ("/flat-roof-types/", flat, "0.7"), ("/commercial-roof-coatings/", coat, "0.7"), ("/commercial-roof-maintenance/", maint, "0.7"),
  ("/roof-insurance-claim/", claim, "0.8"), ("/roofing-scams/", scams, "0.8"), ("/roofing-materials/", materials, "0.8"), ("/impact-resistant-shingles/", impact, "0.7"),
  ("/editorial-policy/", page("/editorial-policy/", "Editorial Policy | Bedrock Roof", "How Bedrock Roof researches, writes, checks and corrects its roofing guides and city pages.", editorial, None, [("Editorial policy", "/editorial-policy/")]), "0.4"),
  ("/guides/", page("/guides/", "Homeowner Roofing Guides | Bedrock Roof", "Free, plain-English roofing guides for homeowners: costs, hiring a roofer, storm and hail damage, leaks and insurance.", guides_idx, None, [("Guides", "/guides/")]), "0.7"),
@@ -620,7 +709,7 @@ def city_page(r):
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
-<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}. Free for homeowners, no obligation.</p></div>
+<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
@@ -631,6 +720,7 @@ def city_page(r):
 <h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
 <h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
+<h2>Commercial roofing in {c}</h2><p>Own or manage a commercial building, apartments or an HOA in {c}? We also connect property owners and managers with independent commercial roofers for flat and low-slope roofs (TPO, EPDM, PVC, modified bitumen), metal roofs and roof coatings. Choose "Commercial" or "Apts / HOA" on the form, or read our <a href="/commercial-roofing/">commercial roofing guide</a>.</p>
 <p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
 {f'<h2>Roofers in nearby cities</h2><p class="links">{near_html}</p>' if near_html else ''}
@@ -679,7 +769,7 @@ def llms():
     st = "\n".join(f"- [Roofers in {STATES[s][0]}]({SITE}{state_path(s)})" for s in sorted(STATES, key=lambda k: STATES[k][0]))
     return f"""# {BRAND}
 
-> {BRAND} is a free referral service that connects homeowners anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. {BRAND} is not a roofing contractor and does not perform or warranty roofing work.
+> {BRAND} is a free referral service that connects homeowners and commercial property owners, property managers and HOAs anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. {BRAND} is not a roofing contractor and does not perform or warranty roofing work.
 
 Homeowners can request a free quote at {SITE}/get-quotes/ for roof replacement, roof repair or leaks, storm damage, or a roof inspection.
 
@@ -732,6 +822,10 @@ def rebase(doc):
     return doc.replace('href="/', f'href="{BASE}/').replace('src="/', f'src="{BASE}/') if BASE else doc
 
 RELATED = {
+ "/commercial-roofing/": ["/flat-roof-types/", "/commercial-roof-coatings/", "/commercial-roof-maintenance/", "/roof-insurance-claim/"],
+ "/flat-roof-types/": ["/commercial-roofing/", "/commercial-roof-coatings/", "/roofing-materials/", "/commercial-roof-maintenance/"],
+ "/commercial-roof-coatings/": ["/flat-roof-types/", "/commercial-roof-maintenance/", "/commercial-roofing/", "/roof-repair-or-replace/"],
+ "/commercial-roof-maintenance/": ["/commercial-roofing/", "/commercial-roof-coatings/", "/roof-insurance-claim/", "/roofing-scams/"],
  "/roof-replacement-cost/": ["/roofing-materials/", "/choosing-a-roofer/", "/roof-repair-or-replace/", "/insurance-roof-replacement/"],
  "/choosing-a-roofer/": ["/roofing-scams/", "/roof-replacement-cost/", "/roofing-materials/", "/how-long-does-a-roof-last/"],
  "/storm-damage/": ["/roof-insurance-claim/", "/hail-damage-roof/", "/roofing-scams/", "/roof-leak/"],
