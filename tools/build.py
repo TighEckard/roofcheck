@@ -713,6 +713,7 @@ def city_page(r):
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
+{recent_storms_html(c, st)}
 <h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
 <h3>{c} roofing snapshot</h3>{table}
 <h2>What wears out roofs around {c}</h2><ul>{risks}</ul>
@@ -762,7 +763,84 @@ def hub_page():
 <div class="wrap narrow states">{rows}</div>{cta()}"""
     return "/roofers/", page("/roofers/", f"Find Roofers Near You by State and City | {BRAND}", "Find local roofers by state and city and get a free roof inspection and quote.", body, None, [("Find a roofer", "/roofers/")])
 
-LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(r) for r in RECS]
+# ------------------------------------------------------------------ storm pages (from tools/storms.json, made by tools/storms.py)
+import datetime as _dt
+STORMS = json.load(open(os.path.join(ROOT, "tools", "storms.json"))) if os.path.exists(os.path.join(ROOT, "tools", "storms.json")) else []
+STORM_SRC = "https://www.spc.noaa.gov/climo/reports/"
+
+def hail_name(x):
+    for lim, name in [(4.0, "softball size"), (3.0, "teacup size"), (2.75, "baseball size"), (2.5, "tennis ball size"), (2.0, "hen egg size"),
+                      (1.75, "golf ball size"), (1.5, "ping pong ball size"), (1.25, "half dollar size"), (1.0, "quarter size")]:
+        if x >= lim: return name
+    return "smaller than a quarter"
+
+def hail_effect(x):
+    if x >= 2.0: return "Hail this large often causes widespread roof damage, including cracked and punctured shingles, broken tiles, dented metal and damaged skylights, vents and gutters."
+    if x >= 1.5: return "Hail this size commonly bruises and cracks asphalt shingles and dents gutters, vents and metal flashing, even on newer roofs."
+    if x >= 1.0: return "Hail around an inch can damage asphalt shingles, especially older ones, by knocking off granules and bruising the mat. The damage often isn't visible from the ground."
+    return "Smaller hail rarely damages a roof on its own, but it's worth a look if it fell with high winds."
+
+def nice_date(d):
+    x = _dt.date.fromisoformat(d)
+    return x.strftime("%B ") + str(x.day) + x.strftime(", %Y")
+
+def storm_path(e): return f"/storms/{e['date']}-{slug(e['n'])}-{e['st'].lower()}/"
+
+def storm_kind(e):
+    if e["hail_max"] and e["wind_n"]: return "Hail and damaging winds"
+    return "Hail" if e["hail_max"] else "Damaging winds"
+
+def storm_page(e):
+    c, st = e["n"], e["st"]; sname = STATES[st][0]; d = nice_date(e["date"]); path = storm_path(e)
+    kind = storm_kind(e)
+    facts = []
+    if e["hail_max"]:
+        facts.append(f"{e['hail_n']} preliminary hail report{'s' if e['hail_n'] != 1 else ''} within about 12 miles of {c}, with hail up to <b>{e['hail_max']:.2f} inches</b> ({hail_name(e['hail_max'])})")
+    if e["wind_n"]:
+        w = f", with gusts up to <b>{e['wind_max']} mph</b>" if e["wind_max"] else ""
+        facts.append(f"{e['wind_n']} report{'s' if e['wind_n'] != 1 else ''} of damaging wind{w}")
+    fact = " and ".join(facts)
+    effect = hail_effect(e["hail_max"]) if e["hail_max"] else "Damaging winds can lift and tear off shingles, peel back flashing and drop trees and limbs onto roofs."
+    places = "".join(f"<li>{html.escape(p)}</li>" for p in e["places"])
+    rec = next((r for r in RECS if r["n"] == c and r["st"] == st), None)
+    city_link = f'<a href="{city_path(c, st)}">Roofers near {c}, {st}</a>' if rec else f'<a href="{state_path(st)}">Roofers in {sname}</a>'
+    body = f"""<section class="phero"><div class="wrap narrow"><p class="kick"><a href="/storms/">Storm reports</a> &rsaquo; {sname}</p>
+<h1>{kind} near {c}, {st} on {d}: what to do about your roof</h1>
+<p class="sub">Severe weather was reported around {c}. Here's what was reported, what it can do to a roof, and the steps to take now.</p><p class="meta">Published {d} &middot; Source: NOAA Storm Prediction Center</p></div></section>
+<div class="wrap narrow prose">
+<div class="callout quick"><b>Quick answer:</b> NOAA's Storm Prediction Center logged {fact} on the storm day of {d}. {effect} Check your roof from the ground, photograph any damage, and have a roofer inspect it before your insurer's deadline for reporting damage.</div>
+<h2>What was reported</h2><p>Reports came from these locations near {c}:</p><ul>{places}</ul>
+<p class="small">These are preliminary reports from trained spotters, emergency managers and the public, collected by the <a href="{STORM_SRC}" rel="nofollow noopener">NOAA Storm Prediction Center</a>. They can be revised, and storm damage can vary a lot from street to street.</p>
+<h2>Signs your roof may be damaged</h2><ul><li>Dents in gutters, downspouts, vents, mailboxes or air-conditioning units.</li><li>Shingle granules collecting at downspouts.</li><li>Missing, cracked or lifted shingles, or pieces in the yard.</li><li>New water stains on ceilings or in the attic.</li></ul>
+<p>Hail damage to shingles is often invisible from the ground. See <a href="/hail-damage-roof/">how to tell if hail damaged your roof</a>.</p>
+<h2>What to do now</h2><ol><li>Stay off the roof. Watch for downed lines and limbs.</li><li>Take dated photos of damage, including dented metal and any leaks.</li><li>Cover openings or catch drips to prevent more damage, and keep receipts.</li><li>Check your policy's deductible and deadlines, and report damage promptly. See <a href="/roof-insurance-claim/">how to file a roof claim</a>.</li><li>Get a roofer to inspect and document the damage in writing.</li></ol>
+<div class="callout"><b>Watch out for storm chasers.</b> After storms, out-of-town crews often go door to door. Don't sign anything on the spot, and never accept an offer to pay or waive your deductible. See <a href="/roofing-scams/">roofing scams and red flags</a>.</div>
+<h2>Get a free inspection in {c}</h2><p>Bedrock Roof can connect you with an independent local roofer for a free inspection and written quote, for homes and commercial buildings. More about local roof risks and licensing: {city_link}.</p></div>
+<div class="wrap narrow">{form(f'Free storm damage inspection in {c}', 's')}</div>{cta()}"""
+    sch = [{"@type": "Article", "headline": f"{kind} near {c}, {st} on {d}", "datePublished": e["date"], "dateModified": e["date"],
+            "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
+            "about": {"@type": "City", "name": f"{c}, {sname}"}}]
+    title = f"{kind} in {c}, {st} ({_dt.date.fromisoformat(e['date']).strftime('%b')} {_dt.date.fromisoformat(e['date']).day}, {e['date'][:4]}): Roof Damage Checklist | {BRAND}"
+    desc = f"{kind} reported near {c}, {sname} on {d}" + (f", hail up to {e['hail_max']:.2f} in." if e["hail_max"] else ".") + " What it can do to your roof, what to do now and how to get a free inspection."
+    return path, page(path, title, desc, body, sch, [("Storm reports", "/storms/"), (f"{c} {d}", path)], og_img=P["roofsky"])
+
+def storms_index():
+    rows = "".join(f'<div class="srow"><h3><a href="{storm_path(e)}">{storm_kind(e)} near {e["n"]}, {e["st"]}</a></h3><p>{nice_date(e["date"])}'
+                   + (f' &middot; hail up to {e["hail_max"]:.2f} in.' if e["hail_max"] else "") + (f' &middot; wind gusts to {e["wind_max"]} mph' if e["wind_max"] else "") + "</p></div>" for e in STORMS[:300])
+    empty = "<p>No recent severe hail or wind reports near the cities we cover. Check back after the next storm.</p>"
+    body = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Storm reports</p><h1>Recent hail and wind storms by city</h1>
+<p class="sub">Severe hail and wind reports near U.S. cities, from NOAA's Storm Prediction Center, with what to do about your roof.</p></div></section>
+<div class="wrap narrow states">{rows or empty}<p class="small">Source: preliminary storm reports from the <a href="{STORM_SRC}" rel="nofollow noopener">NOAA Storm Prediction Center</a>. Updated daily.</p></div>{cta()}"""
+    return "/storms/", page("/storms/", f"Recent Hail and Wind Storms by City | {BRAND}", "Recent severe hail and wind reports near U.S. cities, with roof damage checklists and free inspections.", body, None, [("Storm reports", "/storms/")])
+
+def recent_storms_html(c, st, days=120):
+    today = _dt.date.today()
+    ev = [e for e in STORMS if e["n"] == c and e["st"] == st and (today - _dt.date.fromisoformat(e["date"])).days <= days]
+    if not ev: return ""
+    items = "".join(f'<li><a href="{storm_path(e)}">{storm_kind(e)} on {nice_date(e["date"])}</a>' + (f' (hail up to {e["hail_max"]:.2f} in.)' if e["hail_max"] else "") + "</li>" for e in ev[:5])
+    return f'<div class="callout"><b>Recent severe weather near {c}:</b><ul>{items}</ul></div>'
+
+LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(r) for r in RECS] + ([storms_index()] if STORMS else []) + [storm_page(e) for e in STORMS]
 
 def llms():
     g = "\n".join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in GUIDES)

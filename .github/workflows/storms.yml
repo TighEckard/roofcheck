@@ -1,0 +1,39 @@
+# Daily storm check: reads NOAA Storm Prediction Center preliminary hail and wind reports for the
+# previous convective day, adds storm pages for affected cities that have a page on the site,
+# rebuilds and publishes. Logic and thresholds live in tools/storms.py.
+name: storm-pages
+on:
+  schedule:
+    - cron: "30 13 * * *"   # after the SPC convective day ends at 12Z
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Convective day to check (YYYY-MM-DD). Blank = yesterday."
+        required: false
+permissions:
+  contents: write
+concurrency:
+  group: storm-pages
+  cancel-in-progress: false
+jobs:
+  storms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check yesterday's storm reports
+        run: python3 tools/storms.py ${{ github.event.inputs.day }}
+      - name: Rebuild site
+        run: PREVIEW=0 python3 tools/build.py
+      - name: Publish if anything changed
+        run: |
+          git config user.name "bedrockroof-storm-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Storm pages: $(date -u -d 'yesterday' +%Y-%m-%d)"
+          git push origin HEAD:main
