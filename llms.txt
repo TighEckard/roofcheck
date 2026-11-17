@@ -1,6 +1,6 @@
 # Bedrock Roof
 
-> Bedrock Roof is a free referral service that connects homeowners anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. Bedrock Roof is not a roofing contractor and does not perform or warranty roofing work.
+> Bedrock Roof is a free referral service that connects homeowners and commercial property owners, property managers and HOAs anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. Bedrock Roof is not a roofing contractor and does not perform or warranty roofing work.
 
 Homeowners can request a free quote at https://bedrockroof.com/get-quotes/ for roof replacement, roof repair or leaks, storm damage, or a roof inspection.
 
@@ -18,6 +18,10 @@ Homeowners can request a free quote at https://bedrockroof.com/get-quotes/ for r
 - [Roofing scams and red flags](https://bedrockroof.com/roofing-scams/): Storm chasers, deductible offers and how to check a roofer.
 - [Roofing materials compared](https://bedrockroof.com/roofing-materials/): Asphalt, metal, tile and slate: lifespan, cost and best climates.
 - [Are Class 4 impact-resistant shingles worth it?](https://bedrockroof.com/impact-resistant-shingles/): Hail ratings, insurance discounts and who should buy them.
+- [Commercial roofing: free inspections and quotes](https://bedrockroof.com/commercial-roofing/): For property managers, HOAs and building owners.
+- [Flat roof types compared](https://bedrockroof.com/flat-roof-types/): TPO, EPDM, PVC, modified bitumen and built-up roofs.
+- [Commercial roof coatings: restore or replace?](https://bedrockroof.com/commercial-roof-coatings/): When silicone, acrylic or polyurethane coatings make sense.
+- [Commercial roof maintenance checklist](https://bedrockroof.com/commercial-roof-maintenance/): What property managers and HOAs should inspect, and how often.
 
 ## Find a roofer by state
 - [All states and cities](https://bedrockroof.com/roofers/)
