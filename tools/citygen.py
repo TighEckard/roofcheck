@@ -10,7 +10,9 @@ from places import CITIES as HAND, STATES, slug
 from local import CITY_LOCAL, CITY_LOCAL_ST
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MIN_POP = int(os.environ.get("MIN_POP", "100000"))
+MIN_POP = int(os.environ.get("MIN_POP", "40000"))
+# Cities under 100,000 people are released in batches, biggest first. Raise this number to release the next batch.
+SMALL_RELEASED = int(os.environ.get("SMALL_RELEASED", "0"))
 
 KOPPEN = {
  "Af": "tropical rainforest climate, hot and wet all year",
@@ -55,6 +57,7 @@ RISK_TEXT = {
  "rain": "Long wet seasons, moss and algae that hold moisture against the roof",
  "humid": "Summer thunderstorms and humidity that speed up shingle aging and algae streaks",
  "severe": "Severe spring storms with straight-line winds, hail and the occasional tornado",
+ "tropical": "Heavy tropical rain, humidity and strong sun that feed mold and algae and wear down roofing",
  "ice": "Winter ice storms and freeze-thaw cycles that crack shingles and bring down limbs",
 }
 MATERIAL_TEXT = {
@@ -68,6 +71,7 @@ MATERIAL_TEXT = {
  "rain": "moss-resistant shingles or metal, with careful flashing around chimneys and skylights",
  "humid": "algae-resistant architectural shingles and good attic ventilation",
  "severe": "wind-rated architectural shingles installed with the manufacturer's full nailing pattern",
+ "tropical": "metal roofing or algae-resistant shingles with stainless or coated fasteners",
 }
 PRIMARY = ["hurricane", "hail", "snow", "heat", "rain", "wildfire", "humid", "noreaster"]
 CLIMATE_KEY = {"hurricane": "hurricane", "hail": "hail", "snow": "snow", "heat": "desert", "wildfire": "wildfire",
@@ -79,7 +83,8 @@ EXCLUDE = {("Ironville", "KY"), ("Meads", "KY"), ("Lexington-Fayette", "KY"), ("
  ("North Stamford", "CT"), ("North Peoria", "IL"), ("East Independence", "MO"), ("Valencia", "CA"), ("Jamaica", "NY"),
  ("East Flatbush", "NY"), ("Washington Heights", "NY"), ("Astoria", "NY"), ("Borough Park", "NY"), ("Sheepshead Bay", "NY"),
  ("East Harlem", "NY"), ("Elmhurst", "NY"), ("Bushwick", "NY"), ("Gravesend", "NY"), ("Corona", "NY"), ("Flushing", "NY"),
- ("Bensonhurst", "NY"), ("Bedford-Stuyvesant", "NY"), ("Canarsie", "NY"), ("Harlem", "NY"), ("Kings Bridge", "NY")}
+ ("Bensonhurst", "NY"), ("Bedford-Stuyvesant", "NY"), ("Canarsie", "NY"), ("Harlem", "NY"), ("Kings Bridge", "NY"),
+ ("Richmond Hill", "NY"), ("Fordham", "NY"), ("Flatbush", "NY"), ("Brownsville", "NY"), ("Forest Hills", "NY"), ("Jackson Heights", "NY"), ("Bayside", "NY"), ("Parkchester", "NY"), ("Flatlands", "NY"), ("Coney Island", "NY"), ("Cypress Hills", "NY"), ("Ozone Park", "NY"), ("Briarwood", "NY"), ("Wakefield", "NY"), ("Queens Village", "NY"), ("Mott Haven", "NY"), ("Sunnyside", "NY"), ("Maspeth", "NY"), ("Rego Park", "NY"), ("Woodside", "NY"), ("Morris Heights", "NY"), ("Alief", "TX"), ("Portsmouth Heights", "VA"), ("West Albany", "NY"), ("Enchanted Hills", "NM"), ("East Norwalk", "CT"), ("South Suffolk", "VA"), ("West Gulfport", "MS"), ("West Lynchburg", "VA"), ("Framingham Center", "MA"), ("West Coon Rapids", "MN"), ("Ahwatukee Foothills", "AZ"), ("Carol City", "FL"), ("South Vineland", "NJ"), ("North Chicopee", "MA"), ("East Pensacola Heights", "FL"), ("North La Crosse", "WI"), ("South Peabody", "MA"), ("Minnetonka Mills", "MN"), ("City of Milford (balance)", "CT"), ("City of Sammamish", "WA"), ("Sayreville Junction", "NJ"), ("East Concord", "NH"), ("Beverly Cove", "MA"), ("Allapattah", "FL"), ("Flagami", "FL"), ("Country Club", "FL"), ("Fountainebleau", "FL"), ("North Atlanta", "GA"), ("University", "FL"), ("Jackson", "NJ")}
 BOROUGHS = {"Brooklyn", "Queens", "Manhattan", "The Bronx", "Staten Island"}
 
 def km_mi(km): return round(km * 0.621371)
@@ -107,7 +112,8 @@ def flags_for(c):
     elif kg == "Csa" and st in ("CA", "AZ", "NV", "UT") and (ck or 0) > 40 and c["lat"] < 39: f.append("heat")
     if st in WEST_ST and (kg.startswith("Cs") or kg.startswith("BS")) and not (st in ("WA", "OR") and kg in ("Csb", "Cfb")): f.append("wildfire")
     if st in ("WA", "OR") and kg in ("Csb", "Cfb"): f.append("rain")
-    if kg in ("Cfa", "Am", "Aw", "Af") and len(f) < 3: f.append("humid")
+    if st == "HI": f.append("tropical")
+    elif kg in ("Cfa", "Am", "Aw", "Af") and len(f) < 3: f.append("humid")
     if not f: f.append("humid" if kg.startswith("C") else "snow")
     return f
 
@@ -139,8 +145,12 @@ def load():
         rec = dict(rec) if rec else {"n": name, "st": st, "pop": 0, "lat": 0, "lon": 0, "kg": "", "coast_km": None, "ocean": None}
         rec["n"] = name; rec["override"] = override
         seen.add((slug(name), st)); chosen.append(rec)
-    for c in data:
+    small_seen = 0
+    for c in sorted(data, key=lambda c: -c["pop"]):
         if c["pop"] < MIN_POP or c["st"] not in STATES: continue
+        if c["pop"] < 100000:  # smaller cities only with a hand-written note, and only once released
+            if (c["n"], c["st"]) not in CITY_LOCAL_ST or small_seen >= SMALL_RELEASED: continue
+            small_seen += 1
         k = (slug(c["n"]), c["st"])
         if k in seen: continue
         seen.add(k); r = dict(c); r["override"] = None; chosen.append(r)
@@ -208,13 +218,14 @@ SEASON_TEXT = {
  "heat": "Summer heat makes roof work slow and hard on materials, so many homeowners here schedule replacements for fall, winter or spring.",
  "wildfire": "Clear gutters and roof valleys of dry leaves and needles before the late-summer and fall fire season, and ask about Class A fire-rated materials if you're replacing.",
  "rain": "The rainy season runs roughly October through May, so summer is the easiest time for a replacement. Book early, since dry-season schedules fill up.",
+ "tropical": "Hawaii's hurricane season runs June through November, and the rainiest months are usually November to March, so late spring and summer are the easiest times for roof work.",
  "severe": "Severe storm season peaks in spring, roughly March through June, so late winter is a good time to have loose or worn shingles fixed. After a big storm, check for missing shingles and dented vents and gutters.",
  "ice": "Winter ice storms are the hazard people tend to overlook here. Have overhanging limbs trimmed back in the fall, and plan a replacement for spring or fall when temperatures are mild.",
  "humid": "Summer thunderstorms are the main hazard, so spring is a good time for an inspection. In damp, warm weather, watch for algae streaks and moss on the shady side of the roof.",
 }
 
 def season(r):
-    for f in ["hurricane", "hail", "severe", "snow", "ice", "noreaster", "heat", "wildfire", "rain", "humid"]:
+    for f in ["hurricane", "tropical", "hail", "severe", "snow", "ice", "noreaster", "heat", "wildfire", "rain", "humid"]:
         if f in r["flags"]: return SEASON_TEXT[f]
     return "Spring and fall are usually the easiest times to schedule roof work, and a yearly inspection catches small problems before they turn into leaks."
 
@@ -234,17 +245,17 @@ def county(r):
     """County name from Census county shapes (us-atlas). None where it would mislead:
     independent cities, Connecticut (no county government), Alaska boroughs, DC and NYC boroughs."""
     n, f = r.get("county"), r.get("fips") or ""
-    if not n or r["st"] in ("CT", "AK", "DC") or (r["st"] == "NY" and (r["n"] in BOROUGHS or r["n"] == "New York City")): return None
+    if not n or not r.get("county_ok") or r["st"] in ("CT", "AK", "DC") or (r["st"] == "NY" and (r["n"] in BOROUGHS or r["n"] == "New York City")): return None
     if f.startswith("51") and int(f[2:]) >= 500 or f in ("24510", "29510", "32510"): return None
     return n + (" Parish" if r["st"] == "LA" else " County")
 
 RISK_SHORT = {"hurricane": "hurricanes and tropical storms", "noreaster": "nor'easters", "salt": "salt air", "hail": "hail",
  "snow": "snow and ice dams", "heat": "intense sun and heat", "wildfire": "wildfire embers", "rain": "long wet seasons and moss",
- "humid": "summer thunderstorms", "severe": "severe spring storms", "ice": "winter ice storms"}
+ "humid": "summer thunderstorms", "tropical": "tropical rain and sun", "severe": "severe spring storms", "ice": "winter ice storms"}
 MAT_SHORT = {"hurricane": "high-wind-rated shingles, tile or metal", "noreaster": "wind-rated shingles with well-sealed flashing",
  "salt": "corrosion-resistant flashing", "hail": "impact-resistant (Class 4) shingles", "snow": "an ice-and-water barrier at the eaves",
  "heat": "tile or reflective cool-roof materials", "wildfire": "Class A fire-rated roofing", "rain": "moss-resistant shingles or metal",
- "humid": "algae-resistant shingles", "severe": "wind-rated architectural shingles"}
+ "humid": "algae-resistant shingles", "tropical": "metal roofing", "severe": "wind-rated architectural shingles"}
 
 def join(xs):
     xs = list(xs)

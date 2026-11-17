@@ -386,3 +386,6 @@ CITY_LOCAL_ST = {
  ("North Charleston", "SC"): "North Charleston, next to Charleston, is exposed to hurricanes from the Atlantic, including Hugo in 1989, which caused severe damage in the area. Humid summers and frequent thunderstorms also take a toll on roofs.",
  ("Wichita Falls", "TX"): "Wichita Falls, near the Oklahoma border, sits in a very active hail and tornado area, and a major tornado struck the city in 1979. Hail and strong winds are leading causes of roof claims.",
 }
+
+from local2 import NOTES as _N2
+CITY_LOCAL_ST.update(_N2)
