@@ -106,4 +106,73 @@ G2 = [
   ("Will my gutters be removed?", "Usually not, though some may be loosened to install drip edge. Ask whether gutter work is included.")],
  "Prep, day-by-day steps and the final walkthrough.",
  ["/roof-replacement-permit/", "/roof-warranty/", "/choosing-a-roofer/", "/roof-replacement-cost/"]),
+("/roofing-estimate/", "How to Read and Compare Roofing Estimates | Bedrock Roof", "How to read and compare roofing estimates",
+ "What a good roofing estimate should include, line by line, how to compare quotes fairly, and the red flags that mean you should keep looking.",
+ "Two quotes for the same roof can look very different. Here's how to compare them fairly.",
+ """<div class="callout quick"><b>Quick answer:</b> A good roofing estimate is written and itemized. It names the shingle or panel brand and product line, says whether the old roof is torn off, lists underlayment, ice and water shield, flashing, drip edge and ventilation, explains how rotten decking is priced, and includes the permit, cleanup, warranty and payment schedule. Compare quotes on the same scope, not just the bottom line.</div>
+<h2>What should be on the estimate</h2><ul><li><b>Company details:</b> legal name, address, phone, and license number where your state licenses roofers.</li><li><b>Roof size</b> in squares (1 square = 100 sq ft) and the waste factor.</li><li><b>Tear-off:</b> how many layers are removed, and disposal.</li><li><b>Decking:</b> price per sheet for replacing rotten wood.</li><li><b>Underlayment</b> type, and <b>ice and water shield</b> locations.</li><li><b>Flashing:</b> new or reused at chimneys, walls and skylights.</li><li><b>Ventilation:</b> ridge vents, intake vents, any changes.</li><li><b>Roof covering:</b> brand, product line and color.</li><li><b>Permit, cleanup, warranty</b> and <b>payment schedule</b>.</li></ul>
+<h2>How to compare quotes fairly</h2><ol><li>Put the quotes side by side and check each line above.</li><li>Ask the lower bidder what's missing, and the higher bidder what's extra.</li><li>Check that the same product line is quoted. "Architectural shingles" can mean very different products.</li><li>Compare workmanship warranty length, not just the manufacturer's.</li></ol>
+<h2>Red flags</h2><ul><li>A one-line quote ("new roof: $X") with no detail.</li><li>A large cash deposit before materials arrive.</li><li>Pressure to sign today or "this price expires tonight."</li><li>An offer to cover or "waive" your insurance deductible, which is illegal in some states.</li></ul>
+<p>More: <a href="/roof-replacement-cost/">roof replacement cost</a> and <a href="/roofing-scams/">roofing scams</a>.</p>""",
+ "Roofing estimates", "tearoff",
+ [("How many roofing quotes should I get?", "For a full replacement, two or three written quotes is a common rule of thumb. For a small repair, one trusted roofer may be enough."),
+  ("Why are roofing quotes so different?", "Different products, scope (tear-off, decking, flashing, ventilation), labor costs, overhead and warranty length. Line up the scope first."),
+  ("What is a roofing square?", "A square is 100 square feet of roof surface. A roof is measured in squares, plus extra for waste on cuts, hips and valleys."),
+  ("How much deposit is normal for a roof?", "It varies, and some states cap deposits on home improvement work. Be cautious about paying a large share before materials are delivered.")],
+ "What a good quote includes and how to compare.",
+ ["/roof-replacement-cost/", "/choosing-a-roofer/", "/roofing-scams/", "/roof-warranty/"]),
+
+("/ice-dams/", "Ice Dams on Your Roof: Causes, Damage and Prevention | Bedrock Roof", "Ice dams: what causes them and how to prevent them",
+ "Why ice dams form on roofs, the damage they cause, safe ways to deal with one now, and the long-term fixes: insulation, ventilation and ice and water shield.",
+ "If you see a thick ridge of ice and icicles at the edge of your roof, here's what's happening and what to do.",
+ """<div class="callout quick"><b>Quick answer:</b> Ice dams form when heat escaping from the house melts snow on the upper roof, and the meltwater refreezes at the colder roof edge. Water then backs up under the shingles and can leak into ceilings and walls. The long-term fix is to keep the roof deck cold with better attic air sealing, insulation and ventilation, plus ice and water shield along the eaves when the roof is replaced.</div>
+<h2>Signs of an ice dam</h2><ul><li>A thick ridge of ice along the eaves and heavy icicles.</li><li>Water stains or dripping on ceilings or exterior walls during a thaw.</li><li>Ice forming inside the soffits or gutters.</li></ul>
+<h2>What to do now (safely)</h2><ul><li>Don't climb on an icy roof or chip at ice with tools. It's dangerous and damages shingles.</li><li>A roof rake used from the ground can pull snow off the lower few feet of the roof.</li><li>Professional ice dam removal with low-pressure steam is safer for the roof than hammers or chisels.</li><li>Catch drips inside and photograph any damage for insurance.</li></ul>
+<h2>Long-term fixes</h2><ol><li><b>Air-seal the attic floor</b>: gaps around light fixtures, pipes and the attic hatch let warm air in.</li><li><b>Add insulation</b> to recommended levels for your climate.</li><li><b>Balance ventilation</b> with intake at the soffits and exhaust at the ridge.</li><li><b>Ice and water shield</b> at the eaves when you replace the roof; many cold-climate building codes require it.</li></ol>
+<p>Heat cables can help in trouble spots but don't fix the cause. More: <a href="/roof-leak/">roof leaking now?</a></p>""",
+ "Ice dams", "roofsky",
+ [("Does homeowners insurance cover ice dam damage?", "Many policies cover sudden water damage inside the home from an ice dam, but often not the ice removal itself or long-term maintenance problems. Check your policy and call your agent."),
+  ("Do gutters cause ice dams?", "Not by themselves. Clogged gutters can make ice buildup worse, but the main cause is heat loss melting snow higher on the roof."),
+  ("Do heated roof cables work?", "They can keep channels open in problem areas, but they use electricity and don't fix the heat loss behind the problem."),
+  ("Will a new roof stop ice dams?", "A new roof with ice and water shield at the eaves limits leaks, but ice dams can still form unless attic insulation and ventilation are fixed.")],
+ "Causes, safe removal and long-term fixes.",
+ ["/roof-leak/", "/roof-ventilation/", "/signs-you-need-a-new-roof/", "/roof-insurance-claim/"]),
+
+("/roof-ventilation/", "Roof and Attic Ventilation Explained | Bedrock Roof", "Roof and attic ventilation explained",
+ "Why attic ventilation matters, how intake and exhaust vents work together, signs of poor ventilation and what to ask your roofer during a replacement.",
+ "Ventilation is easy to overlook, but it affects shingle life, ice dams, moisture and comfort.",
+ """<div class="callout quick"><b>Quick answer:</b> Most roofs over an attic need balanced ventilation: cool air comes in low at the soffits (intake) and warm, moist air leaves high at the ridge (exhaust). Poor ventilation can trap heat and moisture, shorten shingle life, cause mold and contribute to ice dams. Shingle manufacturers commonly require proper ventilation for full warranty coverage, so ask your roofer to check it during any replacement.</div>
+<h2>Intake and exhaust</h2><ul><li><b>Intake:</b> soffit vents or edge vents near the eaves.</li><li><b>Exhaust:</b> ridge vents, box (static) vents, or powered fans near the top.</li><li>Mixing different exhaust types on the same attic can short-circuit airflow; roofers usually pick one.</li></ul>
+<h2>Signs of poor ventilation</h2><ul><li>Very hot attic in summer, high cooling bills.</li><li>Frost or condensation on the underside of the roof deck in winter.</li><li>Mold, musty smell or rusty nails in the attic.</li><li>Ice dams in winter.</li><li>Shingles aging faster on one section of roof.</li></ul>
+<h2>What to ask during a replacement</h2><ol><li>Is my current ventilation adequate for the attic size?</li><li>Are the soffit vents blocked by insulation?</li><li>What exhaust will you install, and will it meet the shingle maker's requirements?</li></ol>
+<p>Note: some homes use an unvented ("conditioned") attic with insulation under the roof deck. That's a different design, so don't add vents without professional advice.</p>""",
+ "Roof ventilation", "home3",
+ [("How much attic ventilation do I need?", "A common rule in building codes is 1 square foot of net free vent area per 150 square feet of attic floor, or 1 per 300 in some cases with balanced intake and exhaust. Your roofer or local code will confirm."),
+  ("Are ridge vents better than box vents?", "Ridge vents spread exhaust evenly along the peak and are common on new roofs. Box vents work too. The key is balance with intake at the eaves."),
+  ("Can too much ventilation be a problem?", "Mixing exhaust types or having too little intake can pull air the wrong way, including weather. Balance matters more than quantity."),
+  ("Does ventilation affect my shingle warranty?", "Often yes. Many shingle manufacturers require adequate ventilation for full warranty coverage.")],
+ "Intake, exhaust and signs of trouble.",
+ ["/ice-dams/", "/how-long-does-a-roof-last/", "/roof-warranty/", "/roof-inspection/"]),
+
+("/roof-financing/", "Roof Financing Options for Homeowners | Bedrock Roof", "How to pay for a new roof: financing options",
+ "Ways homeowners pay for a roof replacement: savings, insurance, contractor financing, personal loans, home equity, and local assistance programs, with pros and cons.",
+ "A new roof is a big expense. Here are the common ways homeowners pay for one, and what to watch out for.",
+ """<div class="callout quick"><b>Quick answer:</b> Homeowners usually pay for a new roof with savings, an insurance claim (if the damage is from a covered event like hail or wind), contractor-arranged financing, a personal loan, or a home equity loan or line of credit. Compare the total cost of borrowing, not just the monthly payment, and be careful with "0% interest" offers that charge deferred interest if not paid off in time.</div>
+<h2>Common options</h2>
+<table><thead><tr><th>Option</th><th>Good for</th><th>Watch out for</th></tr></thead><tbody>
+<tr><td>Insurance claim</td><td>Sudden storm or hail damage</td><td>Deductible; age or wear isn't covered</td></tr>
+<tr><td>Contractor financing</td><td>Convenience; promo rates</td><td>Deferred interest; fees; high rates after promo</td></tr>
+<tr><td>Personal loan</td><td>No home collateral</td><td>Higher rates for weaker credit</td></tr>
+<tr><td>Home equity loan / HELOC</td><td>Lower rates for homeowners with equity</td><td>Your home secures the loan; closing costs</td></tr>
+<tr><td>Credit card</td><td>Small repairs</td><td>High interest if not paid quickly</td></tr></tbody></table>
+<h2>Assistance programs</h2><p>Some homeowners qualify for help. Low-income and older homeowners can ask their local housing agency, Area Agency on Aging, or USDA Rural Development (for rural homes) about repair grants or loans. Some states also offer grants to strengthen roofs against hurricanes.</p>
+<h2>Tips</h2><ol><li>Get your quotes first, then compare financing separately.</li><li>Read the fine print on any promotional rate.</li><li>Never sign financing paperwork you don't understand on the spot.</li></ol>
+<p>More: <a href="/insurance-roof-replacement/">does insurance cover roof replacement?</a></p>""",
+ "Roof financing", "couple",
+ [("Can I finance a new roof with bad credit?", "Possibly, through some contractor programs or lenders that work with lower credit scores, but expect higher rates. Compare total cost carefully."),
+  ("Is a home equity loan a good way to pay for a roof?", "It often has lower rates than unsecured loans, but your home is collateral. It suits homeowners with equity and steady income."),
+  ("Are there grants for roof replacement?", "Some local, state and federal programs help eligible homeowners, often based on income, age, disability or rural location. Availability varies by area."),
+  ("Does insurance pay for an old roof?", "Insurance generally pays for sudden damage from covered events, not wear and age. Older roofs may be paid at actual cash value.")],
+ "Insurance, loans, contractor financing and grants.",
+ ["/roof-replacement-cost/", "/insurance-roof-replacement/", "/roofing-estimate/", "/roof-repair-or-replace/"]),
 ]
