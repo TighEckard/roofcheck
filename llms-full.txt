@@ -1,6 +1,6 @@
 # Bedrock Roof: full text of guides
 
-Source: https://bedrockroof.com. Free for homeowners; Bedrock Roof is a referral service, not a roofing contractor. Updated 2026-11-17.
+Source: https://bedrockroof.com. Free for homeowners; Bedrock Roof is a referral service, not a roofing contractor. Updated 2026-11-18.
 
 ---
 URL: https://bedrockroof.com/how-it-works/
@@ -39,7 +39,7 @@ Homeowner guide
 
 # How much does a roof replacement cost?
 Here are typical national price ranges, the factors that move the number up or down, and how to compare quotes so you're not overpaying.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: A full roof replacement in the U.S. averages about $9,500, and most jobs fall between about $5,800 and $46,000. That works out to roughly $4 to $11 per square foot. Source: Angi data, as reported by NerdWallet.
 
@@ -89,7 +89,7 @@ Slate | $$$$ | Premium and very long-lived. Needs a specialist installer. |
 Homeowners insurance may cover damage from a sudden event like hail or wind, but usually not wear and tear from age. Coverage depends on your policy and your insurer's decision. A roofer can document damage, but no one can promise approval. See what to do after storm damage.
 
 ## Related guides
-Roofing materials comparedHow to choose a roofer you can trustShould you repair or replace your roof?Does insurance cover roof replacement?
+Roofing materials comparedMetal roof vs. asphalt shingles: which is better?What to expect during a roof replacementDoes insurance cover roof replacement?
 
 ## Frequently asked questions
 
@@ -113,7 +113,7 @@ Homeowner guide
 
 # How to choose a roofer you can trust
 A roof is one of the biggest repairs most homeowners ever pay for. Use this checklist before you sign with anyone, including any roofer you meet through us.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 ## Before you hire: the checklist
 
@@ -156,7 +156,7 @@ Updated November 15, 2026 · By the Bedrock Roof team
 Roofers we connect you with are independent businesses. We encourage you to run every one through this checklist.
 
 ## Related guides
-Roofing scams and red flagsHow much does a roof replacement cost?Roofing materials comparedHow long does a roof last?
+Roofing scams and red flagsRoof warranties explainedDo you need a permit to replace your roof?How much does a roof replacement cost?
 
 ## Frequently asked questions
 
@@ -180,7 +180,7 @@ Homeowner guide
 
 # What to do after storm damage to your roof
 Hail, high wind or a hurricane can damage a roof in minutes. Here's what to do in the hours and days after, in the right order.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 ## 1. Stay safe
 Don't climb on a wet or damaged roof. Watch for downed power lines, and if water is coming through a ceiling near lights or outlets, turn off power to that area if it's safe to do so.
@@ -225,7 +225,7 @@ Homeowner guide
 
 # How to tell if hail damaged your roof
 Hail damage is easy to miss from the ground. Here are the signs to look for after a storm and what to do next.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 ## Signs to look for from the ground
 
@@ -269,7 +269,7 @@ Homeowner guide
 
 # Roof leaking? What to do right now
 A drip from the ceiling is stressful. Here's how to limit the damage today and get the leak fixed for good.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 ## Right now: limit the damage
 
@@ -312,7 +312,7 @@ Homeowner guide
 
 # Does homeowners insurance cover roof replacement?
 Insurance can pay for a new roof in some cases, but not all. Here's how it usually works, in plain English.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  This is general information, not insurance or legal advice. Your policy and your insurer decide what's covered.
 
@@ -367,7 +367,7 @@ Homeowner guide
 
 # 9 signs you might need a new roof
 Roofs rarely fail all at once. These are the signs roofers look for when deciding whether it's time for a new one.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 - Age. If your roof is approaching the typical lifespan for its material, it's worth an inspection. See how long roofs last.
 
@@ -390,7 +390,7 @@ Updated November 15, 2026 · By the Bedrock Roof team
 One sign alone doesn't always mean you need a whole new roof. A good roofer will explain what they see and whether a repair is enough.
 
 ## Related guides
-How long does a roof last?Should you repair or replace your roof?How much does a roof replacement cost?Roofing materials compared
+What happens during a roof inspection?How long does a roof last?Should you repair or replace your roof?When is the best time of year to replace a roof?
 
 ## Frequently asked questions
 
@@ -411,7 +411,7 @@ Homeowner guide
 
 # How long does a roof last?
 Every roof wears out eventually. Here's roughly how long common roofing materials last and what affects their lifespan.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  These are general ranges. Climate, installation quality, ventilation and maintenance can move the real number a lot in either direction.
 
@@ -466,7 +466,7 @@ Homeowner guide
 
 # Should you repair or replace your roof?
 Not every leak means you need a new roof. Here's how roofers usually think about repair versus replacement.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
 ## A repair may be enough when
 
@@ -507,7 +507,7 @@ Homeowner guide
 
 # How to file a roof insurance claim, step by step
 A roof claim goes more smoothly when you know the steps and keep good records. Here's the process from storm to final payment.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  This is general information, not insurance or legal advice. Your policy and your insurer decide what's covered.
 
@@ -577,7 +577,7 @@ Homeowner guide
 
 # Roofing scams and red flags: how to protect yourself
 Most roofers are honest, but storms bring out a few who aren't. These are the scams homeowners run into most, and how to avoid them.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: The biggest roofing red flags are a roofer who knocks on your door right after a storm, pushes you to sign the same day, offers to pay or waive your insurance deductible, wants a large cash payment up front, or can't show a license (where your state requires one) and proof of insurance. Check any roofer before you sign, and never let anyone pressure you into a decision on the spot.
 
@@ -652,7 +652,7 @@ Homeowner guide
 
 # Roofing materials compared: asphalt, metal, tile and slate
 The right roof depends on your climate, budget, home style and how long you plan to stay. Here's how the main options compare.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: Asphalt shingles are the cheapest and most common choice and typically last 15 to 30 years. Metal costs more but often lasts 40 to 70 years and handles wind, snow and embers well. Concrete and clay tile suit hot, sunny and hurricane-prone areas and can last 50 years or more. Slate lasts the longest but is the most expensive and heaviest.
 
@@ -697,7 +697,7 @@ Our city pages list the main roof risks and common material choices for each cit
 Material is only part of the cost. See roof replacement cost and how long a roof lasts.
 
 ## Related guides
-How long does a roof last?Are Class 4 impact-resistant shingles worth it?How much does a roof replacement cost?How to choose a roofer you can trust
+Metal roof vs. asphalt shingles: which is better?How long does a roof last?Are Class 4 impact-resistant shingles worth it?How much does a roof replacement cost?
 
 ## Frequently asked questions
 
@@ -724,7 +724,7 @@ Homeowner guide
 
 # Are impact-resistant (Class 4) shingles worth it?
 If you live where hail is common, Class 4 shingles are worth a close look. Here's what they are and how to decide.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: Impact-resistant shingles carry a Class 4 rating under the UL 2218 test, the highest impact rating for roofing. They usually cost more than standard architectural shingles, but in hail-prone states many insurers offer premium discounts that can offset part of the extra cost over time. They make the most sense in hail country, such as Texas, Oklahoma, Kansas, Nebraska, Colorado and the Dakotas.
 
@@ -777,7 +777,7 @@ Commercial roofing
 
 # Commercial roofing: free inspections and quotes
 For property managers, HOAs, landlords and business owners. Tell us about the building and we'll connect you with an independent commercial roofer.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: Bedrock Roof connects owners and managers of commercial buildings, apartment and condo buildings, HOAs and churches with independent commercial roofing contractors for a free inspection and quote. Most commercial roofs are low-slope systems (TPO, EPDM, PVC, modified bitumen or built-up roofing) or metal, and many can be repaired or restored with a coating instead of fully replaced.
 
@@ -853,7 +853,7 @@ Commercial roofing
 
 # Flat roof types compared: TPO, EPDM, PVC and more
 Flat and low-slope roofs need different materials than shingled roofs. Here's how the main systems compare.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: The most common flat-roof systems are TPO (white, reflective, heat-welded seams), EPDM (durable rubber, popular in cold climates), PVC (heat-welded and grease-resistant, common on restaurants), modified bitumen and built-up roofing. Most last about 15 to 30 years. Installation quality, drainage and seam details matter as much as the material.
 
@@ -906,7 +906,7 @@ Commercial roofing
 
 # Commercial roof coatings: restore or replace?
 A coating can add years to a commercial roof for less than a replacement, but only if the roof underneath is in good shape.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: A roof coating (silicone, acrylic or polyurethane) can extend the life of a commercial roof that is still mostly dry and sound, usually for less than a full replacement and with less disruption. It's not a fix for a roof with widespread wet insulation, failing seams everywhere or structural problems. A roofer should check for trapped moisture before recommending one.
 
@@ -964,7 +964,7 @@ Commercial roofing
 
 # Commercial roof maintenance checklist
 Most commercial roof leaks start small. A simple routine catches them early and helps protect your warranty.
-Updated November 15, 2026 · By the Bedrock Roof team
+Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: Have a commercial roof inspected at least twice a year, typically in spring and fall, and after major storms. Keep drains and gutters clear, limit rooftop foot traffic, fix small seam and flashing problems quickly, and keep a log with photos. Many manufacturer warranties require documented maintenance.
 
@@ -1002,6 +1002,344 @@ It depends on the lease. Many leases make the landlord responsible for the roof 
 
 ### How should an HOA plan for roof replacement?
 Many associations use a reserve study to estimate when roofs will need replacing and how much to set aside. Regular inspections help keep that estimate accurate and catch problems early.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/metal-roof-vs-shingles/
+
+Homeowner guide
+
+# Metal roof vs. asphalt shingles: which is better?
+The two most common choices for a new roof on a U.S. home, compared side by side.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Asphalt shingles cost less up front and are what most U.S. homes have. Metal roofing usually costs more to install but lasts much longer, often 40 years or more versus roughly 15 to 30 for shingles, and it handles wind and wildfire embers well. If you plan to stay in the home a long time, metal can cost less over the roof's life. If you're selling in a few years or working to a tight budget, architectural shingles are usually the better value.
+
+## Side-by-side
+
+ | Asphalt shingles | Metal (standing seam or panels) | 
+
+Up-front cost | Lowest of the common options | Higher, often much higher for standing seam | 
+
+Typical lifespan | About 15–30 years | About 40–70 years | 
+
+Wind | Good with high-wind rated shingles and proper nailing | Very good when installed to the panel's rating | 
+
+Hail | Standard shingles bruise; Class 4 versions resist better | Resists punctures but can dent; dents may be cosmetic only | 
+
+Fire | Most carry a Class A fire rating | Noncombustible; Class A assemblies common | 
+
+Noise in rain | Quiet | Usually quiet over solid decking and underlayment | 
+
+Repairs | Easy and cheap to patch | Needs a crew familiar with metal | 
+
+## When shingles make more sense
+
+- You expect to sell within about 10 years.
+- Your budget is fixed and the roof needs replacing now.
+- Your HOA limits roof materials or colors.
+
+## When metal makes more sense
+
+- You plan to stay 20+ years and want one roof for the long haul.
+- You're in wildfire country or a high-wind coastal area.
+- You get heavy snow and want it to shed easily (add snow guards over doors and walkways).
+
+## Hail and insurance
+In hail country, ask your insurer how they treat cosmetic dents on metal. Some policies exclude cosmetic damage to metal roofs, which can matter after a big storm. Class 4 impact-resistant shingles are the other option many hail-belt homeowners compare. See Class 4 shingles.
+
+## Get both priced
+Prices vary a lot by region and roof shape, so ask a roofer to quote both a shingle and a metal option on the same visit. Compare the full scope: tear-off, decking repair, underlayment, flashing, ventilation and warranty.
+
+## Related guides
+Roofing materials comparedHow long does a roof last?Are Class 4 impact-resistant shingles worth it?How much does a roof replacement cost?
+
+## Frequently asked questions
+
+### Is a metal roof louder than shingles?
+Usually not by much. Over solid roof decking with underlayment, most homeowners say rain on a metal roof isn't noticeably louder. Metal over open framing, like on a barn, is louder.
+
+### Does a metal roof attract lightning?
+No. Metal doesn't make a strike more likely. If lightning does hit, metal is noncombustible and spreads the energy.
+
+### Can metal go over existing shingles?
+Sometimes, if local code allows it and the deck is sound. Many roofers still recommend a full tear-off so they can inspect and repair the decking.
+
+### Which adds more resale value?
+A newer roof of either kind helps a sale. Metal can be a selling point in some markets, but buyers rarely pay back the full extra cost.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-inspection/
+
+Homeowner guide
+
+# What happens during a roof inspection?
+Know what a good inspection covers so you can tell a thorough roofer from a rushed sales pitch.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: A roof inspection usually takes 30 to 90 minutes for a typical house. A roofer checks the shingles or panels, flashing, vents, gutters, attic and signs of leaks, takes photos, and then tells you whether the roof needs a repair, a replacement or nothing yet. Ask for the photos and a written summary either way.
+
+## What gets checked
+
+- Roof covering: missing, cracked, curling or bruised shingles; granule loss; loose or dented metal panels.
+- Flashing: around chimneys, skylights, walls and valleys, where most leaks start.
+- Penetrations: pipe boots, vents and exhaust fans.
+- Gutters and drainage: clogs, sagging and granules collecting in gutters.
+- Attic (if accessible): daylight through boards, water stains, mold, ventilation and insulation.
+- Decking: soft or spongy spots that suggest rot.
+
+## What you should get afterward
+
+- Photos of any damage, ideally with something for scale.
+- A plain explanation: repair, replace, or monitor.
+- A written quote that lists materials, scope, permit, cleanup and warranty if work is recommended.
+
+## Questions to ask
+
+- Can you show me the damage in the photos?
+- Is this storm damage, age, or an installation problem?
+- What happens if I wait a year?
+- Is a repair realistic, or would you replace?
+
+## Red flags
+Be careful if someone damages the roof during the inspection, won't show you photos, or pushes you to sign a contract or insurance paperwork before you've had time to think. See roofing scams.
+
+## When to get one
+After a major hail or wind storm, before buying a home, when your roof is 15+ years old, or any time you see a leak or stain. Commercial roofs should be checked twice a year; see our commercial checklist.
+
+## Related guides
+9 signs you might need a new roofHow to tell if hail damaged your roofHow to choose a roofer you can trustRoofing scams and red flags
+
+## Frequently asked questions
+
+### Is a roof inspection free?
+Many roofers offer free inspections when you're considering a repair or replacement. A home-sale inspection or a certified report for insurance may cost a fee.
+
+### How long does a roof inspection take?
+Often 30 to 90 minutes for a typical house. Larger or steeper roofs and attic checks take longer.
+
+### Do I need to be home?
+It helps, so the roofer can check the attic and show you photos, but many will inspect the outside without you there.
+
+### Can a drone inspect my roof?
+Yes, some roofers use drones for steep or fragile roofs. A drone can't check the attic or feel for soft decking, so it's not always a full substitute.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-replacement-permit/
+
+Homeowner guide
+
+# Do you need a permit to replace your roof?
+In most of the U.S., a full roof replacement needs a permit. Here's how it works and why it matters.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Most cities and counties require a building permit for a full roof replacement, and many also require one for larger repairs. Small repairs like replacing a few shingles often don't need one. Rules are set locally, so check with your city or county building department. A licensed roofer usually pulls the permit and schedules the inspection for you.
+
+## Why the permit matters
+
+- An inspector checks the work against the building code, including underlayment, nailing, flashing and ventilation.
+- Unpermitted work can cause trouble when you sell or when you file an insurance claim.
+- Some insurers and lenders ask for proof of a permitted, inspected roof.
+- In hurricane-prone areas, a permitted roof may help you qualify for wind-mitigation discounts.
+
+## Who pulls it
+Usually the roofing contractor. In many places only a licensed contractor (or the owner of a home they live in) can pull one. Be wary if a roofer asks you to pull the permit in your own name; that can make you responsible for code issues. Put "contractor obtains all permits" in the contract.
+
+## What it costs
+Permit fees vary widely by city and are often based on the job's value. Ask for the fee to be listed on your quote.
+
+## Inspections
+Some places inspect only at the end. Others also inspect mid-job, for example after the decking or underlayment goes on, especially in high-wind zones. Don't make final payment until the roof passes.
+
+## HOAs
+If you have an HOA, you may also need its approval for material and color, separate from the city permit.
+
+## Related guides
+How to choose a roofer you can trustHow much does a roof replacement cost?Roofing scams and red flagsWhat to expect during a roof replacement
+
+## Frequently asked questions
+
+### Do I need a permit to repair my roof?
+Small repairs often don't need one, but larger repairs or replacing a big section might. Your local building department sets the threshold.
+
+### Can I get in trouble for an unpermitted roof?
+You may be asked to get a permit after the fact, open up the work for inspection, or fix code issues, and it can complicate a home sale or insurance claim.
+
+### How do I check if my roofer pulled a permit?
+Many cities have online permit search by address. You can also ask the roofer for the permit number and call the building department.
+
+### Does a roof-over (second layer) need a permit?
+Usually yes, and some places don't allow more than two layers or ban overlays entirely.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-warranty/
+
+Homeowner guide
+
+# Roof warranties explained
+Two different warranties cover a new roof. Here's what each one does and how to protect both.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: A new roof usually has two warranties. The manufacturer warranty covers defects in the shingles or other materials. The workmanship warranty comes from your roofer and covers installation mistakes, which cause most early roof problems. Get the workmanship warranty in writing, ask how many years it lasts, and keep your invoice and product details.
+
+## Manufacturer warranty
+Covers defective materials. Many shingle warranties are prorated after an initial period, so coverage shrinks over time. Some manufacturers offer enhanced warranties, which can include some labor coverage, when a roof is installed by a credentialed contractor using a full system of their components. Read what's actually covered; "lifetime" often has conditions.
+
+## Workmanship warranty
+Covers installation errors such as poor flashing, wrong nailing or bad ventilation. Length varies a lot between roofers. It's only worth something if the company is still in business, so ask how long they've operated locally.
+
+## What can void a warranty
+
+- Installing shingles in a way the manufacturer doesn't allow.
+- Poor attic ventilation.
+- Later work by another contractor on the same area.
+- Not registering the warranty when registration is required.
+
+## Questions to ask before signing
+
+- How long is your workmanship warranty, and is it in the contract?
+- Which manufacturer warranty will this roof get, and will you register it?
+- Is the warranty transferable if I sell?
+- What do I need to do to keep it valid?
+
+## Related guides
+How to choose a roofer you can trustRoofing materials comparedHow long does a roof last?What to expect during a roof replacement
+
+## Frequently asked questions
+
+### What does a lifetime roof warranty mean?
+Usually that the manufacturer covers material defects for as long as you own the home, often prorated after the first years. It rarely covers labor or storm damage unless stated.
+
+### Does a roof warranty cover storm damage?
+Generally no. Storm damage is usually a homeowner's insurance matter. Some shingles have separate wind ratings or limited wind warranties.
+
+### Is a roof warranty transferable?
+Many manufacturer warranties can transfer once, sometimes with a notice or fee. Check the terms, as this can help when you sell.
+
+### Who do I call with a warranty problem?
+Start with your roofer for leaks or installation issues. For a suspected material defect, the manufacturer will usually want photos, the product details and proof of purchase.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/best-time-to-replace-roof/
+
+Homeowner guide
+
+# When is the best time of year to replace a roof?
+Weather, demand and your region all affect when a roof replacement goes smoothest.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Late spring through early fall is the most common roofing season in most of the U.S., with fall often the sweet spot: mild temperatures help shingles seal, and storms are less frequent in many areas. Roofers can install year-round in warm southern climates. If your roof is leaking or storm-damaged, don't wait for the "best" season; a temporary fix or replacement now usually costs less than water damage later.
+
+## By season
+
+- Spring: good weather in many places, but rain can cause delays and spring hail can create a backlog.
+- Summer: long days and dry weather in much of the country; very high heat can make shingles easier to scuff and is hard on crews.
+- Fall: often ideal. Moderate temperatures help self-sealing shingle strips bond before winter.
+- Winter: possible in mild climates. In cold regions, crews may limit work, and shingles may need hand-sealing.
+
+## By region
+
+- Gulf and Atlantic coasts: try to finish before peak hurricane season (August to October).
+- Hail belt (Texas to the Dakotas, Colorado): demand spikes after spring and summer hail; booking early helps.
+- Northern states: fall is popular because of winter; book early.
+- Desert Southwest: spring and fall avoid the hottest months.
+
+## Scheduling tips
+
+- Get quotes a month or two before you want the work.
+- Ask about the roofer's backlog and weather-delay policy.
+- Don't sign with a door-knocker just because a storm just passed. See roofing scams.
+
+## Related guides
+9 signs you might need a new roofWhat to expect during a roof replacementHow much does a roof replacement cost?What to do after storm damage
+
+## Frequently asked questions
+
+### Can a roof be replaced in winter?
+Yes in many places. Roofers watch the temperature and may hand-seal shingles in cold weather. In snowy regions, winter jobs are less common.
+
+### Is it cheaper to replace a roof in the off-season?
+Sometimes. Some roofers have more scheduling flexibility in slower months, but material prices don't drop much by season.
+
+### How far ahead should I book a roofer?
+Several weeks is common, and longer after a big regional storm. Getting quotes early gives you time to compare.
+
+### Should I wait to replace a leaking roof?
+No. Get the leak stopped now, even with a temporary repair, to prevent damage inside the house.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-replacement-process/
+
+Homeowner guide
+
+# What to expect during a roof replacement
+From the dumpster arriving to the final walkthrough, here's how a typical roof replacement goes.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Most roof replacements on a typical single-family home take one to three days once work starts. The crew tears off the old roof, repairs damaged decking, installs underlayment, flashing and the new roof covering, then cleans up with magnets for nails. Larger, steeper or more complex roofs, and metal, tile or slate, can take longer.
+
+## Before the job
+
+- Sign a written contract with the scope, materials, price, payment schedule, permit and warranty.
+- Confirm the permit and the start date.
+- Move cars, patio furniture and grills away from the house.
+- Take down wall hangings on top-floor walls; hammering can shake them.
+- Cover items in the attic to catch dust.
+- Plan for pets and kids; it's loud.
+
+## Day by day
+
+- Setup: dumpster or trailer, tarps over plants and siding.
+- Tear-off: old shingles and underlayment come off down to the decking.
+- Decking: rotted or soft boards are replaced. Contracts often price this per sheet, so ask in advance.
+- Underlayment and ice/water shield in valleys, eaves and around penetrations, as code requires.
+- Flashing, drip edge and vents.
+- New roof covering.
+- Ridge cap and final details.
+- Cleanup: magnetic sweep for nails, debris hauled away.
+
+## Final walkthrough
+Walk the property with the crew lead. Ask for photos of the decking and underlayment stages, check gutters and the yard for nails, confirm the permit passed inspection, and get warranty paperwork before final payment. See roof warranties.
+
+## Related guides
+Do you need a permit to replace your roof?Roof warranties explainedHow to choose a roofer you can trustHow much does a roof replacement cost?
+
+## Frequently asked questions
+
+### How long does a roof replacement take?
+One to three days of work is typical for an average single-family home with asphalt shingles. Weather, roof size, steepness and material can extend that.
+
+### Do I need to be home during a roof replacement?
+Not usually, but be reachable in case the crew finds rotten decking or needs a decision.
+
+### What if they find rotten wood?
+The roofer replaces damaged decking, usually at a price per sheet agreed in the contract. Ask to see photos.
+
+### Will my gutters be removed?
+Usually not, though some may be loosened to install drip edge. Ask whether gutter work is included.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.
@@ -1087,7 +1425,7 @@ Homeowners never pay us. Roofing contractors may pay us for introductions to hom
 ## Corrections
 If something on this site is wrong or out of date, email hello@bedrockroof.com. We review every report and update the page and its date when we make a change.
 
-Last reviewed 2026-11-17.
+Last reviewed 2026-11-18.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.

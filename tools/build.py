@@ -15,7 +15,7 @@ EMAIL = "hello@bedrockroof.com"
 PREVIEW = os.environ.get("PREVIEW", "1") == "1"
 BASE = os.environ.get("BASE", "")  # "/roofcheck" for the github.io preview, "" on bedrockroof.com
 PHONE = os.environ.get("PHONE", "")  # e.g. "+13055550123" once the Twilio number exists
-UPDATED = "2026-11-17"
+UPDATED = "2026-11-18"
 INDEXNOW_KEY = "6a9a6bc3df0969e92c11df1a8493d526"  # public key for IndexNow (Bing, Yandex, etc.); the matching file is served at /<key>.txt
 
 def img(id_, w, h=None, q=60):
@@ -139,12 +139,13 @@ def faq_schema(items):
     strip = lambda s: re.sub(r"<[^>]+>", "", s)
     return {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in items]}
 
+import datetime as _dt0
 def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
     sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": UPDATED, "dateModified": UPDATED,
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
             "image": img(photo, 1200, 630)}]
     if faq: sch.append(faq_schema(faq))
-    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated November 15, 2026 &middot; By the {BRAND} team</p></div></section>
+    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
@@ -578,6 +579,11 @@ GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", 
  ("/flat-roof-types/", "Flat roof types compared", "TPO, EPDM, PVC, modified bitumen and built-up roofs."),
  ("/commercial-roof-coatings/", "Commercial roof coatings: restore or replace?", "When silicone, acrylic or polyurethane coatings make sense."),
  ("/commercial-roof-maintenance/", "Commercial roof maintenance checklist", "What property managers and HOAs should inspect, and how often.")]
+from guides2 import G2
+G2_PAGES = []
+for _p, _t, _h, _d, _i, _b, _c, _ph, _fq, _blurb, _rel in G2:
+    G2_PAGES.append((_p, article(_p, _t, _h, _d, _i, _b, _c, P[_ph], _fq)))
+    GUIDES.append((_p, _h[0].upper() + _h[1:], _blurb))
 guides_idx = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Guides</p><h1>Homeowner roofing guides</h1><p class="sub">Plain-English answers to the questions homeowners ask before hiring a roofer.</p></div></section>
 <div class="wrap narrow states">""" + "".join(f'<div class="srow"><h3><a href="{u}">{t}</a></h3><p>{d}</p></div>' for u, t, d in GUIDES) + "</div>" + cta()
 
@@ -650,6 +656,7 @@ PAGES = [
  ("/signs-you-need-a-new-roof/", signs, "0.7"), ("/how-long-does-a-roof-last/", life, "0.7"),
  ("/commercial-roofing/", commercial, "0.9"), ("/flat-roof-types/", flat, "0.7"), ("/commercial-roof-coatings/", coat, "0.7"), ("/commercial-roof-maintenance/", maint, "0.7"),
  ("/roof-insurance-claim/", claim, "0.8"), ("/roofing-scams/", scams, "0.8"), ("/roofing-materials/", materials, "0.8"), ("/impact-resistant-shingles/", impact, "0.7"),
+ *[(u, d, "0.7") for u, d in G2_PAGES],
  ("/editorial-policy/", page("/editorial-policy/", "Editorial Policy | Bedrock Roof", "How Bedrock Roof researches, writes, checks and corrects its roofing guides and city pages.", editorial, None, [("Editorial policy", "/editorial-policy/")]), "0.4"),
  ("/guides/", page("/guides/", "Homeowner Roofing Guides | Bedrock Roof", "Free, plain-English roofing guides for homeowners: costs, hiring a roofer, storm and hail damage, leaks and insurance.", guides_idx, None, [("Guides", "/guides/")]), "0.7"),
  ("/faq/", page("/faq/", "Roofing FAQ | Bedrock Roof", "Answers to common homeowner questions about Bedrock Roof, free roof quotes and hiring a roofer.", faq, [faq_schema(faq_all)], [("FAQ", "/faq/")]), "0.7"),
@@ -920,6 +927,12 @@ RELATED = {
  "/roofing-materials/": ["/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/", "/choosing-a-roofer/"],
  "/impact-resistant-shingles/": ["/hail-damage-roof/", "/roofing-materials/", "/roof-insurance-claim/", "/roof-replacement-cost/"],
 }
+
+RELATED.update({g[0]: g[10] for g in G2})
+RELATED["/choosing-a-roofer/"] = ["/roofing-scams/", "/roof-warranty/", "/roof-replacement-permit/", "/roof-replacement-cost/"]
+RELATED["/roofing-materials/"] = ["/metal-roof-vs-shingles/", "/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/"]
+RELATED["/signs-you-need-a-new-roof/"] = ["/roof-inspection/", "/how-long-does-a-roof-last/", "/roof-repair-or-replace/", "/best-time-to-replace-roof/"]
+RELATED["/roof-replacement-cost/"] = ["/roofing-materials/", "/metal-roof-vs-shingles/", "/roof-replacement-process/", "/insurance-roof-replacement/"]
 
 def fill_related(path, doc):
     if "RELATED" not in doc: return doc
