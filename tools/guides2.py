@@ -351,4 +351,94 @@ G2 = [
   ("Can my house support a tile roof?", "Tile is heavy. Switching from shingles to tile may need an engineer to confirm the framing can carry it.")],
  "Clay vs concrete, lifespan, underlayment and repairs.",
  ["/roofing-materials/", "/how-long-does-a-roof-last/", "/roof-underlayment/", "/roof-flashing/"]),
+("/tpo-vs-epdm/", "TPO vs EPDM vs PVC: Flat Roof Membranes Compared | Bedrock Roof", "TPO vs. EPDM vs. PVC: which flat roof membrane is best?",
+ "TPO, EPDM and PVC single-ply roofing compared for commercial and low-slope roofs: seams, reflectivity, chemical resistance, climate fit and repairs.",
+ "The three most common single-ply membranes on U.S. commercial roofs, side by side.",
+ """<div class="callout quick"><b>Quick answer:</b> TPO is the most common choice on new low-slope commercial roofs. It's usually white and reflective, with heat-welded seams. EPDM is a rubber membrane with the longest track record, often used in colder climates and on buildings where cooling cost matters less. PVC costs more but resists grease and chemicals, so it's a common pick for restaurants and some industrial roofs. Installation quality, especially at seams, edges and penetrations, matters as much as which membrane you choose.</div>
+<h2>Side by side</h2>
+<table><thead><tr><th></th><th>TPO</th><th>EPDM</th><th>PVC</th></tr></thead><tbody>
+<tr><td>Material</td><td>Thermoplastic polyolefin</td><td>Synthetic rubber</td><td>Polyvinyl chloride</td></tr>
+<tr><td>Usual color</td><td>White (reflective)</td><td>Black (white available)</td><td>White (reflective)</td></tr>
+<tr><td>Seams</td><td>Heat-welded</td><td>Taped or glued</td><td>Heat-welded</td></tr>
+<tr><td>Grease and chemicals</td><td>Fair</td><td>Poor with oils and grease</td><td>Good</td></tr>
+<tr><td>Typical fit</td><td>Warm and mixed climates; most new commercial roofs</td><td>Cold climates; budget-conscious owners</td><td>Restaurants, kitchens, some industrial uses</td></tr>
+<tr><td>Relative cost</td><td>Moderate</td><td>Often lowest</td><td>Highest of the three</td></tr></tbody></table>
+<h2>How to choose</h2><ul><li><b>Climate and energy:</b> a white membrane reflects sunlight and can lower cooling loads in hot regions. Some local energy codes require a reflective ("cool") roof on low-slope commercial buildings.</li><li><b>Roof traffic:</b> if HVAC techs are on the roof often, ask about thicker membranes and walkway pads.</li><li><b>Exhaust and grease:</b> kitchen exhaust can damage EPDM and TPO; PVC or a protective pad near fans is common.</li><li><b>Attachment:</b> membranes can be mechanically fastened, fully adhered or ballasted. Wind exposure, deck type and budget decide which.</li><li><b>Insulation:</b> a replacement is often the time to add insulation under the membrane to meet current energy code.</li></ul>
+<h2>Questions for bidders</h2><ul><li>What membrane thickness (mils) and attachment method are you quoting?</li><li>Is this a manufacturer-warranted system, and for how many years?</li><li>Will you remove the existing roof or recover over it, and did you take core samples to check for wet insulation?</li></ul>
+<p>More: <a href="/flat-roof-types/">flat roof types</a>, <a href="/commercial-roof-coatings/">roof coatings</a> and <a href="/commercial-roofing/">commercial roofing</a>.</p>""",
+ "TPO vs EPDM vs PVC", "roofsky",
+ [("Is TPO better than EPDM?", "Neither is best everywhere. TPO is reflective with welded seams and suits hot climates. EPDM has a long track record and suits colder climates and tighter budgets."),
+  ("Which flat roof membrane lasts longest?", "Lifespans overlap and depend heavily on installation, thickness and maintenance. Ask each bidder what warranty term the manufacturer will issue for the exact system quoted."),
+  ("Why do restaurants use PVC roofs?", "PVC resists grease and many chemicals better than TPO or EPDM, which matters near kitchen exhaust fans."),
+  ("Can a new membrane go over the old roof?", "Sometimes. Codes usually limit the number of roof layers, and wet insulation must be removed first. Core samples or a moisture survey tell you what's under there.")],
+ "Single-ply membranes compared for commercial roofs.",
+ ["/flat-roof-types/", "/commercial-roofing/", "/commercial-roof-coatings/", "/commercial-roof-replacement-cost/"]),
+
+("/commercial-roof-replacement-cost/", "Commercial Roof Replacement Cost: What Drives the Price | Bedrock Roof", "What drives commercial roof replacement cost?",
+ "What affects the cost of replacing a commercial or flat roof: membrane type, tear-off vs recover, insulation, roof size and access, permits, and warranty level.",
+ "Commercial roof prices vary widely, so it helps to know what's actually driving the number in each bid.",
+ """<div class="callout quick"><b>Quick answer:</b> Commercial roofs are usually priced per square foot or per "square" (100 square feet), and the biggest drivers are the roof system, whether the old roof must be torn off, how much insulation is added, the building's height and access, and the warranty you want. Bids for the same building can differ a lot, so compare scope line by line rather than just the total. We don't publish a single average price, because it would be misleading across U.S. regions and building types.</div>
+<h2>The main cost drivers</h2><ul><li><b>Roof system:</b> TPO, EPDM, PVC, modified bitumen, built-up, metal or a coating. See <a href="/tpo-vs-epdm/">TPO vs EPDM vs PVC</a>.</li><li><b>Tear-off or recover:</b> removing old layers costs more but finds wet insulation and deck damage. Codes limit how many layers you can have.</li><li><b>Insulation:</b> energy codes often require added insulation on a replacement, and tapered insulation fixes ponding water.</li><li><b>Deck repairs:</b> rusted metal deck or rotted wood is often priced per unit once exposed. Ask for those unit prices in the bid.</li><li><b>Penetrations and details:</b> HVAC curbs, drains, skylights, parapet walls and edge metal add labor.</li><li><b>Access and height:</b> cranes, hoists, street permits and working around tenants or business hours.</li><li><b>Warranty level:</b> a manufacturer's full system warranty usually requires specific materials and inspections, which can raise cost.</li></ul>
+<h2>How to compare bids</h2><ol><li>Give every bidder the same scope, ideally in writing.</li><li>Ask for core samples or an infrared or moisture survey so everyone prices the same conditions.</li><li>Get unit prices for deck and insulation replacement.</li><li>Confirm who pulls the permit and who handles HVAC disconnects.</li><li>Check the contractor's license and insurance with your state. See <a href="/choosing-a-roofer/">choosing a roofer</a>.</li></ol>
+<h2>Repair, coat or replace?</h2><p>If the insulation is mostly dry and the membrane is sound, a repair or a <a href="/commercial-roof-coatings/">restoration coating</a> may extend the roof's life for less. Widespread wet insulation or repeated leaks usually mean replacement. Planned maintenance helps either way; see the <a href="/commercial-roof-maintenance/">maintenance checklist</a>.</p>""",
+ "Commercial roof cost", "crew1",
+ [("How is commercial roofing priced?", "Usually per square foot or per square (100 square feet), plus line items for tear-off, insulation, deck repairs, flashing and edge metal."),
+  ("Why are commercial roof bids so different?", "Bidders often assume different scopes, such as recover vs tear-off, insulation thickness or warranty level. Give everyone the same written scope."),
+  ("Is a roof coating cheaper than replacement?", "Usually, when the existing roof is sound and mostly dry. A coating won't fix wet insulation or a failing deck."),
+  ("Can roof replacement be deducted for a business?", "Tax treatment of building improvements varies. Ask your accountant how a roof replacement is handled for your property.")],
+ "Membrane, tear-off, insulation, access and warranty.",
+ ["/commercial-roofing/", "/tpo-vs-epdm/", "/commercial-roof-coatings/", "/commercial-roof-maintenance/"]),
+
+("/commercial-roof-leak/", "Commercial Roof Leak: What to Do First | Bedrock Roof", "Commercial or flat roof leak: what to do first",
+ "Steps for property managers when a commercial or flat roof leaks: protect people and equipment, document, find the source, temporary repairs and warranty claims.",
+ "Leaks on flat roofs are hard to trace because water travels. Here's how to respond quickly and in the right order.",
+ """<div class="callout quick"><b>Quick answer:</b> Protect people and equipment first, then document the leak with photos, times and weather. Check for clogged drains and ponding water, which cause many flat-roof leaks. If the roof is under a manufacturer or contractor warranty, call the warranty holder before anyone else works on it, so the warranty isn't voided. Water travels under membranes, so the leak inside is often not directly under the hole.</div>
+<h2>First hour</h2><ol><li>Move people and equipment, and cut power to anything wet if it's safe to do so.</li><li>Contain water with buckets, tarps and plastic sheeting.</li><li>Photograph the ceiling, floor, and any staining; note the time and the weather.</li><li>If it's safe, have maintenance staff check that roof drains and scuppers aren't clogged.</li></ol>
+<h2>Finding the source</h2><ul><li>Common culprits: clogged drains, seams, flashing at walls and curbs, HVAC units, pitch pans and roof edges.</li><li>Ponding water that sits more than a couple of days after rain stresses membranes and seams.</li><li>Infrared or electronic leak detection can locate wet insulation and breaches without tearing up the roof.</li></ul>
+<h2>Warranty and insurance</h2><ul><li>Check whether the roof has a manufacturer warranty and a separate contractor workmanship warranty. Many require that only authorized contractors make repairs.</li><li>Storm-related leaks may be covered by property insurance. Document everything and notify your carrier promptly. See <a href="/roof-insurance-claim/">roof insurance claims</a>.</li></ul>
+<h2>Preventing the next one</h2><p>Twice-yearly inspections and after-storm checks catch most problems early. Use our <a href="/commercial-roof-maintenance/">commercial roof maintenance checklist</a>.</p>""",
+ "Commercial roof leak", "crew3",
+ [("Why does my flat roof leak only sometimes?", "Leaks that appear with wind-driven rain or heavy storms often come from flashing, edges or HVAC curbs. Leaks after any rain often point to drains, seams or punctures."),
+  ("Is the leak above where the water drips?", "Not always. Water can travel across the deck or through insulation before it shows up inside."),
+  ("Should I call the original installer?", "If the roof is under warranty, yes. Repairs by others can void some warranties."),
+  ("How fast should a commercial leak be fixed?", "As soon as possible. Wet insulation loses value and can lead to deck rust or rot and mold.")],
+ "Protect, document, trace the source and use the warranty.",
+ ["/commercial-roof-maintenance/", "/commercial-roofing/", "/roof-leak/", "/commercial-roof-warranty/"]),
+
+("/commercial-roof-warranty/", "Commercial Roof Warranties Explained | Bedrock Roof", "Commercial roof warranties: manufacturer vs. contractor",
+ "How commercial roof warranties work: manufacturer NDL system warranties, material-only warranties, contractor workmanship warranties, and what voids them.",
+ "A commercial roof warranty is only as useful as its fine print. Here's what the common types cover.",
+ """<div class="callout quick"><b>Quick answer:</b> Commercial roofs usually carry two kinds of warranty. A manufacturer warranty covers materials and, in the stronger "system" or "no dollar limit" (NDL) versions, the cost of repairing leaks caused by materials or installation, for a set number of years. A contractor workmanship warranty covers installation errors, often for a shorter period. Read both, since exclusions and maintenance requirements decide whether they pay.</div>
+<h2>Common warranty types</h2>
+<table><thead><tr><th>Type</th><th>Usually covers</th><th>Watch for</th></tr></thead><tbody>
+<tr><td>Material-only</td><td>Defective membrane or components</td><td>May not cover labor to fix leaks</td></tr>
+<tr><td>System / NDL</td><td>Leak repairs from materials or workmanship, no dollar cap</td><td>Requires approved contractor, specific materials and a final inspection</td></tr>
+<tr><td>Contractor workmanship</td><td>Installation mistakes</td><td>Often shorter; only as good as the contractor's staying power</td></tr></tbody></table>
+<h2>What commonly voids or limits coverage</h2><ul><li>Repairs or new penetrations by unauthorized contractors.</li><li>Skipped maintenance, like clogged drains or debris left on the roof.</li><li>Damage from foot traffic, other trades or rooftop equipment.</li><li>Severe weather beyond stated wind speeds; check the wind rating.</li><li>Not registering the warranty or paying the issuing fee.</li></ul>
+<h2>Tips before you sign</h2><ul><li>Ask for a sample warranty document from the manufacturer, not a brochure.</li><li>Confirm the term, wind speed rating and whether it transfers if you sell.</li><li>Keep inspection and maintenance records on file.</li></ul>
+<p>Homeowner version: <a href="/roof-warranty/">residential roof warranties</a>.</p>""",
+ "Commercial warranty", "roofsky",
+ [("What is an NDL roof warranty?", "No Dollar Limit: a manufacturer system warranty that pays for covered leak repairs without a cap on the dollar amount, for its term."),
+  ("Who issues a commercial roof warranty?", "The membrane manufacturer issues the material or system warranty; the installing contractor issues the workmanship warranty."),
+  ("Does maintenance affect my roof warranty?", "Often yes. Many warranties require reasonable maintenance and may exclude damage from clogged drains or debris."),
+  ("Can I transfer a commercial roof warranty?", "Some are transferable with notice and a fee. Check the terms before you sell.")],
+ "Manufacturer vs contractor, NDL and what voids coverage.",
+ ["/commercial-roofing/", "/commercial-roof-maintenance/", "/roof-warranty/", "/tpo-vs-epdm/"]),
+
+("/hoa-roof-replacement/", "HOA and Condo Roof Replacement: A Board's Guide | Bedrock Roof", "HOA and condo roof replacement: a guide for boards",
+ "How HOA and condo boards can plan a roof replacement: reserve studies, who is responsible, bidding, communicating with owners, insurance and scheduling.",
+ "Replacing roofs across a community is a big project. Here's how boards and managers keep it organized and fair.",
+ """<div class="callout quick"><b>Quick answer:</b> Start with your governing documents to see whether the association or individual owners are responsible for roofs. Use a reserve study and a professional roof assessment to plan timing and budget. Then bid the work with one written scope, check licenses and insurance, and communicate the schedule clearly to owners. Many associations phase replacements over several years to match reserves.</div>
+<h2>1. Know who is responsible</h2><p>CC&amp;Rs and bylaws decide whether the association or each owner maintains and replaces roofs, and state law can affect this, especially for condominiums. If it's unclear, ask the association's attorney before bidding.</p>
+<h2>2. Plan with data</h2><ul><li>A <b>reserve study</b> estimates when roofs will need replacing and how much to set aside.</li><li>A <b>roof condition assessment</b> by a qualified roofer or consultant ranks buildings by need, with photos.</li><li>Phasing the worst roofs first can spread cost and avoid special assessments.</li></ul>
+<h2>3. Bid it right</h2><ul><li>Write one scope: materials, colors approved by the architectural committee, underlayment, flashing, ventilation, cleanup and warranty.</li><li>Get at least three bids from licensed, insured roofers. Ask for references from other communities.</li><li>Confirm who pulls permits and how damage to landscaping, cars and gutters is handled.</li></ul>
+<h2>4. Communicate with owners</h2><p>Send schedules and notices well ahead: which buildings, which days, parking changes, noise hours, and who to call with concerns. Ask owners to move vehicles and fragile items from walls during tear-off.</p>
+<h2>5. Insurance and storms</h2><p>After hail or wind, check the master policy and deductibles before signing anything. Be wary of contractors going door-to-door asking individual owners to sign. See <a href="/roofing-scams/">roofing scams</a> and <a href="/roof-insurance-claim/">insurance claims</a>.</p>""",
+ "HOA roof replacement", "home4",
+ [("Who pays for roof replacement in an HOA?", "It depends on the governing documents and state law. In many condominiums the association pays from reserves; in many single-family HOAs owners pay."),
+  ("Does an HOA need multiple roofing bids?", "Many boards get at least three, and some governing documents or state laws require competitive bidding for large projects."),
+  ("Can an HOA require a specific roof color or material?", "Usually, through architectural guidelines, though some states limit restrictions on certain materials like solar or impact-resistant shingles."),
+  ("How long does a community roof project take?", "Each building often takes a few days, weather permitting. A whole community may be phased over weeks or years.")],
+ "Responsibility, reserve studies, bidding and owner notices.",
+ ["/commercial-roofing/", "/roofing-estimate/", "/insurance-roof-replacement/", "/choosing-a-roofer/"]),
 ]
