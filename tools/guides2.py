@@ -175,4 +175,85 @@ G2 = [
   ("Does insurance pay for an old roof?", "Insurance generally pays for sudden damage from covered events, not wear and age. Older roofs may be paid at actual cash value.")],
  "Insurance, loans, contractor financing and grants.",
  ["/roof-replacement-cost/", "/insurance-roof-replacement/", "/roofing-estimate/", "/roof-repair-or-replace/"]),
+("/architectural-vs-3-tab-shingles/", "Architectural vs 3-Tab Shingles: Differences | Bedrock Roof", "Architectural vs. 3-tab shingles: what's the difference?",
+ "Architectural (dimensional) shingles vs 3-tab shingles: look, thickness, wind rating, lifespan, cost and why most new roofs now use architectural.",
+ "The two main types of asphalt shingles, and why most roofers now quote architectural.",
+ """<div class="callout quick"><b>Quick answer:</b> 3-tab shingles are thin, flat, single-layer shingles with a uniform look. Architectural (also called dimensional or laminated) shingles are made of two or more bonded layers, so they're thicker, have a textured look, usually carry higher wind ratings and longer warranties, and cost somewhat more. Most new residential roofs in the U.S. now use architectural shingles, and some manufacturers have reduced or discontinued 3-tab lines.</div>
+<h2>Side-by-side</h2><table><thead><tr><th></th><th>3-tab</th><th>Architectural</th></tr></thead><tbody>
+<tr><td>Construction</td><td>Single layer</td><td>Two or more laminated layers</td></tr>
+<tr><td>Look</td><td>Flat, uniform rows</td><td>Dimensional, shadowed, can mimic wood shake or slate</td></tr>
+<tr><td>Weight</td><td>Lighter</td><td>Heavier</td></tr>
+<tr><td>Wind rating</td><td>Often lower</td><td>Often higher</td></tr>
+<tr><td>Typical life</td><td>Shorter</td><td>Longer</td></tr>
+<tr><td>Price</td><td>Lowest</td><td>Somewhat higher</td></tr></tbody></table>
+<h2>When 3-tab still makes sense</h2><ul><li>Repairing an existing 3-tab roof so patches match.</li><li>Sheds, garages or rentals where the lowest price matters most.</li></ul>
+<h2>Beyond architectural</h2><p>"Designer" or luxury shingles are heavier still and mimic slate or shake. Class 4 impact-resistant versions are available in many architectural lines. See <a href="/impact-resistant-shingles/">Class 4 shingles</a> and <a href="/roofing-materials/">all roofing materials</a>.</p>""",
+ "Shingle types", "shingles",
+ [("Are architectural shingles worth the extra cost?", "For most homeowners, yes: better wind resistance, a longer warranty and better curb appeal for a modest price difference on a full roof."),
+  ("Can you mix 3-tab and architectural shingles?", "On separate roof sections, sometimes, but they look different side by side. For repairs, roofers try to match the existing type."),
+  ("How can I tell which shingles I have?", "3-tab shingles show evenly spaced cutouts and a flat look. Architectural shingles look layered and uneven, with no regular tabs."),
+  ("Do architectural shingles need special installation?", "They follow the manufacturer's nailing pattern like any shingle; the key is a crew that installs to spec so the warranty applies.")],
+ "Look, wind rating, lifespan and cost.",
+ ["/roofing-materials/", "/metal-roof-vs-shingles/", "/impact-resistant-shingles/", "/how-long-does-a-roof-last/"]),
+
+("/wind-mitigation-inspection/", "Wind Mitigation Inspection: Lower Your Insurance | Bedrock Roof", "Wind mitigation inspections: how they can lower your insurance",
+ "What a wind mitigation inspection is, what the inspector checks (roof deck, roof-to-wall connections, shape, openings), and how it can reduce home insurance premiums.",
+ "Common in Florida and other hurricane-prone areas, a wind mitigation inspection documents the features that help your home resist wind.",
+ """<div class="callout quick"><b>Quick answer:</b> A wind mitigation inspection documents how well your home's roof and openings resist hurricane winds. In Florida, insurers are required by law to offer discounts for qualifying wind-resistant features, and the inspection is usually recorded on the state's standard form (OIR-B1-1802). A new roof installed to current code, with the right nailing, secondary water barrier and roof-to-wall connections, can improve your results.</div>
+<h2>What the inspector checks</h2><ul><li><b>Roof covering</b> and whether it meets current building code, with permit date.</li><li><b>Roof deck attachment</b>: nail size and spacing holding the decking to the rafters.</li><li><b>Roof-to-wall attachment</b>: toe nails, clips, single or double wraps (hurricane straps).</li><li><b>Roof shape</b>: hip roofs generally score better than gable roofs.</li><li><b>Secondary water resistance</b>: a sealed roof deck under the covering.</li><li><b>Opening protection</b>: impact windows, doors and shutters.</li></ul>
+<h2>Who does it</h2><p>Licensed home inspectors, contractors, engineers and other professionals allowed by your state. Fees vary; ask before booking.</p>
+<h2>Timing with a new roof</h2><p>If you're replacing your roof, ask the roofer about upgrades that affect the report, such as sealing the deck and re-nailing the decking to current code. Then get a new inspection after the permit passes and send it to your insurer.</p>
+<p>More: <a href="/roofers/florida/">Florida roofers and licensing</a> and <a href="/storm-damage/">after storm damage</a>.</p>""",
+ "Wind mitigation", "home2",
+ [("How much can a wind mitigation inspection save?", "It depends on your insurer, home and features found. Some homeowners see meaningful savings on the windstorm portion of their premium; others see little change."),
+  ("How long is a wind mitigation report valid?", "In Florida, insurers generally accept the report for up to five years, as long as nothing material changes. Check with your insurer."),
+  ("Do I need a wind mitigation inspection outside Florida?", "Some insurers in other coastal states offer similar discounts, such as for roofs built to FORTIFIED standards. Ask your agent."),
+  ("Does a new roof automatically lower my premium?", "Not automatically. Send your insurer the permit and, where applicable, an updated wind mitigation report.")],
+ "What's checked and how it can cut premiums.",
+ ["/storm-damage/", "/roof-insurance-claim/", "/roof-replacement-permit/", "/old-roof-insurance/"]),
+
+("/replace-roof-before-solar/", "Should You Replace Your Roof Before Installing Solar? | Bedrock Roof", "Should you replace your roof before going solar?",
+ "Why the age and condition of your roof matter before installing solar panels, the cost of removing and reinstalling panels later, and how to coordinate the two jobs.",
+ "Solar panels can last 25 years or more. If your roof won't, plan ahead.",
+ """<div class="callout quick"><b>Quick answer:</b> If your roof is more than about halfway through its expected life, or a roofer finds problems, it's usually smarter to replace it before installing solar. Solar panels commonly last 25 years or more, and removing and reinstalling them later for a roof replacement adds cost and hassle. Get a roof inspection first, and coordinate the roofer and solar installer so penetrations and flashing are done right.</div>
+<h2>Why it matters</h2><ul><li>Panels cover much of the roof, making later repairs harder.</li><li>Detach-and-reset of panels for a reroof is a separate, often significant expense.</li><li>Some solar warranties cover roof penetrations only if the roof was in good shape.</li></ul>
+<h2>How to decide</h2><ol><li>Find your roof's age and material. See <a href="/how-long-does-a-roof-last/">how long roofs last</a>.</li><li>Get a <a href="/roof-inspection/">roof inspection</a> and a written opinion on remaining life.</li><li>If replacement is likely within the next several years, do it first.</li></ol>
+<h2>Coordinating the two jobs</h2><ul><li>Ask whether the solar installer or roofer will flash the mounts, and who warranties leaks.</li><li>Consider durable materials under the array, like architectural shingles or metal.</li><li>Keep records of both warranties together.</li></ul>""",
+ "Roof before solar", "roofsky",
+ [("How old is too old for a roof before solar?", "There's no single cutoff, but many installers want a roof with at least as much remaining life as the panel warranty or plan for replacement first. An inspection gives a better answer than age alone."),
+  ("Does installing solar damage the roof?", "Properly installed mounts are flashed and sealed. Leaks usually trace back to poor installation, so choose an installer with a workmanship warranty."),
+  ("Can I bundle roof replacement into solar financing?", "Some solar companies and lenders allow it. Compare the total cost and terms with separate financing."),
+  ("Is metal roofing good for solar?", "Yes. Standing seam metal allows clamp-on mounts without penetrations and outlasts most panels.")],
+ "Timing, costs and coordinating both jobs.",
+ ["/how-long-does-a-roof-last/", "/roof-inspection/", "/metal-roof-vs-shingles/", "/roof-financing/"]),
+
+("/old-roof-insurance/", "Old Roof and Home Insurance: What to Know | Bedrock Roof", "Old roof and home insurance: what to know",
+ "How roof age affects homeowners insurance: higher premiums, actual cash value payouts, non-renewal notices, roof inspections, and what you can do.",
+ "Insurers pay close attention to roof age. Here's how it can affect your policy and your options.",
+ """<div class="callout quick"><b>Quick answer:</b> As a roof ages, many insurers charge more, switch roof coverage from replacement cost to actual cash value (which deducts for depreciation), require an inspection, or decline to renew the policy. Rules vary by insurer and state. If you get a notice about your roof, ask exactly what the insurer needs, get an independent inspection, and compare other insurers before replacing a roof that still has useful life.</div>
+<h2>What insurers may do</h2><ul><li><b>Raise premiums</b> or deductibles for older roofs.</li><li><b>Pay actual cash value (ACV)</b> for the roof instead of replacement cost (RCV). See <a href="/roof-insurance-claim/">ACV vs RCV</a>.</li><li><b>Require a roof inspection</b> or a roof certification.</li><li><b>Non-renew</b> the policy. Many states require advance written notice.</li></ul>
+<h2>What you can do</h2><ol><li>Read the notice carefully and ask what would satisfy the insurer.</li><li>Get a <a href="/roof-inspection/">roof inspection</a> with photos and an estimate of remaining life.</li><li>Ask an independent agent to shop other carriers.</li><li>If you replace the roof, send the permit and invoice to your insurer, and ask about discounts.</li><li>Contact your state insurance department if you think a notice doesn't follow state rules.</li></ol>""",
+ "Old roof and insurance", "home5",
+ [("Can my insurance company drop me because of my roof's age?", "In many states, insurers can decline to renew based on roof age or condition, usually with advance notice. Some states have added limits. Check your state insurance department's rules."),
+  ("What age roof do insurers consider old?", "It varies by insurer and material. Asphalt shingle roofs past roughly 15 to 20 years often get extra scrutiny."),
+  ("Will insurance pay for a new roof if mine is old?", "Only if a covered event, like hail or wind, caused damage. Wear and age aren't covered, and older roofs may be paid at actual cash value."),
+  ("Does a roof certification help?", "It can. A certification or inspection report showing remaining life may satisfy some insurers or buyers.")],
+ "Premiums, ACV payouts, non-renewal and options.",
+ ["/insurance-roof-replacement/", "/roof-insurance-claim/", "/roof-inspection/", "/signs-you-need-a-new-roof/"]),
+
+("/emergency-roof-tarp/", "Emergency Roof Tarping: What to Do After Damage | Bedrock Roof", "Emergency roof tarping after storm damage",
+ "How to protect your home with an emergency roof tarp after a storm, when to call a pro, what insurance usually covers, and how long a tarp lasts.",
+ "After a storm opens up your roof, a tarp buys time and limits water damage until repairs.",
+ """<div class="callout quick"><b>Quick answer:</b> If storm damage lets water in, an emergency tarp can prevent much bigger interior damage. Most homeowner policies expect you to take reasonable steps to prevent further damage, and many cover the cost of emergency tarping as part of a covered claim. Climbing a damaged, wet roof is dangerous, so hire a roofer or emergency service when you can. Keep photos and receipts.</div>
+<h2>Right after the storm</h2><ol><li>Stay safe. Stay off the roof in wind, rain or darkness, and watch for downed power lines.</li><li>Photograph damage outside and inside before anything is moved.</li><li>Catch water inside with buckets and move belongings.</li><li>Call a roofer or tarping service, and call your insurer to start a claim.</li></ol>
+<h2>How a proper tarp is installed</h2><ul><li>A heavy-duty tarp extending well past the damaged area, ideally over the ridge so water runs off.</li><li>Fastened with wood battens screwed or nailed through the tarp's edges, not just weighed down with bricks.</li><li>Edges sealed so wind can't get under it.</li></ul>
+<h2>How long a tarp lasts</h2><p>A tarp is temporary. Sun and wind wear it down, so schedule permanent repairs as soon as possible. After hurricanes, some areas have free federal or local temporary roofing programs; check official announcements.</p>
+<p>More: <a href="/storm-damage/">storm damage guide</a> and <a href="/roof-insurance-claim/">filing a claim</a>.</p>""",
+ "Emergency tarp", "crew3",
+ [("Does insurance pay for an emergency roof tarp?", "Often, as part of a covered claim, because policies expect you to prevent further damage. Keep the invoice and photos and check your policy."),
+  ("Can I tarp my roof myself?", "It's possible on a low, dry, safe roof, but falls are a real risk. A roofer or tarping service is safer, especially on steep or wet roofs."),
+  ("How long can a roof tarp stay on?", "It's meant to be temporary. Tarps degrade in sun and wind, so plan permanent repairs promptly."),
+  ("Should I sign with the company that tarps my roof?", "You can hire a company to tarp without signing a full repair contract. Read anything carefully before signing, especially assignment-of-benefits forms.")],
+ "Stay safe, limit damage and what insurance covers.",
+ ["/storm-damage/", "/roof-leak/", "/roof-insurance-claim/", "/roofing-scams/"]),
 ]
