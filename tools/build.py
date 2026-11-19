@@ -15,7 +15,8 @@ EMAIL = "hello@bedrockroof.com"
 PREVIEW = os.environ.get("PREVIEW", "1") == "1"
 BASE = os.environ.get("BASE", "")  # "/roofcheck" for the github.io preview, "" on bedrockroof.com
 PHONE = os.environ.get("PHONE", "")  # e.g. "+13055550123" once the Twilio number exists
-UPDATED = "2026-11-16"
+UPDATED = "2026-11-18"
+INDEXNOW_KEY = "6a9a6bc3df0969e92c11df1a8493d526"  # public key for IndexNow (Bing, Yandex, etc.); the matching file is served at /<key>.txt
 
 def img(id_, w, h=None, q=60):
     s = f"https://images.unsplash.com/photo-{id_}?fm=webp&fit=crop&q={q}&w={w}"
@@ -44,9 +45,11 @@ LOGO = ('<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rec
         '<path d="M9 16v8h14v-8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/></svg>')
 
 NAV = [("/how-it-works/", "How it works"), ("/guides/", "Guides"),
-       ("/choosing-a-roofer/", "Choosing a roofer"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
+       ("/commercial-roofing/", "Commercial"), ("/roofers/", "Find a roofer"), ("/faq/", "FAQ")]
 
-ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "url": SITE + "/",
+ORG = {"@type": "Organization", "@id": SITE + "/#org", "name": BRAND, "alternateName": ["Bedrock Roofing", "BedrockRoof", "bedrockroof.com"], "url": SITE + "/",
+       "sameAs": ["https://www.facebook.com/profile.php?id=61596870171615"],
+       "areaServed": {"@type": "Country", "name": "United States"},
        "logo": SITE + "/assets/logo.svg", "email": EMAIL, **({"telephone": PHONE} if PHONE else {}),
        "description": "Bedrock Roof is a free referral service that connects U.S. homeowners with independent local roofing contractors for inspections and quotes. Bedrock Roof does not perform roofing work."}
 
@@ -56,6 +59,10 @@ def fmt_phone(p):
 
 def phone_link(cls="tel"):
     return f'<a class="{cls}" href="tel:{PHONE}">Call {fmt_phone(PHONE)}</a>' if PHONE else ""
+
+import hashlib
+JS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.js"), "rb").read()).hexdigest()[:8]
+CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.css"), "rb").read()).hexdigest()[:8]
 
 def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
     url = SITE + path
@@ -77,8 +84,8 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <meta property="og:url" content="{url}"><meta property="og:image" content="{img(og_img, 1200, 630)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, separators=(",", ":"))}</script>
 </head><body>
 <header class="top"><div class="wrap bar"><a class="logo" href="/">{LOGO}<span>Bedrock<b>Roof</b></span></a>
@@ -89,15 +96,19 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <p>A free referral service that connects homeowners across the U.S. with independent local roofing contractors.</p>
 <p class="disc"><b>Bedrock Roof is not a roofing contractor</b> and does not perform, guarantee or warranty any roofing work. Contractors are independent businesses and may pay us for introductions. Always check a contractor's license, insurance and references before you sign anything.</p></div>
 <div><h4>Homeowners</h4><a href="/get-quotes/">Get a free quote</a><a href="/how-it-works/">How it works</a><a href="/roofers/">Find a roofer by state</a><a href="/faq/">FAQ</a></div>
-<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/insurance-roof-replacement/">Insurance and roofs</a><a href="/guides/">All guides</a></div>
-<div><h4>Company</h4><a href="/about/">About us</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
+<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
+<div><h4>Company</h4><a href="/about/">About us</a><a href="/editorial-policy/">Editorial policy</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </div><div class="wrap legal">&copy; 2026 {BRAND}. Photos from <a href="https://unsplash.com" rel="nofollow">Unsplash</a>, shown for illustration.</div></footer>
-<script src="/assets/site.js?v=1" defer></script>
+<script src="/assets/site.js?v={JS_V}" defer></script>
 </body></html>
 """
 
 FORM = """<form class="qform" novalidate data-form>
-<h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time.</p>
+<h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time. Homes and commercial buildings.</p>
+<fieldset class="need prop"><legend>Property type</legend>
+<label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
+<label><input type="radio" name="prop" value="commercial"><span>Commercial</span></label>
+<label><input type="radio" name="prop" value="multifamily"><span>Apts / HOA</span></label></fieldset>
 <fieldset class="need"><legend>What do you need?</legend>
 <label><input type="radio" name="need" value="replacement" checked><span>New roof</span></label>
 <label><input type="radio" name="need" value="repair"><span>Repair or leak</span></label>
@@ -128,13 +139,15 @@ def faq_schema(items):
     strip = lambda s: re.sub(r"<[^>]+>", "", s)
     return {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in items]}
 
+import datetime as _dt0
 def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
     sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": UPDATED, "dateModified": UPDATED,
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
             "image": img(photo, 1200, 630)}]
     if faq: sch.append(faq_schema(faq))
-    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Homeowner guide</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated November 15, 2026 &middot; By the {BRAND} team</p></div></section>
+    b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
+<div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
     return page(path, title, desc, b, sch, [(crumb, path)], og_img=photo)
 
@@ -144,6 +157,7 @@ HOME_FAQ = [
  ("Is Bedrock Roof a roofing company?", "No. We are a referral service. We don't install or repair roofs. We connect you with an independent local roofing contractor, and any work is between you and that contractor."),
  ("How many roofers will contact me?", "We try to match each request with one local roofer instead of sending your number to a long list of companies. You can always get more quotes on your own, and we recommend at least two or three for a full replacement."),
  ("Do I have to hire the roofer?", "No. The inspection and quote are free and there's no obligation to hire anyone."),
+ ("Do you help with commercial roofs?", "Yes. Owners and managers of commercial buildings, apartments, condos and HOAs can request a free inspection and quote from an independent commercial roofer. See our <a href=\"/commercial-roofing/\">commercial roofing guide</a>."),
  ("Which areas do you serve?", "Homeowners anywhere in the United States can send a request. If we can't find a roofer serving your ZIP code, we'll tell you."),
  ("Can a roofer help with an insurance claim?", "Many roofers will document storm damage with photos and a written estimate you can give your insurer. Whether a claim is covered is up to your insurance company, and nobody can promise approval."),
 ]
@@ -159,7 +173,8 @@ home = f"""
 <section class="band"><div class="wrap three">
 <div><h3>Replacement</h3><p>Old, curling or missing shingles? Get a written quote for a full tear-off and new roof.</p></div>
 <div><h3>Repairs and leaks</h3><p>Water stains on the ceiling or a drip in the attic? Get a roofer out before it spreads.</p></div>
-<div><h3>Storm damage</h3><p>Hail or wind damage? A roofer can inspect and document it for your insurance claim.</p></div></div></section>
+<div><h3>Storm damage</h3><p>Hail or wind damage? A roofer can inspect and document it for your insurance claim.</p></div></div>
+<div class="wrap"><p class="center"><b>Own or manage a commercial building, apartments or an HOA?</b> We connect you with commercial roofers too. <a href="/commercial-roofing/">Commercial roofing &rarr;</a></p></div></section>
 
 <section class="how wrap"><p class="kick">How it works</p><h2>Three simple steps</h2><div class="steps">
 <div class="step">{pic(P['home1'], 'Two-story suburban home', 720, 0.66)}<b>1</b><h3>Tell us about your roof</h3><p>Pick what you need and enter your name, phone and ZIP code.</p></div>
@@ -362,6 +377,192 @@ life = article("/how-long-does-a-roof-last/", "How Long Does a Roof Last? Lifesp
 <h2>How to make it last</h2><ul><li>Keep gutters clean and trim back branches.</li><li>Have the roof checked after major storms.</li><li>Fix small problems like loose flashing or cracked pipe boots early.</li><li>Make sure the attic is properly ventilated and insulated.</li></ul>""",
  "Roof lifespan", P["home2"], life_faq)
 
+# ------------------------------------------------------------------ in-depth guides (Nov 2026)
+scam_faq = [
+ ("What is a storm chaser roofer?", "A storm chaser is a roofing crew, often from out of state, that follows major hail and wind storms and goes door to door looking for insurance-paid jobs. Some are legitimate, but many are hard to reach once the job is done, which matters when a warranty or leak problem comes up."),
+ ("Can a roofer pay or waive my insurance deductible?", "No. Your deductible is your share of the claim. Offering to cover or waive it is a form of insurance fraud, and several states, including Texas and Florida, specifically prohibit contractors from offering it."),
+ ("Should I sign a contract with a roofer on the day of the inspection?", "You don't have to, and it's usually better not to. Get at least two written quotes, check the contractor's license and insurance, and read any contract or insurance agreement before signing."),
+ ("How much should a roofing deposit be?", "It varies by company and by state, and some states cap deposits on home improvement contracts. Be cautious of anyone who wants a large share of the price in cash before materials arrive, and pay by a traceable method."),
+]
+scams = article("/roofing-scams/", "Roofing Scams and Red Flags: How to Avoid a Storm Chaser | Bedrock Roof", "Roofing scams and red flags: how to protect yourself",
+ "The most common roofing scams after storms, the red flags to watch for, and how to check a roofer before you sign anything.",
+ "Most roofers are honest, but storms bring out a few who aren't. These are the scams homeowners run into most, and how to avoid them.",
+ """<div class="callout quick"><b>Quick answer:</b> The biggest roofing red flags are a roofer who knocks on your door right after a storm, pushes you to sign the same day, offers to pay or waive your insurance deductible, wants a large cash payment up front, or can't show a license (where your state requires one) and proof of insurance. Check any roofer before you sign, and never let anyone pressure you into a decision on the spot.</div>
+<h2>The most common roofing scams</h2>
+<h3>1. The door-knock after a storm</h3><p>After hail or high winds, crews go door to door offering free inspections. Some are reputable local companies, but some are out-of-town crews that will be gone when the warranty matters. Ask for a local address and look the company up before you let anyone on your roof.</p>
+<h3>2. "We'll cover your deductible"</h3><p>An offer to pay, rebate or waive your deductible sounds generous, but it means the roofer is either inflating the claim or cutting corners on the work. It's a form of insurance fraud, and states including Texas and Florida specifically prohibit it.</p>
+<h3>3. Damage that wasn't there before</h3><p>Dishonest inspectors have been caught creating "hail hits" or tearing shingles to make damage look worse. If someone goes up on your roof, ask for clear, dated photos, and consider getting a second opinion before filing a claim.</p>
+<h3>4. The contingency agreement that's really a contract</h3><p>Some roofers ask you to sign a form "so we can talk to your insurance company." Read it carefully. Some of these forms commit you to hiring that roofer if the claim is approved. Several states regulate these agreements and give you a short window to cancel, so ask what you're signing and get a copy.</p>
+<h3>5. Large cash deposits</h3><p>Paying most of the job in cash before work starts leaves you with little leverage if the crew never shows up. Pay by check or card, keep receipts, and tie payments to progress, like delivery of materials and completion.</p>
+<h3>6. The too-good-to-be-true price</h3><p>A bid far below the others can mean skipped underlayment, reused flashing, no permit or uninsured workers. Compare <a href="/roof-replacement-cost/">itemized quotes</a> line by line so you know what each one includes.</p>
+<h2>Red flags checklist</h2><ul><li>Pressure to sign today, or "this price is only good right now".</li><li>No physical local address, or a phone number that goes straight to voicemail.</li><li>Can't or won't show a license (where required) and current certificates of liability and workers' comp insurance.</li><li>Offers to handle your claim "for free" in exchange for a signature.</li><li>Asks you to sign a blank or incomplete contract.</li><li>Won't pull a building permit, or asks you to pull it yourself.</li><li>Only accepts cash.</li></ul>
+<h2>How to check a roofer in 10 minutes</h2><ol><li>Look up the license or registration on your state or city website. Our <a href="/roofers/">state pages</a> explain each state's rules.</li><li>Ask for certificates of insurance and call the insurer to confirm they're current.</li><li>Search the company name with words like "complaint" or "scam", and check your state attorney general's site.</li><li>Ask for two or three local references from the past year.</li><li>Get the warranty, the scope of work and the payment schedule in writing.</li></ol>
+<h2>If you think you've been scammed</h2><p>Stop payment if you can, keep every document and photo, and report it to your state attorney general's consumer protection office and your insurer. The Federal Trade Commission also takes reports at <a href="https://reportfraud.ftc.gov/" rel="nofollow noopener">ReportFraud.ftc.gov</a>.</p>
+<p>For the full hiring checklist, see <a href="/choosing-a-roofer/">how to choose a roofer you can trust</a>.</p>""",
+ "Roofing scams", P["roofsky"], scam_faq)
+
+mat_faq = [
+ ("What is the most common roofing material in the U.S.?", "Asphalt shingles. They cover most American homes because they're affordable, widely available and easy to repair."),
+ ("Is a metal roof worth the extra cost?", "It can be if you plan to stay in the home a long time. Metal usually costs more up front but often lasts two to three times as long as asphalt shingles and handles wind, snow and wildfire embers well."),
+ ("What roof lasts the longest?", "Natural slate and clay tile can last a century or more when installed and maintained well. Their weight and cost limit where they're used."),
+ ("Can I put a new roof over my old shingles?", "Some codes allow one extra layer of asphalt shingles over an existing layer, but many roofers recommend a full tear-off so they can inspect and repair the decking. Your local building code and the shingle manufacturer's warranty terms decide what's allowed."),
+]
+mats_rows = [
+ ("Asphalt shingles", "15 to 30 years", "$", "Most homes; easy to repair; architectural shingles last longer than 3-tab"),
+ ("Impact-resistant (Class 4) shingles", "20 to 30 years", "$$", "Hail-prone areas; some insurers offer discounts"),
+ ("Standing-seam metal", "40 to 70 years", "$$$", "Wind, snow, wildfire areas; long lifespan"),
+ ("Metal shingles or panels (exposed fastener)", "30 to 50 years", "$$", "Budget metal; fasteners need periodic checks"),
+ ("Concrete tile", "50 years or more", "$$$", "Hot, sunny and hurricane areas; heavy"),
+ ("Clay tile", "50 to 100 years", "$$$$", "Spanish and Mediterranean styles; very heavy"),
+ ("Natural slate", "75 to 100+ years", "$$$$", "Historic homes; needs specialist roofers"),
+ ("Wood shakes", "20 to 40 years", "$$$", "Look of natural wood; not ideal in wildfire areas unless treated"),
+ ("Flat-roof membranes (TPE, EPDM, modified bitumen)", "15 to 30 years", "$$", "Low-slope and flat roofs"),
+]
+mats_table = "<table class=\"snap\"><thead><tr><th>Material</th><th>Typical lifespan</th><th>Relative cost</th><th>Best for</th></tr></thead><tbody>" + "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, b, c, d in mats_rows) + "</tbody></table>"
+materials = article("/roofing-materials/", "Roofing Materials Compared: Asphalt vs Metal vs Tile vs Slate | Bedrock Roof", "Roofing materials compared: asphalt, metal, tile and slate",
+ "Compare roofing materials side by side: typical lifespan, relative cost and which climates each one suits best.",
+ "The right roof depends on your climate, budget, home style and how long you plan to stay. Here's how the main options compare.",
+ f"""<div class="callout quick"><b>Quick answer:</b> Asphalt shingles are the cheapest and most common choice and typically last 15 to 30 years. Metal costs more but often lasts 40 to 70 years and handles wind, snow and embers well. Concrete and clay tile suit hot, sunny and hurricane-prone areas and can last 50 years or more. Slate lasts the longest but is the most expensive and heaviest.</div>
+<h2>Side-by-side comparison</h2>{mats_table}
+<p class="small">Lifespans are typical ranges and depend heavily on installation quality, ventilation, climate and maintenance. Relative cost compares installed price for a typical home, from $ (lowest) to $$$$ (highest).</p>
+<h2>How climate changes the choice</h2><ul>
+<li><b>Hail country</b> (Texas to the Dakotas and the Front Range): impact-resistant shingles or metal. See <a href="/hail-damage-roof/">hail damage</a>.</li>
+<li><b>Hurricane coasts</b>: high-wind-rated shingles, tile or standing-seam metal installed to local wind codes, plus a sealed roof deck.</li>
+<li><b>Snow and ice</b>: any good material, plus an ice-and-water barrier at the eaves and proper attic ventilation to prevent ice dams.</li>
+<li><b>Desert heat</b>: tile or reflective "cool roof" materials to cut heat gain.</li>
+<li><b>Wildfire areas</b>: Class A fire-rated roofing, such as asphalt, metal or tile, with ember-resistant vents.</li>
+<li><b>Wet Pacific Northwest</b>: moss-resistant shingles or metal, with careful flashing.</li></ul>
+<p>Our <a href="/roofers/">city pages</a> list the main roof risks and common material choices for each city.</p>
+<h2>Questions to ask about any material</h2><ol><li>What wind and impact ratings does this product have, and what does my local code require?</li><li>What does the manufacturer's warranty cover, and does it require a certified installer?</li><li>What underlayment, flashing and ventilation are included in the quote?</li><li>Can my roof structure carry the weight? (Important for tile and slate.)</li><li>Are there HOA or historic-district rules on color or material?</li></ol>
+<p>Material is only part of the cost. See <a href="/roof-replacement-cost/">roof replacement cost</a> and <a href="/how-long-does-a-roof-last/">how long a roof lasts</a>.</p>""",
+ "Roofing materials", P["metal"], mat_faq)
+
+claim_faq = [
+ ("Should I call my insurer or a roofer first?", "For obvious damage, report it to your insurer promptly, since policies set deadlines. Many homeowners also have a roofer inspect first so they know whether damage is worth a claim, especially when it might be close to the deductible."),
+ ("What is the difference between ACV and RCV?", "Actual cash value (ACV) pays what the roof was worth at the time of the loss, after depreciation. Replacement cost value (RCV) pays to replace it with a similar new roof, often in two payments: the depreciated amount first and the rest after the work is done."),
+ ("What if I disagree with the adjuster?", "Ask for the estimate in writing, send your roofer's estimate and photos, and ask for a re-inspection. Many policies include an appraisal clause for disputes over the amount, and you can contact your state's department of insurance."),
+ ("Will a roof claim raise my premium?", "It can. Insurers price policies using claim history and local risk. A weather claim affecting a whole area is generally treated differently from a one-off claim, but rules vary by state and insurer."),
+]
+claim = article("/roof-insurance-claim/", "How to File a Roof Insurance Claim, Step by Step | Bedrock Roof", "How to file a roof insurance claim, step by step",
+ "A step-by-step guide to filing a homeowners insurance claim for roof damage: documenting damage, the adjuster visit, ACV vs RCV and what to do if you disagree.",
+ "A roof claim goes more smoothly when you know the steps and keep good records. Here's the process from storm to final payment.",
+ """<p class="note"><i>This is general information, not insurance or legal advice. Your policy and your insurer decide what's covered.</i></p>
+<div class="callout quick"><b>Quick answer:</b> To file a roof claim, document the damage with dated photos, prevent further damage with a tarp if it's safe, read your policy's deductible and deadlines, report the claim promptly, meet the insurance adjuster with your own roofer if possible, and compare the insurer's estimate to a written roofer's estimate before approving work.</div>
+<h2>Step 1: Make sure it's safe, then document everything</h2><p>Stay off a wet or damaged roof. From the ground, photograph missing shingles, dented gutters and vents, debris and interior water stains. Note the date of the storm. Local news or weather service reports of hail or high winds that day are useful to keep.</p>
+<h2>Step 2: Prevent more damage</h2><p>Most policies expect you to take reasonable steps to stop further damage, like tarping an opening or catching drips. Keep receipts. Your insurer may reimburse reasonable temporary repairs.</p>
+<h2>Step 3: Read your policy</h2><ul><li><b>Deductible:</b> Is it a flat amount or a percentage of your home's insured value? Many hurricane and wind-hail deductibles are percentages.</li><li><b>Roof payment terms:</b> Does the policy pay replacement cost (RCV) or actual cash value (ACV) for the roof? Some policies use a payment schedule based on roof age.</li><li><b>Deadlines:</b> Note how long you have to report damage and to complete repairs.</li></ul>
+<h2>Step 4: Get a professional inspection</h2><p>A roofer can tell you whether the damage is storm-related and whether repairs are likely to exceed your deductible. Get the findings in writing with photos. Be wary of anyone who pressures you to sign a contract before your claim is decided. See <a href="/roofing-scams/">roofing scams and red flags</a>.</p>
+<h2>Step 5: File the claim</h2><p>Report it by phone, app or website. Give the date of loss, describe the damage and share photos. Write down your claim number and the adjuster's name.</p>
+<h2>Step 6: The adjuster's inspection</h2><p>The insurer sends an adjuster to inspect the roof. It often helps to have your roofer there to point out damage. Ask for a copy of the adjuster's estimate.</p>
+<h2>Step 7: Compare estimates and resolve differences</h2><p>Compare the insurer's estimate line by line with your roofer's. Missing items often include drip edge, starter shingles, ice-and-water barrier, permits and code-required upgrades. If something is missing, send documentation and ask for a supplement or re-inspection. If you still disagree, check your policy's appraisal clause or contact your state's department of insurance.</p>
+<h2>Step 8: Get the work done and collect the rest</h2><p>With replacement-cost coverage, insurers often pay the depreciated amount first and release the rest (the "recoverable depreciation") after you send proof the work is complete. Keep the final invoice, permit and photos.</p>
+<h2>Mistakes to avoid</h2><ul><li>Waiting months to report damage.</li><li>Signing over your claim rights without reading what you signed.</li><li>Accepting an offer to waive your deductible, which is fraud.</li><li>Paying a large deposit before the claim is approved.</li></ul>
+<p>Related: <a href="/insurance-roof-replacement/">does insurance cover roof replacement?</a> and <a href="/storm-damage/">what to do after storm damage</a>.</p>""",
+ "Roof insurance claim", P["home4"], claim_faq)
+
+ir_faq = [
+ ("What does Class 4 mean on shingles?", "Class 4 is the highest rating in the UL 2218 impact test, in which steel balls are dropped on the shingle. A Class 4 shingle showed no cracking when hit by the largest ball, about 2 inches across."),
+ ("Do impact-resistant shingles lower insurance premiums?", "Often, in hail-prone states. Many insurers offer a discount for Class 4 roofs, and the size varies widely. Ask your agent before you choose a shingle, and keep the product paperwork."),
+ ("Are impact-resistant shingles hail-proof?", "No. They resist damage much better than standard shingles, but very large hail can still damage them."),
+]
+impact = article("/impact-resistant-shingles/", "Are Impact-Resistant (Class 4) Shingles Worth It? | Bedrock Roof", "Are impact-resistant (Class 4) shingles worth it?",
+ "What Class 4 impact-resistant shingles are, how much more they cost, whether they lower insurance premiums, and who they make sense for.",
+ "If you live where hail is common, Class 4 shingles are worth a close look. Here's what they are and how to decide.",
+ """<div class="callout quick"><b>Quick answer:</b> Impact-resistant shingles carry a Class 4 rating under the UL 2218 test, the highest impact rating for roofing. They usually cost more than standard architectural shingles, but in hail-prone states many insurers offer premium discounts that can offset part of the extra cost over time. They make the most sense in hail country, such as Texas, Oklahoma, Kansas, Nebraska, Colorado and the Dakotas.</div>
+<h2>What "Class 4" means</h2><p>Under UL 2218, steel balls of increasing size are dropped onto the roofing. Class 4 is the top rating: the product showed no cracks after impacts from a ball about 2 inches in diameter. Many Class 4 asphalt shingles use a rubberized (SBS-modified) asphalt that's more flexible than standard shingles. Metal roofing can also earn a Class 4 rating, although it may still dent.</p>
+<h2>Pros</h2><ul><li>Fewer hail claims and less chance of a full replacement after a moderate hailstorm.</li><li>Possible insurance discounts in hail-prone states.</li><li>Many carry stronger wind ratings too.</li></ul>
+<h2>Cons</h2><ul><li>Higher up-front cost than standard shingles.</li><li>Not hail-proof. Very large hail can still damage them.</li><li>Discounts vary by insurer and aren't guaranteed.</li></ul>
+<h2>How to decide</h2><ol><li>Check how often hail hits your area. Our <a href="/roofers/">city pages</a> flag hail where it's a main roof risk.</li><li>Ask your insurance agent what discount, if any, applies to a Class 4 roof and what proof they need.</li><li>Get quotes for both standard and Class 4 shingles so you can compare the real price difference.</li><li>Keep the product label or invoice showing the UL 2218 Class 4 rating.</li></ol>
+<p>Related: <a href="/hail-damage-roof/">how to tell if hail damaged your roof</a> and <a href="/roofing-materials/">roofing materials compared</a>.</p>""",
+ "Impact-resistant shingles", P["shingles"], ir_faq)
+
+editorial = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Trust</p><h1>Editorial policy</h1><p class="sub">How we write and check the guides and city pages on Bedrock Roof.</p></div></section>
+<div class="wrap narrow prose">
+<h2>Who writes our content</h2><p>Bedrock Roof's guides and city pages are written and edited by the Bedrock Roof team. We are a referral service, not a roofing contractor, so our guides explain how roofing, hiring and insurance usually work. They are not a substitute for an in-person inspection or for professional insurance or legal advice.</p>
+<h2>How we research</h2><ul><li><b>Costs</b> come from published sources, which we name and link, such as Angi data reported by NerdWallet. We don't invent prices or averages.</li><li><b>Licensing rules</b> come from state licensing agencies. Rules change, so every page tells you to check the license with your state or city before hiring.</li><li><b>City facts</b>: population comes from GeoNames, climate type from the K&ouml;ppen-Geiger classification, and county from U.S. Census boundaries. Local notes on storms and conditions are written by hand from public records and news coverage of major events.</li><li><b>Insurance</b>: we explain common policy terms. Your policy and insurer decide what's covered.</li></ul>
+<h2>What we won't publish</h2><ul><li>Made-up reviews, testimonials, project photos or job counts.</li><li>Claims that any roofer is licensed, insured or "certified" unless the homeowner can verify it.</li><li>Promises about insurance approval.</li></ul>
+<h2>How we make money</h2><p>Homeowners never pay us. Roofing contractors may pay us for introductions to homeowners who asked to be contacted. That doesn't change what our guides say. We recommend getting more than one quote and checking every contractor, including any we introduce you to.</p>
+<h2>Corrections</h2><p>If something on this site is wrong or out of date, email <a href="mailto:{EMAIL}">{EMAIL}</a>. We review every report and update the page and its date when we make a change.</p>
+<p class="small">Last reviewed {UPDATED}.</p></div>{cta()}"""
+
+# ------------------------------------------------------------------ commercial roofing
+com_faq = [
+ ("Does Bedrock Roof help with commercial roofs?", "Yes. Owners and managers of commercial buildings, apartment and condo buildings, HOAs, churches, warehouses and retail properties can request a free inspection and quote from an independent commercial roofing contractor."),
+ ("What types of commercial roofs are there?", "Most commercial buildings have low-slope or flat roofs covered with a single-ply membrane (TPO, EPDM or PVC), modified bitumen or built-up roofing. Metal roofs are common on warehouses and newer buildings. Roof coatings can extend the life of many of these systems."),
+ ("How often should a commercial roof be inspected?", "Many roofing manufacturers and industry groups recommend an inspection at least twice a year, typically in spring and fall, and after any major storm. Regular inspections are often a condition of keeping a manufacturer's warranty in force."),
+ ("Can a commercial roof be restored instead of replaced?", "Often, if the existing roof is still mostly dry and sound. A roofer can check for trapped moisture, for example with core samples or an infrared or moisture survey, and tell you whether a coating or restoration system is an option."),
+ ("Do commercial roofers need a different license?", "It depends on the state. Some states license commercial roofing separately from residential work, or require a general contractor license for commercial jobs. Our state pages explain each state's rules."),
+]
+commercial = article("/commercial-roofing/", "Commercial Roofing: Free Inspections and Quotes | Bedrock Roof", "Commercial roofing: free inspections and quotes",
+ "Free commercial roof inspections and quotes for property managers, HOAs and building owners: flat roofs, TPO, EPDM, PVC, metal and roof coatings.",
+ "For property managers, HOAs, landlords and business owners. Tell us about the building and we'll connect you with an independent commercial roofer.",
+ """<div class="callout quick"><b>Quick answer:</b> Bedrock Roof connects owners and managers of commercial buildings, apartment and condo buildings, HOAs and churches with independent commercial roofing contractors for a free inspection and quote. Most commercial roofs are low-slope systems (TPO, EPDM, PVC, modified bitumen or built-up roofing) or metal, and many can be repaired or restored with a coating instead of fully replaced.</div>
+<h2>Who we help</h2><ul><li><b>Property managers</b> handling one building or a portfolio.</li><li><b>HOAs and condo associations</b> planning repairs or a reserve-funded replacement.</li><li><b>Apartment and multifamily owners</b>.</li><li><b>Business owners</b>: retail, restaurants, offices, medical buildings.</li><li><b>Warehouses and industrial buildings</b>, often with metal or large single-ply roofs.</li><li><b>Churches, schools and nonprofits</b>.</li></ul>
+<h2>Common commercial roof types</h2>
+<ul><li><b>TPO</b>: a white single-ply membrane, widely used on new low-slope roofs. It reflects sunlight and has heat-welded seams.</li><li><b>EPDM</b>: a black synthetic rubber membrane with a long track record, common in colder climates.</li><li><b>PVC</b>: a single-ply membrane with heat-welded seams that resists chemicals and grease, which is why it's used on restaurants.</li><li><b>Modified bitumen</b>: asphalt-based sheets applied in layers, common on smaller flat roofs.</li><li><b>Built-up roofing (BUR)</b>: the traditional "tar and gravel" roof made of alternating layers of bitumen and felt.</li><li><b>Metal</b>: standing-seam or through-fastened panels, common on warehouses and pre-engineered buildings.</li><li><b>Roof coatings</b>: silicone, acrylic or polyurethane coatings applied over a sound existing roof to seal it and reflect heat.</li></ul>
+<p>See <a href="/flat-roof-types/">flat roof types compared</a> and <a href="/commercial-roof-coatings/">commercial roof coatings</a> for details.</p>
+<h2>What a commercial inspection usually covers</h2><ol><li>The membrane or roof surface, seams and penetrations (HVAC curbs, pipes, vents).</li><li>Drainage: drains, scuppers, gutters and any areas where water ponds.</li><li>Flashing at walls, parapets and edges.</li><li>Signs of trapped moisture in the insulation, sometimes checked with core cuts or an infrared or moisture survey.</li><li>Rooftop equipment and foot-traffic damage.</li><li>The age and warranty status of the roof.</li></ol>
+<h2>Before you hire a commercial roofer</h2><ul><li>Check the contractor's state license or registration for commercial work. Rules differ by state; see our <a href="/roofers/">state pages</a>.</li><li>Ask for certificates of general liability and workers' comp insurance, and to be named as an additional insured if your lease or lender requires it.</li><li>Ask whether the contractor is certified by the membrane manufacturer, which is often required for a manufacturer's system warranty.</li><li>Get a written scope that lists the roof system, insulation, flashing details, warranty terms and how tenants and operations will be protected during the work.</li><li>Ask for references from similar buildings.</li></ul>
+<h2>Maintenance matters more on flat roofs</h2><p>Flat and low-slope roofs don't shed water as quickly as steep roofs, so small problems like a clogged drain or an open seam turn into leaks faster. A twice-yearly inspection and prompt repairs are usually the cheapest way to make a commercial roof last. See our <a href="/commercial-roof-maintenance/">commercial roof maintenance checklist</a>.</p>
+<h2>Commercial roofing guides</h2><ul><li><a href="/tpo-vs-epdm/">TPO vs. EPDM vs. PVC membranes</a></li><li><a href="/commercial-roof-replacement-cost/">What drives commercial roof replacement cost</a></li><li><a href="/commercial-roof-leak/">Commercial roof leak: what to do first</a></li><li><a href="/commercial-roof-warranty/">Commercial roof warranties explained</a></li><li><a href="/hoa-roof-replacement/">HOA and condo roof replacement</a></li><li><a href="/flat-roof-types/">Flat roof types</a> and <a href="/commercial-roof-coatings/">roof coatings</a></li></ul>""",
+ "Commercial roofing", P["metal"], com_faq)
+
+flat_faq = [
+ ("Which is better, TPO or EPDM?", "Neither is best everywhere. TPO is white and reflective with heat-welded seams, which suits hot climates and cooling-heavy buildings. EPDM is a durable rubber membrane with a long track record, popular in colder climates. Installation quality and the details at seams and edges matter as much as the membrane."),
+ ("How long does a flat roof last?", "Single-ply and modified bitumen roofs commonly last about 15 to 30 years, depending on the product, thickness, installation, climate and maintenance."),
+ ("Is ponding water on a flat roof a problem?", "Water that stands for more than about 48 hours after rain is generally a sign of a drainage or structural issue. It speeds up wear, can void some warranties and adds weight, so it's worth having a roofer look at it."),
+]
+flat_rows = [
+ ("TPO", "White, reflective; heat-welded seams", "Hot climates; most new low-slope roofs", "15 to 30 years"),
+ ("EPDM", "Black (or white) rubber; glued or taped seams", "Cold climates; long track record", "20 to 30+ years"),
+ ("PVC", "Heat-welded; resists grease and chemicals", "Restaurants, chemical exposure", "20 to 30 years"),
+ ("Modified bitumen", "Asphalt sheets in layers", "Small flat roofs, foot traffic", "15 to 25 years"),
+ ("Built-up roof (BUR)", "Layers of bitumen and felt, often with gravel", "Older commercial buildings", "20 to 30 years"),
+ ("Coating over existing roof", "Silicone, acrylic or polyurethane", "Extending a sound existing roof", "10 to 20 years, can be renewed"),
+]
+flat_table = "<table class=\"snap\"><thead><tr><th>System</th><th>What it is</th><th>Often used for</th><th>Typical lifespan</th></tr></thead><tbody>" + "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td></tr>" for a, b, c, d in flat_rows) + "</tbody></table>"
+flat = article("/flat-roof-types/", "Flat Roof Types Compared: TPO vs EPDM vs PVC vs Modified Bitumen | Bedrock Roof", "Flat roof types compared: TPO, EPDM, PVC and more",
+ "Compare flat and low-slope roofing systems for homes and commercial buildings: TPO, EPDM, PVC, modified bitumen, built-up roofing and coatings.",
+ "Flat and low-slope roofs need different materials than shingled roofs. Here's how the main systems compare.",
+ f"""<div class="callout quick"><b>Quick answer:</b> The most common flat-roof systems are TPO (white, reflective, heat-welded seams), EPDM (durable rubber, popular in cold climates), PVC (heat-welded and grease-resistant, common on restaurants), modified bitumen and built-up roofing. Most last about 15 to 30 years. Installation quality, drainage and seam details matter as much as the material.</div>
+<h2>Side-by-side comparison</h2>{flat_table}
+<p class="small">Lifespans are typical ranges and depend on membrane thickness, installation, climate, drainage and maintenance.</p>
+<h2>What matters besides the membrane</h2><ul><li><b>Drainage.</b> Tapered insulation, drains and scuppers keep water from ponding.</li><li><b>Insulation.</b> Replacing a roof is often the time to bring insulation up to the current energy code, which may be required.</li><li><b>Attachment.</b> Membranes can be mechanically fastened, fully adhered or ballasted. Wind zone and building type drive the choice.</li><li><b>Edges and flashing.</b> Most flat-roof leaks start at seams, edges, walls and penetrations, not in the middle of the membrane.</li><li><b>Warranty.</b> Manufacturer warranties vary from material-only to full system coverage and often require a certified installer and regular maintenance.</li></ul>
+<h2>Homes with flat roofs</h2><p>Rowhouses, mid-century modern homes and additions often have flat or low-slope sections. The same materials apply, and shingles should never be used on a roof that's too flat for them.</p>
+<p>Related: <a href="/commercial-roofing/">commercial roofing</a> and <a href="/commercial-roof-coatings/">roof coatings</a>.</p>""",
+ "Flat roof types", P["metal"], flat_faq)
+
+coat_faq = [
+ ("Can you put a coating on a leaking roof?", "Coatings aren't a fix for an active leak or a wet roof. Leaks need to be repaired and wet insulation replaced first. A coating then goes over a sound, dry roof."),
+ ("Silicone or acrylic coating?", "Silicone holds up well to ponding water and UV. Acrylic is usually less expensive and very reflective but is generally not recommended where water ponds. The existing roof type and local climate decide which is a better fit."),
+ ("Does a roof coating qualify as a new roof?", "Usually not. It's a restoration that extends the life of the existing roof. Some coating systems come with their own manufacturer warranty, and the terms vary."),
+]
+coat = article("/commercial-roof-coatings/", "Commercial Roof Coatings: Restore or Replace? | Bedrock Roof", "Commercial roof coatings: restore or replace?",
+ "When a silicone, acrylic or polyurethane roof coating makes sense, when it doesn't, and how to compare restoration with full roof replacement.",
+ "A coating can add years to a commercial roof for less than a replacement, but only if the roof underneath is in good shape.",
+ """<div class="callout quick"><b>Quick answer:</b> A roof coating (silicone, acrylic or polyurethane) can extend the life of a commercial roof that is still mostly dry and sound, usually for less than a full replacement and with less disruption. It's not a fix for a roof with widespread wet insulation, failing seams everywhere or structural problems. A roofer should check for trapped moisture before recommending one.</div>
+<h2>When a coating can make sense</h2><ul><li>The roof is aging but still watertight, with only isolated problems that can be repaired first.</li><li>A moisture survey or core cuts show the insulation is mostly dry.</li><li>You want a reflective surface to cut cooling loads.</li><li>You want to delay a full tear-off for budget or tenant reasons.</li></ul>
+<h2>When replacement is the better call</h2><ul><li>Large areas of wet insulation.</li><li>Widespread seam failure, blistering or shrinkage.</li><li>Deck damage or structural sagging.</li><li>The roof already has the maximum number of layers allowed by code.</li></ul>
+<h2>Main coating types</h2><ul><li><b>Silicone</b>: handles ponding water and UV well. Recoating later usually requires silicone again.</li><li><b>Acrylic</b>: water-based, reflective and usually less expensive. Best where water drains well.</li><li><b>Polyurethane and SPF</b>: tough coatings, and spray polyurethane foam can add insulation and fix low spots.</li></ul>
+<h2>Questions to ask</h2><ol><li>How did you check the roof for trapped moisture?</li><li>What repairs will be made before coating, including seams, flashing and drains?</li><li>What coating thickness will be applied, and how will you verify it?</li><li>What warranty comes with the system, and what maintenance does it require?</li></ol>
+<p>Related: <a href="/flat-roof-types/">flat roof types compared</a> and <a href="/commercial-roof-maintenance/">commercial roof maintenance checklist</a>.</p>""",
+ "Roof coatings", P["metal"], coat_faq)
+
+maint_faq = [
+ ("Who is responsible for the roof in a commercial lease?", "It depends on the lease. Many leases make the landlord responsible for the roof structure and replacement, and some assign routine maintenance to the tenant. Check the lease before scheduling work."),
+ ("How should an HOA plan for roof replacement?", "Many associations use a reserve study to estimate when roofs will need replacing and how much to set aside. Regular inspections help keep that estimate accurate and catch problems early."),
+]
+maint = article("/commercial-roof-maintenance/", "Commercial Roof Maintenance Checklist for Property Managers and HOAs | Bedrock Roof", "Commercial roof maintenance checklist",
+ "A practical roof maintenance checklist for property managers, HOAs and building owners: what to inspect, how often, and what to document.",
+ "Most commercial roof leaks start small. A simple routine catches them early and helps protect your warranty.",
+ """<div class="callout quick"><b>Quick answer:</b> Have a commercial roof inspected at least twice a year, typically in spring and fall, and after major storms. Keep drains and gutters clear, limit rooftop foot traffic, fix small seam and flashing problems quickly, and keep a log with photos. Many manufacturer warranties require documented maintenance.</div>
+<h2>Twice-a-year checklist</h2><ul><li>Clear drains, scuppers, gutters and downspouts of debris.</li><li>Look for ponding water that stays more than about two days after rain.</li><li>Check seams, edges and flashing at walls, curbs and penetrations.</li><li>Look for blisters, cracks, punctures, shrinkage or loose fasteners.</li><li>Check sealant at pitch pans, pipes and rooftop equipment.</li><li>Inspect walkway pads around HVAC units and service areas.</li><li>Look for interior signs: ceiling stains, wet insulation, musty smells.</li></ul>
+<h2>After a storm</h2><ul><li>Check for blown-off edge metal, debris, punctures from hail or branches, and damaged rooftop units.</li><li>Photograph damage with dates before any cleanup.</li><li>Report damage to your insurer promptly. See <a href="/roof-insurance-claim/">filing a roof insurance claim</a>.</li></ul>
+<h2>Keep a roof file</h2><p>Keep the installation date, contractor, roof system and warranty, plus every inspection report, repair invoice and photo. It makes warranty claims, insurance claims and budgeting much easier.</p>
+<h2>For HOAs and multifamily</h2><p>Coordinate access with residents, plan work around weather and occupancy, and keep your reserve study up to date with current roof conditions.</p>
+<p>Related: <a href="/commercial-roofing/">commercial roofing</a>, <a href="/flat-roof-types/">flat roof types</a> and <a href="/commercial-roof-coatings/">roof coatings</a>.</p>""",
+ "Commercial roof maintenance", P["metal"], maint_faq)
+
 GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", "National price ranges and how to compare quotes."),
  ("/choosing-a-roofer/", "How to choose a roofer you can trust", "License, insurance, warranties and red flags."),
  ("/storm-damage/", "What to do after storm damage", "Safety, photos, insurance and storm chasers."),
@@ -370,7 +571,20 @@ GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", 
  ("/insurance-roof-replacement/", "Does insurance cover roof replacement?", "What's usually covered and how claims work."),
  ("/signs-you-need-a-new-roof/", "9 signs you might need a new roof", "What roofers look for."),
  ("/how-long-does-a-roof-last/", "How long does a roof last?", "Lifespan by material."),
- ("/roof-repair-or-replace/", "Should you repair or replace your roof?", "How to decide.")]
+ ("/roof-repair-or-replace/", "Should you repair or replace your roof?", "How to decide."),
+ ("/roof-insurance-claim/", "How to file a roof insurance claim, step by step", "Documenting damage, the adjuster visit, ACV vs RCV and disputes."),
+ ("/roofing-scams/", "Roofing scams and red flags", "Storm chasers, deductible offers and how to check a roofer."),
+ ("/roofing-materials/", "Roofing materials compared", "Asphalt, metal, tile and slate: lifespan, cost and best climates."),
+ ("/impact-resistant-shingles/", "Are Class 4 impact-resistant shingles worth it?", "Hail ratings, insurance discounts and who should buy them."),
+ ("/commercial-roofing/", "Commercial roofing: free inspections and quotes", "For property managers, HOAs and building owners."),
+ ("/flat-roof-types/", "Flat roof types compared", "TPO, EPDM, PVC, modified bitumen and built-up roofs."),
+ ("/commercial-roof-coatings/", "Commercial roof coatings: restore or replace?", "When silicone, acrylic or polyurethane coatings make sense."),
+ ("/commercial-roof-maintenance/", "Commercial roof maintenance checklist", "What property managers and HOAs should inspect, and how often.")]
+from guides2 import G2
+G2_PAGES = []
+for _p, _t, _h, _d, _i, _b, _c, _ph, _fq, _blurb, _rel in G2:
+    G2_PAGES.append((_p, article(_p, _t, _h, _d, _i, _b, _c, P[_ph], _fq)))
+    GUIDES.append((_p, _h[0].upper() + _h[1:], _blurb))
 guides_idx = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Guides</p><h1>Homeowner roofing guides</h1><p class="sub">Plain-English answers to the questions homeowners ask before hiring a roofer.</p></div></section>
 <div class="wrap narrow states">""" + "".join(f'<div class="srow"><h3><a href="{u}">{t}</a></h3><p>{d}</p></div>' for u, t, d in GUIDES) + "</div>" + cta()
 
@@ -390,6 +604,7 @@ about = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Abou
 <h2>What we believe</h2><p>Hiring a roofer shouldn't mean dozens of sales calls or pressure to sign on the spot. We keep the process simple, we're clear about how we're paid, and we publish plain-English guides so you can make your own decision.</p>
 <h2>How we're paid</h2><p>Roofing contractors may pay us for introductions to homeowners who asked to be contacted. Homeowners never pay us.</p>
 <h2>What we don't do</h2><p>We're not a roofing contractor. We don't perform, guarantee or warranty roofing work, and we don't decide insurance claims. Every roofer is an independent business, so please verify the license and insurance of any contractor before hiring.</p>
+<h2>How we write our guides</h2><p>Our guides are written in plain English, cite their sources, and never include made-up reviews or jobs. Read our <a href="/editorial-policy/">editorial policy</a>.</p>
 <h2>Contact</h2><p>Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
 <h2>Are you a roofer?</h2><p>If you're a licensed, insured roofing contractor and want homeowner requests in your area, email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p></div>{cta()}"""
 
@@ -425,7 +640,8 @@ notfound = """<section class="phero"><div class="wrap narrow"><h1>Page not found
 
 SVC = {"@type": "Service", "name": "Free roofing contractor referrals", "serviceType": "Roofing contractor referral",
        "provider": {"@id": SITE + "/#org"}, "areaServed": {"@type": "Country", "name": "United States"},
-       "audience": {"@type": "Audience", "audienceType": "Homeowners"},
+       "audience": [{"@type": "Audience", "audienceType": "Homeowners"}, {"@type": "BusinessAudience", "audienceType": "Commercial property owners, property managers and HOAs"}],
+       "category": ["Residential roofing", "Commercial roofing"],
        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for homeowners"}}
 
 PAGES = [
@@ -439,6 +655,10 @@ PAGES = [
  ("/roof-repair-or-replace/", rr, "0.7"),
  ("/roof-leak/", leak, "0.8"), ("/hail-damage-roof/", hail, "0.8"), ("/insurance-roof-replacement/", ins, "0.8"),
  ("/signs-you-need-a-new-roof/", signs, "0.7"), ("/how-long-does-a-roof-last/", life, "0.7"),
+ ("/commercial-roofing/", commercial, "0.9"), ("/flat-roof-types/", flat, "0.7"), ("/commercial-roof-coatings/", coat, "0.7"), ("/commercial-roof-maintenance/", maint, "0.7"),
+ ("/roof-insurance-claim/", claim, "0.8"), ("/roofing-scams/", scams, "0.8"), ("/roofing-materials/", materials, "0.8"), ("/impact-resistant-shingles/", impact, "0.7"),
+ *[(u, d, "0.7") for u, d in G2_PAGES],
+ ("/editorial-policy/", page("/editorial-policy/", "Editorial Policy | Bedrock Roof", "How Bedrock Roof researches, writes, checks and corrects its roofing guides and city pages.", editorial, None, [("Editorial policy", "/editorial-policy/")]), "0.4"),
  ("/guides/", page("/guides/", "Homeowner Roofing Guides | Bedrock Roof", "Free, plain-English roofing guides for homeowners: costs, hiring a roofer, storm and hail damage, leaks and insurance.", guides_idx, None, [("Guides", "/guides/")]), "0.7"),
  ("/faq/", page("/faq/", "Roofing FAQ | Bedrock Roof", "Answers to common homeowner questions about Bedrock Roof, free roof quotes and hiring a roofer.", faq, [faq_schema(faq_all)], [("FAQ", "/faq/")]), "0.7"),
  ("/about/", page("/about/", "About Bedrock Roof", "Bedrock Roof is a free referral service connecting U.S. homeowners with independent local roofing contractors.", about, None, [("About", "/about/")]), "0.5"),
@@ -452,8 +672,9 @@ def city_path(c, st): return f"/roofers/{slug(c)}-{st.lower()}/"
 def state_path(st): return f"/roofers/{slug(STATES[st][0])}/"
 
 def city_guides(clim):
-    first = {"hail": "/hail-damage-roof/", "hurricane": "/storm-damage/", "snow": "/roof-leak/"}.get(clim, "/signs-you-need-a-new-roof/")
-    urls = [first] + [u for u in ["/roof-replacement-cost/", "/choosing-a-roofer/", "/insurance-roof-replacement/"] if u != first]
+    first = {"hail": "/impact-resistant-shingles/", "hurricane": "/storm-damage/", "snow": "/roof-leak/"}.get(clim, "/signs-you-need-a-new-roof/")
+    second = "/hail-damage-roof/" if clim == "hail" else "/roofing-materials/"
+    urls = [first, second] + [u for u in ["/roof-replacement-cost/", "/roofing-scams/", "/roof-insurance-claim/"] if u not in (first, second)]
     t = {u: t for u, t, _ in GUIDES}
     return "".join(f'<a href="{u}">{t[u]}</a>' for u in urls)
 
@@ -498,10 +719,11 @@ def city_page(r):
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
-<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}. Free for homeowners, no obligation.</p></div>
+<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
+{recent_storms_html(c, st)}
 <h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
 <h3>{c} roofing snapshot</h3>{table}
 <h2>What wears out roofs around {c}</h2><ul>{risks}</ul>
@@ -509,6 +731,7 @@ def city_page(r):
 <h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
 <h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
+<h2>Commercial roofing in {c}</h2><p>Own or manage a commercial building, apartments or an HOA in {c}? We also connect property owners and managers with independent commercial roofers for flat and low-slope roofs (TPO, EPDM, PVC, modified bitumen), metal roofs and roof coatings. Choose "Commercial" or "Apts / HOA" on the form, or read our <a href="/commercial-roofing/">commercial roofing guide</a>.</p>
 <p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
 {f'<h2>Roofers in nearby cities</h2><p class="links">{near_html}</p>' if near_html else ''}
@@ -550,14 +773,91 @@ def hub_page():
 <div class="wrap narrow states">{rows}</div>{cta()}"""
     return "/roofers/", page("/roofers/", f"Find Roofers Near You by State and City | {BRAND}", "Find local roofers by state and city and get a free roof inspection and quote.", body, None, [("Find a roofer", "/roofers/")])
 
-LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(r) for r in RECS]
+# ------------------------------------------------------------------ storm pages (from tools/storms.json, made by tools/storms.py)
+import datetime as _dt
+STORMS = json.load(open(os.path.join(ROOT, "tools", "storms.json"))) if os.path.exists(os.path.join(ROOT, "tools", "storms.json")) else []
+STORM_SRC = "https://www.spc.noaa.gov/climo/reports/"
+
+def hail_name(x):
+    for lim, name in [(4.0, "softball size"), (3.0, "teacup size"), (2.75, "baseball size"), (2.5, "tennis ball size"), (2.0, "hen egg size"),
+                      (1.75, "golf ball size"), (1.5, "ping pong ball size"), (1.25, "half dollar size"), (1.0, "quarter size")]:
+        if x >= lim: return name
+    return "smaller than a quarter"
+
+def hail_effect(x):
+    if x >= 2.0: return "Hail this large often causes widespread roof damage, including cracked and punctured shingles, broken tiles, dented metal and damaged skylights, vents and gutters."
+    if x >= 1.5: return "Hail this size commonly bruises and cracks asphalt shingles and dents gutters, vents and metal flashing, even on newer roofs."
+    if x >= 1.0: return "Hail around an inch can damage asphalt shingles, especially older ones, by knocking off granules and bruising the mat. The damage often isn't visible from the ground."
+    return "Smaller hail rarely damages a roof on its own, but it's worth a look if it fell with high winds."
+
+def nice_date(d):
+    x = _dt.date.fromisoformat(d)
+    return x.strftime("%B ") + str(x.day) + x.strftime(", %Y")
+
+def storm_path(e): return f"/storms/{e['date']}-{slug(e['n'])}-{e['st'].lower()}/"
+
+def storm_kind(e):
+    if e["hail_max"] and e["wind_n"]: return "Hail and damaging winds"
+    return "Hail" if e["hail_max"] else "Damaging winds"
+
+def storm_page(e):
+    c, st = e["n"], e["st"]; sname = STATES[st][0]; d = nice_date(e["date"]); path = storm_path(e)
+    kind = storm_kind(e)
+    facts = []
+    if e["hail_max"]:
+        facts.append(f"{e['hail_n']} preliminary hail report{'s' if e['hail_n'] != 1 else ''} within about 12 miles of {c}, with hail up to <b>{e['hail_max']:.2f} inches</b> ({hail_name(e['hail_max'])})")
+    if e["wind_n"]:
+        w = f", with gusts up to <b>{e['wind_max']} mph</b>" if e["wind_max"] else ""
+        facts.append(f"{e['wind_n']} report{'s' if e['wind_n'] != 1 else ''} of damaging wind{w}")
+    fact = " and ".join(facts)
+    effect = hail_effect(e["hail_max"]) if e["hail_max"] else "Damaging winds can lift and tear off shingles, peel back flashing and drop trees and limbs onto roofs."
+    places = "".join(f"<li>{html.escape(p)}</li>" for p in e["places"])
+    rec = next((r for r in RECS if r["n"] == c and r["st"] == st), None)
+    city_link = f'<a href="{city_path(c, st)}">Roofers near {c}, {st}</a>' if rec else f'<a href="{state_path(st)}">Roofers in {sname}</a>'
+    body = f"""<section class="phero"><div class="wrap narrow"><p class="kick"><a href="/storms/">Storm reports</a> &rsaquo; {sname}</p>
+<h1>{kind} near {c}, {st} on {d}: what to do about your roof</h1>
+<p class="sub">Severe weather was reported around {c}. Here's what was reported, what it can do to a roof, and the steps to take now.</p><p class="meta">Published {d} &middot; Source: NOAA Storm Prediction Center</p></div></section>
+<div class="wrap narrow prose">
+<div class="callout quick"><b>Quick answer:</b> NOAA's Storm Prediction Center logged {fact} on the storm day of {d}. {effect} Check your roof from the ground, photograph any damage, and have a roofer inspect it before your insurer's deadline for reporting damage.</div>
+<h2>What was reported</h2><p>Reports came from these locations near {c}:</p><ul>{places}</ul>
+<p class="small">These are preliminary reports from trained spotters, emergency managers and the public, collected by the <a href="{STORM_SRC}" rel="nofollow noopener">NOAA Storm Prediction Center</a>. They can be revised, and storm damage can vary a lot from street to street.</p>
+<h2>Signs your roof may be damaged</h2><ul><li>Dents in gutters, downspouts, vents, mailboxes or air-conditioning units.</li><li>Shingle granules collecting at downspouts.</li><li>Missing, cracked or lifted shingles, or pieces in the yard.</li><li>New water stains on ceilings or in the attic.</li></ul>
+<p>Hail damage to shingles is often invisible from the ground. See <a href="/hail-damage-roof/">how to tell if hail damaged your roof</a>.</p>
+<h2>What to do now</h2><ol><li>Stay off the roof. Watch for downed lines and limbs.</li><li>Take dated photos of damage, including dented metal and any leaks.</li><li>Cover openings or catch drips to prevent more damage, and keep receipts.</li><li>Check your policy's deductible and deadlines, and report damage promptly. See <a href="/roof-insurance-claim/">how to file a roof claim</a>.</li><li>Get a roofer to inspect and document the damage in writing.</li></ol>
+<div class="callout"><b>Watch out for storm chasers.</b> After storms, out-of-town crews often go door to door. Don't sign anything on the spot, and never accept an offer to pay or waive your deductible. See <a href="/roofing-scams/">roofing scams and red flags</a>.</div>
+<h2>Get a free inspection in {c}</h2><p>Bedrock Roof can connect you with an independent local roofer for a free inspection and written quote, for homes and commercial buildings. More about local roof risks and licensing: {city_link}.</p></div>
+<div class="wrap narrow">{form(f'Free storm damage inspection in {c}', 's')}</div>{cta()}"""
+    sch = [{"@type": "Article", "headline": f"{kind} near {c}, {st} on {d}", "datePublished": e["date"], "dateModified": e["date"],
+            "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
+            "about": {"@type": "City", "name": f"{c}, {sname}"}}]
+    title = f"{kind} in {c}, {st} ({_dt.date.fromisoformat(e['date']).strftime('%b')} {_dt.date.fromisoformat(e['date']).day}, {e['date'][:4]}): Roof Damage Checklist | {BRAND}"
+    desc = f"{kind} reported near {c}, {sname} on {d}" + (f", hail up to {e['hail_max']:.2f} in." if e["hail_max"] else ".") + " What it can do to your roof, what to do now and how to get a free inspection."
+    return path, page(path, title, desc, body, sch, [("Storm reports", "/storms/"), (f"{c} {d}", path)], og_img=P["roofsky"])
+
+def storms_index():
+    rows = "".join(f'<div class="srow"><h3><a href="{storm_path(e)}">{storm_kind(e)} near {e["n"]}, {e["st"]}</a></h3><p>{nice_date(e["date"])}'
+                   + (f' &middot; hail up to {e["hail_max"]:.2f} in.' if e["hail_max"] else "") + (f' &middot; wind gusts to {e["wind_max"]} mph' if e["wind_max"] else "") + "</p></div>" for e in STORMS[:300])
+    empty = "<p>No recent severe hail or wind reports near the cities we cover. Check back after the next storm.</p>"
+    body = f"""<section class="phero"><div class="wrap narrow"><p class="kick">Storm reports</p><h1>Recent hail and wind storms by city</h1>
+<p class="sub">Severe hail and wind reports near U.S. cities, from NOAA's Storm Prediction Center, with what to do about your roof.</p></div></section>
+<div class="wrap narrow states">{rows or empty}<p class="small">Source: preliminary storm reports from the <a href="{STORM_SRC}" rel="nofollow noopener">NOAA Storm Prediction Center</a>. Updated daily.</p></div>{cta()}"""
+    return "/storms/", page("/storms/", f"Recent Hail and Wind Storms by City | {BRAND}", "Recent severe hail and wind reports near U.S. cities, with roof damage checklists and free inspections.", body, None, [("Storm reports", "/storms/")])
+
+def recent_storms_html(c, st, days=120):
+    today = _dt.date.today()
+    ev = [e for e in STORMS if e["n"] == c and e["st"] == st and (today - _dt.date.fromisoformat(e["date"])).days <= days]
+    if not ev: return ""
+    items = "".join(f'<li><a href="{storm_path(e)}">{storm_kind(e)} on {nice_date(e["date"])}</a>' + (f' (hail up to {e["hail_max"]:.2f} in.)' if e["hail_max"] else "") + "</li>" for e in ev[:5])
+    return f'<div class="callout"><b>Recent severe weather near {c}:</b><ul>{items}</ul></div>'
+
+LOC = [hub_page()] + [state_page(st) for st in STATES] + [city_page(r) for r in RECS] + ([storms_index()] if STORMS else []) + [storm_page(e) for e in STORMS]
 
 def llms():
     g = "\n".join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in GUIDES)
     st = "\n".join(f"- [Roofers in {STATES[s][0]}]({SITE}{state_path(s)})" for s in sorted(STATES, key=lambda k: STATES[k][0]))
     return f"""# {BRAND}
 
-> {BRAND} is a free referral service that connects homeowners anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. {BRAND} is not a roofing contractor and does not perform or warranty roofing work.
+> {BRAND} is a free referral service that connects homeowners and commercial property owners, property managers and HOAs anywhere in the United States with independent local roofing contractors for a free roof inspection and written quote. It is free for homeowners; contractors may pay for introductions. {BRAND} is not a roofing contractor and does not perform or warranty roofing work.
 
 Homeowners can request a free quote at {SITE}/get-quotes/ for roof replacement, roof repair or leaks, storm damage, or a roof inspection.
 
@@ -568,17 +868,83 @@ Homeowners can request a free quote at {SITE}/get-quotes/ for roof replacement, 
 - [All states and cities]({SITE}/roofers/)
 {st}
 
+## City pages
+Each city page (for example {SITE}/roofers/houston-tx/) gives a short quick answer, the city's main roof risks, recommended roofing materials, the best time of year for roof work, the state's roofer licensing rules, and local notes. Sources: GeoNames (population), Koppen-Geiger (climate), U.S. Census (county).
+
+## About this site
+- [How it works]({SITE}/how-it-works/)
+- [Editorial policy]({SITE}/editorial-policy/): how pages are researched and corrected; no made-up reviews or jobs.
+- [Full text of the guides]({SITE}/llms-full.txt)
+
 ## Contact
 {EMAIL}
 """
 
+def to_text(doc):
+    """Main content of a page as plain Markdown-ish text, for llms-full.txt."""
+    import re, html as H
+    m = re.search(r"<main[^>]*>(.*)</main>", doc, re.S)
+    t = m.group(1) if m else doc
+    t = re.sub(r"<(script|style|form|figure|nav)[^>]*>.*?</\1>", " ", t, flags=re.S)
+    t = re.sub(r'<div class="ok".*?</div>', " ", t, flags=re.S)
+    t = re.sub(r"<h1[^>]*>(.*?)</h1>", r"\n# \1\n", t, flags=re.S)
+    t = re.sub(r"<h2[^>]*>(.*?)</h2>", r"\n## \1\n", t, flags=re.S)
+    t = re.sub(r"<h3[^>]*>(.*?)</h3>", r"\n### \1\n", t, flags=re.S)
+    t = re.sub(r"<summary[^>]*>(.*?)</summary>", r"\n### \1\n", t, flags=re.S)
+    t = re.sub(r"<li[^>]*>", "\n- ", t)
+    t = re.sub(r"</(p|div|tr|ul|ol|table)>", "\n", t)
+    t = re.sub(r"</t[dh]>", " | ", t)
+    t = H.unescape(re.sub(r"<[^>]+>", "", t))
+    t = re.sub(r"[ \t]+", " ", t)
+    return re.sub(r"\n\s*\n+", "\n\n", t).strip()
+
+def llms_full():
+    want = ["/how-it-works/"] + [u for u, _, _ in GUIDES] + ["/faq/", "/editorial-policy/"]
+    docs = {p: d for p, d, _ in PAGES}
+    parts = [f"# {BRAND}: full text of guides\n\nSource: {SITE}. Free for homeowners; {BRAND} is a referral service, not a roofing contractor. Updated {UPDATED}."]
+    for u in want:
+        if u in docs: parts.append(f"---\nURL: {SITE}{u}\n\n" + to_text(fill_related(u, docs[u])))
+    return "\n\n".join(parts) + "\n"
+
 def rebase(doc):
     return doc.replace('href="/', f'href="{BASE}/').replace('src="/', f'src="{BASE}/') if BASE else doc
+
+RELATED = {
+ "/commercial-roofing/": ["/flat-roof-types/", "/commercial-roof-coatings/", "/commercial-roof-maintenance/", "/roof-insurance-claim/"],
+ "/flat-roof-types/": ["/commercial-roofing/", "/commercial-roof-coatings/", "/roofing-materials/", "/commercial-roof-maintenance/"],
+ "/commercial-roof-coatings/": ["/flat-roof-types/", "/commercial-roof-maintenance/", "/commercial-roofing/", "/roof-repair-or-replace/"],
+ "/commercial-roof-maintenance/": ["/commercial-roofing/", "/commercial-roof-coatings/", "/roof-insurance-claim/", "/roofing-scams/"],
+ "/roof-replacement-cost/": ["/roofing-materials/", "/choosing-a-roofer/", "/roof-repair-or-replace/", "/insurance-roof-replacement/"],
+ "/choosing-a-roofer/": ["/roofing-scams/", "/roof-replacement-cost/", "/roofing-materials/", "/how-long-does-a-roof-last/"],
+ "/storm-damage/": ["/roof-insurance-claim/", "/hail-damage-roof/", "/roofing-scams/", "/roof-leak/"],
+ "/hail-damage-roof/": ["/impact-resistant-shingles/", "/roof-insurance-claim/", "/storm-damage/", "/roofing-scams/"],
+ "/roof-leak/": ["/roof-repair-or-replace/", "/storm-damage/", "/signs-you-need-a-new-roof/", "/roof-insurance-claim/"],
+ "/insurance-roof-replacement/": ["/roof-insurance-claim/", "/storm-damage/", "/hail-damage-roof/", "/roofing-scams/"],
+ "/signs-you-need-a-new-roof/": ["/how-long-does-a-roof-last/", "/roof-repair-or-replace/", "/roof-replacement-cost/", "/roofing-materials/"],
+ "/how-long-does-a-roof-last/": ["/roofing-materials/", "/signs-you-need-a-new-roof/", "/roof-replacement-cost/", "/impact-resistant-shingles/"],
+ "/roof-repair-or-replace/": ["/signs-you-need-a-new-roof/", "/roof-replacement-cost/", "/roof-leak/", "/choosing-a-roofer/"],
+ "/roof-insurance-claim/": ["/insurance-roof-replacement/", "/storm-damage/", "/roofing-scams/", "/hail-damage-roof/"],
+ "/roofing-scams/": ["/choosing-a-roofer/", "/roof-insurance-claim/", "/storm-damage/", "/roof-replacement-cost/"],
+ "/roofing-materials/": ["/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/", "/choosing-a-roofer/"],
+ "/impact-resistant-shingles/": ["/hail-damage-roof/", "/roofing-materials/", "/roof-insurance-claim/", "/roof-replacement-cost/"],
+}
+
+RELATED.update({g[0]: g[10] for g in G2})
+RELATED["/choosing-a-roofer/"] = ["/roofing-scams/", "/roof-warranty/", "/roof-replacement-permit/", "/roof-replacement-cost/"]
+RELATED["/roofing-materials/"] = ["/metal-roof-vs-shingles/", "/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/"]
+RELATED["/signs-you-need-a-new-roof/"] = ["/roof-inspection/", "/how-long-does-a-roof-last/", "/roof-repair-or-replace/", "/best-time-to-replace-roof/"]
+RELATED["/roof-replacement-cost/"] = ["/roofing-materials/", "/metal-roof-vs-shingles/", "/roof-replacement-process/", "/insurance-roof-replacement/"]
+
+def fill_related(path, doc):
+    if "RELATED" not in doc: return doc
+    t = {u: x for u, x, _ in GUIDES}
+    return doc.replace("RELATED", "".join(f'<a href="{u}">{t[u]}</a>' for u in RELATED.get(path, [])))
 
 def main():
     for path, doc in LOC:
         PAGES.append((path, doc, "0.6" if path.count("/") > 3 or "-" in path.split("/")[2] else "0.7"))
     for path, doc, _ in PAGES:
+        doc = fill_related(path, doc)
         d = os.path.join(ROOT, path.strip("/"))
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w").write(rebase(doc))
@@ -588,6 +954,10 @@ def main():
     bots = ["Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot"]
     rb = "User-agent: *\nDisallow: /\n" if PREVIEW else "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots) + f"User-agent: *\nAllow: /\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n"
     open(os.path.join(ROOT, "llms.txt"), "w").write(llms())
+    open(os.path.join(ROOT, "llms-full.txt"), "w").write(llms_full())
+    open(os.path.join(ROOT, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
+    # Google Search Console ownership file; keep it or verification is lost
+    open(os.path.join(ROOT, "google1dfcdf84782c73c9.html"), "w").write("google-site-verification: google1dfcdf84782c73c9.html")
     open(os.path.join(ROOT, "robots.txt"), "w").write(rb)
     print("built", len(PAGES) + 1, "pages; preview mode" if PREVIEW else "; launch mode")
 

@@ -47,7 +47,7 @@ document.querySelectorAll('[data-form]').forEach(function(f){
 var box=f.parentNode.querySelector('.okbox'),er=f.querySelector('.err'),b=f.querySelector('button');
 f.addEventListener('submit',function(e){e.preventDefault();var RT=window.RT||{src:'bedrock-direct',vid:''};
 var v=function(n){return (f.elements[n].value||'').trim()};
-var need=(f.querySelector('input[name=need]:checked')||{}).value||'';
+var need=(f.querySelector('input[name=need]:checked')||{}).value||'';var prop=(f.querySelector('input[name=prop]:checked')||{}).value||'home';if(prop!=='home')need=(prop==='commercial'?'COMMERCIAL ':'MULTIFAMILY/HOA ')+need;
 var nm=v('n'),ph=v('p').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,''),zip=v('a').replace(/\D/g,''),note=v('m');
 var bad=[];if(nm.length<2)bad.push('your name');if(ph.length!==10)bad.push('a 10-digit mobile number');if(zip.length!==5)bad.push('a 5-digit ZIP code');
 if(bad.length){er.textContent='Please enter '+bad.join(', ')+'.';er.hidden=false;if(RT.ev)RT.ev('form:invalid '+bad.length);return}

@@ -41,6 +41,7 @@ h2{font-size:28px}@media(min-width:800px){h2{font-size:34px}}
 .row{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
 .need{border:0;padding:0;margin:14px 0 0}.need legend{font-weight:600;font-size:14px;margin-bottom:8px;color:#2a3442}
 .need{display:grid;grid-template-columns:1fr 1fr;gap:8px}.need legend{grid-column:1/-1}
+.need.prop{grid-template-columns:1fr 1fr 1fr}
 .need label{margin:0;cursor:pointer}.need input{position:absolute;opacity:0;pointer-events:none}
 .need span{display:block;text-align:center;padding:10px 6px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-weight:600;color:#334}
 .need input:checked+span{border-color:var(--navy2);background:#eef3fa;color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy2)}
