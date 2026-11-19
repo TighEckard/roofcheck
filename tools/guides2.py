@@ -256,4 +256,99 @@ G2 = [
   ("Should I sign with the company that tarps my roof?", "You can hire a company to tarp without signing a full repair contract. Read anything carefully before signing, especially assignment-of-benefits forms.")],
  "Stay safe, limit damage and what insurance covers.",
  ["/storm-damage/", "/roof-leak/", "/roof-insurance-claim/", "/roofing-scams/"]),
+("/roof-overlay-vs-tear-off/", "Roof Overlay vs Tear-Off: Can You Shingle Over? | Bedrock Roof", "Roof overlay vs. tear-off: can you put new shingles over old?",
+ "Should you put a new roof over the old one or tear off to the deck? Code limits, cost trade-offs, warranty and insurance effects, and when an overlay is a bad idea.",
+ "An overlay (also called a layover or re-roof) saves tear-off work, but it isn't always allowed or wise.",
+ """<div class="callout quick"><b>Quick answer:</b> An overlay puts new shingles over one existing layer, which skips tear-off labor and disposal. It's only an option when the old roof is flat, dry and sound, and when local code allows it. Most U.S. codes, based on the International Residential Code, don't allow a new layer over two existing layers. A full tear-off costs more but lets the roofer inspect and repair the decking, and it's what most manufacturers and roofers prefer.</div>
+<h2>Overlay vs. tear-off</h2>
+<table><thead><tr><th></th><th>Overlay</th><th>Tear-off</th></tr></thead><tbody>
+<tr><td>Up-front cost</td><td>Lower (no removal or dump fees)</td><td>Higher</td></tr>
+<tr><td>Deck inspection</td><td>Hidden problems stay hidden</td><td>Rot and soft spots found and fixed</td></tr>
+<tr><td>Underlayment, flashing, ice barrier</td><td>Often left as-is</td><td>Replaced with new</td></tr>
+<tr><td>Weight</td><td>Adds a second layer of weight</td><td>One layer</td></tr>
+<tr><td>Lifespan</td><td>Often shorter; old bumps telegraph through</td><td>Full lifespan of the new material</td></tr>
+<tr><td>Next replacement</td><td>Two layers must come off</td><td>One layer</td></tr></tbody></table>
+<h2>When an overlay is a bad idea</h2><ul><li>The roof already has two layers.</li><li>The decking is soft, rotted or water-soaked, or the roof leaks in several places.</li><li>The old shingles are badly curled or buckled, so the new ones won't lie flat.</li><li>You live where ice dams form and need new ice-and-water barrier at the eaves.</li><li>You're filing an insurance claim. Many claims pay for removal of the damaged roof, so an overlay leaves money and inspection on the table.</li></ul>
+<h2>Warranty and resale</h2><p>Some shingle manufacturers limit or exclude warranty coverage for overlays, or offer their best warranties only on tear-offs. Read the specific warranty before you agree. Home buyers and inspectors may also ask how many layers a roof has. See <a href="/roof-warranty/">roof warranties</a>.</p>
+<h2>What to ask your roofer</h2><ul><li>How many layers are on the roof now?</li><li>Does our city or county allow an overlay here?</li><li>What does the shingle warranty say about overlays?</li><li>Can you quote both options so I can compare?</li></ul>""",
+ "Overlay vs tear-off", "tearoff",
+ [("How many layers of shingles are allowed?", "Most U.S. codes based on the International Residential Code allow at most two layers, so you can't add a new layer over two existing ones. Your local building department has the final say."),
+  ("Is an overlay cheaper?", "Usually, because there's no tear-off labor or disposal. The savings can disappear if hidden deck damage causes problems later."),
+  ("Can metal roofing go over shingles?", "Sometimes, with the right underlayment or furring strips and if code allows it. Many roofers still recommend a tear-off so the deck can be checked."),
+  ("Does an overlay void my warranty?", "It depends on the manufacturer. Some reduce or exclude coverage for overlays. Read the warranty before you decide.")],
+ "Code limits, cost trade-offs and warranty effects.",
+ ["/roof-replacement-process/", "/roof-replacement-cost/", "/roof-warranty/", "/roof-repair-or-replace/"]),
+
+("/roof-algae-black-streaks/", "Black Streaks on Your Roof: Algae, Moss and Lichen | Bedrock Roof", "Black streaks on your roof: algae, moss and lichen",
+ "What causes black streaks and green moss on a roof, whether they cause damage, how to clean them safely without pressure washing, and how to prevent them.",
+ "Dark stains are common on shingle roofs in humid areas. Here's what they are and what to do.",
+ """<div class="callout quick"><b>Quick answer:</b> Dark streaks on asphalt shingles are usually a type of algae, often called Gloeocapsa magma. It's mostly cosmetic. Moss and lichen are different: they hold moisture and can lift shingles, so they're worth removing. Clean gently with a roof-safe cleaner and low pressure, never a pressure washer. Algae-resistant shingles and zinc or copper strips near the ridge help prevent regrowth.</div>
+<h2>What you're looking at</h2><ul><li><b>Black or dark streaks</b> running down the roof: algae. It grows on the shady, damp sides of the roof first.</li><li><b>Green, fuzzy clumps:</b> moss. It traps water and can push shingle edges up.</li><li><b>Crusty, flat patches</b> that cling tightly: lichen. Removing it by force can tear granules off.</li></ul>
+<h2>Does it damage the roof?</h2><p>Algae is mostly a looks problem, although dark streaks can make a roof absorb a bit more heat. Moss and heavy lichen are a real concern because they hold moisture against the shingles and under their edges, which can shorten the roof's life and lead to leaks.</p>
+<h2>How to clean it safely</h2><ol><li>Hire a pro if the roof is steep, high or slippery. Wet, moss-covered roofs are dangerous.</li><li>Use a cleaner made for roofs and follow the label. Shingle makers and roofing groups often suggest a diluted bleach solution or a commercial roof cleaner applied at low pressure.</li><li>Rinse gently from the top down. Protect plants and keep runoff away from ponds and drains.</li><li>Don't pressure wash or scrape. It strips granules, which protect shingles from the sun and can void warranties.</li><li>Let dead moss loosen and fall off over time instead of prying it.</li></ol>
+<h2>Prevention</h2><ul><li>Trim branches so the roof gets more sun and dries faster.</li><li>Keep gutters and valleys clear of leaves.</li><li>Zinc or copper strips near the ridge release metal ions in the rain that discourage growth.</li><li>When you replace the roof, choose algae-resistant (AR) shingles, which contain copper granules.</li></ul>""",
+ "Roof algae and moss", "shingles",
+ [("Are black streaks on my roof mold?", "They're usually algae, not mold. It's mostly cosmetic but can be cleaned and prevented."),
+  ("Should I pressure wash my roof?", "No. Pressure washing strips the protective granules from shingles and can void the warranty. Use a roof-safe cleaner at low pressure."),
+  ("Does homeowners insurance cover roof moss?", "Generally no. Moss and algae are treated as maintenance, not sudden damage."),
+  ("Do I need a new roof because of moss?", "Usually not, if it's caught early. Heavy moss that has lifted or rotted shingles may need repairs.")],
+ "What causes streaks and moss, safe cleaning and prevention.",
+ ["/signs-you-need-a-new-roof/", "/how-long-does-a-roof-last/", "/roof-inspection/", "/roofing-materials/"]),
+
+("/roof-flashing/", "Roof Flashing: What It Is and Why It Leaks | Bedrock Roof", "Roof flashing: what it is and why it leaks",
+ "Roof flashing explained: step, counter, valley, drip edge and pipe boots, the signs of failing flashing, and whether to repair it or replace it with a new roof.",
+ "Many roof leaks start not in the shingles but at the flashing where the roof meets something else.",
+ """<div class="callout quick"><b>Quick answer:</b> Flashing is thin metal (or sometimes rubber) that seals the joints where a roof meets a wall, chimney, skylight, vent pipe or valley. Those joints are where water most often gets in. Rusted, loose or poorly sealed flashing is one of the most common causes of leaks, and it can often be repaired without replacing the whole roof.</div>
+<h2>Types of flashing</h2><ul><li><b>Step flashing:</b> L-shaped pieces woven in with each course of shingles where a roof meets a side wall.</li><li><b>Counter flashing:</b> set into a chimney or wall and lapped over the step flashing.</li><li><b>Valley flashing:</b> lines the valley where two roof slopes meet.</li><li><b>Drip edge:</b> metal along the eaves and rakes that guides water into the gutter and protects the deck edge.</li><li><b>Pipe boots:</b> collars around plumbing vents. Rubber boots crack in the sun over time.</li><li><b>Skylight and chimney kits:</b> pre-formed flashing for those openings.</li></ul>
+<h2>Signs of failing flashing</h2><ul><li>Stains on the ceiling or wall near a chimney, skylight or where a roof meets a wall.</li><li>Rust, gaps, or flashing that has pulled away.</li><li>Caulk or roofing cement smeared over flashing as a quick fix, which often fails again.</li><li>Cracked rubber around vent pipes.</li></ul>
+<h2>Repair or replace?</h2><p>If the roof is in good shape, a roofer can usually replace the failing flashing or pipe boot on its own. If the roof is near the end of its life, it often makes sense to redo the flashing as part of a <a href="/roof-replacement-process/">full replacement</a>. Ask whether your quote includes new flashing rather than reusing old pieces. See <a href="/roof-repair-or-replace/">repair or replace</a>.</p>
+<h2>Questions for your roofer</h2><ul><li>Will you install new step and counter flashing, or reuse the old?</li><li>Is drip edge included? Many codes now require it.</li><li>What material are the pipe boots, and how long do they last?</li></ul>""",
+ "Roof flashing", "crew1",
+ [("What is the most common cause of roof leaks?", "Failing flashing and cracked pipe boots are among the most common. Leaks tend to start where the roof meets something else."),
+  ("Can flashing be repaired without a new roof?", "Often yes. A roofer can replace flashing or a pipe boot and weave in matching shingles if the rest of the roof is sound."),
+  ("Should old flashing be reused on a new roof?", "Many roofers replace it, especially step flashing and drip edge, because old flashing can be bent or corroded. Ask what your quote includes."),
+  ("Is caulk enough to fix flashing?", "Caulk or roofing cement is a short-term patch. A lasting fix is properly installed flashing.")],
+ "Types of flashing, warning signs, and repair vs replace.",
+ ["/roof-leak/", "/roof-repair-or-replace/", "/roof-inspection/", "/roofing-estimate/"]),
+
+("/roof-underlayment/", "Roof Underlayment: Felt vs Synthetic | Bedrock Roof", "Roof underlayment: felt vs. synthetic, and why it matters",
+ "What roof underlayment does, felt vs synthetic vs ice-and-water shield compared, where each is used, and what to look for in a roofing quote.",
+ "Underlayment is the layer between the roof deck and the shingles or metal. It's your backup when water gets past the top layer.",
+ """<div class="callout quick"><b>Quick answer:</b> Underlayment is a water-resistant layer installed over the roof deck before shingles, metal or tile go on. Most new residential roofs today use synthetic underlayment, which is lighter, stronger and less prone to tearing than traditional asphalt felt. Self-adhering ice-and-water membrane is added at eaves, valleys and around openings, especially where ice dams or wind-driven rain are a risk.</div>
+<h2>The main types</h2>
+<table><thead><tr><th>Type</th><th>What it is</th><th>Where it's used</th></tr></thead><tbody>
+<tr><td>Asphalt felt (#15 or #30)</td><td>Paper or fiberglass mat soaked in asphalt</td><td>Traditional; lower cost; can wrinkle when wet</td></tr>
+<tr><td>Synthetic</td><td>Woven or spun polymer sheets</td><td>Most common on new roofs; lighter and tear-resistant</td></tr>
+<tr><td>Self-adhering membrane (ice and water shield)</td><td>Rubberized asphalt with a sticky back that seals around nails</td><td>Eaves, valleys, around chimneys and skylights; whole-roof in some high-wind and coastal areas</td></tr></tbody></table>
+<h2>Why it matters</h2><ul><li>It keeps the deck dry during installation.</li><li>It's a second barrier if shingles blow off or water is driven under them.</li><li>Some shingle warranties require specific underlayment products.</li><li>Codes in cold climates often require ice barrier at the eaves, and some coastal areas encourage or require a sealed roof deck.</li></ul>
+<h2>What to look for in a quote</h2><ul><li>The underlayment type and brand, not just "underlayment".</li><li>Where ice-and-water membrane will go (eaves, valleys, around openings, or the whole roof).</li><li>Whether it meets the shingle maker's requirements for the warranty you're being sold.</li></ul>
+<p>Compare quotes line by line with our <a href="/roofing-estimate/">guide to reading a roofing estimate</a>.</p>""",
+ "Underlayment", "tearoff",
+ [("Is synthetic underlayment better than felt?", "For most new roofs, yes. It's lighter, stronger and resists tearing and wrinkling. Felt is cheaper and still meets code in many places."),
+  ("What is ice and water shield?", "A self-adhering rubberized membrane that seals around nails. It goes at eaves, valleys and openings where water is most likely to back up."),
+  ("Do I need ice and water shield on the whole roof?", "Not usually. It's commonly required at the eaves in cold climates. In some high-wind or coastal areas, a fully sealed deck is recommended."),
+  ("Can underlayment be replaced without new shingles?", "No. It sits under the shingles, so replacing it means removing the roof covering.")],
+ "Felt vs synthetic vs ice-and-water shield.",
+ ["/roofing-estimate/", "/ice-dams/", "/roof-replacement-process/", "/roofing-materials/"]),
+
+("/tile-roof/", "Tile Roofs: Clay vs Concrete, Lifespan and Repairs | Bedrock Roof", "Tile roofs: clay vs. concrete, lifespan and repairs",
+ "Clay and concrete tile roofs explained: how long they last, weight, cost compared with shingles, why the underlayment matters, and common repairs.",
+ "Tile roofs are common in Florida, the Southwest and California. Here's what owners and buyers should know.",
+ """<div class="callout quick"><b>Quick answer:</b> Clay and concrete tiles can last 50 years or more, and they resist fire and heat well. They cost more than shingles and are much heavier, so the framing must be able to carry them. On many tile roofs, the underlayment beneath the tiles wears out long before the tiles do, so a "tile roof replacement" sometimes means lifting the tiles, replacing the underlayment and putting the tiles back.</div>
+<h2>Clay vs. concrete</h2>
+<table><thead><tr><th></th><th>Clay tile</th><th>Concrete tile</th></tr></thead><tbody>
+<tr><td>Look</td><td>Classic terracotta; color goes through the tile</td><td>Many shapes and colors; some colors fade over time</td></tr>
+<tr><td>Weight</td><td>Heavy</td><td>Usually heavier than clay</td></tr>
+<tr><td>Cost</td><td>Generally higher</td><td>Generally lower than clay</td></tr>
+<tr><td>Lifespan</td><td>Often 50+ years</td><td>Often 40&ndash;50+ years</td></tr></tbody></table>
+<h2>Strengths and weak spots</h2><ul><li><b>Strengths:</b> long life, Class A fire ratings, good in heat, and a look many buyers want.</li><li><b>Weak spots:</b> tiles can crack if walked on or hit by large hail, and the underlayment underneath ages.</li></ul>
+<h2>Common repairs</h2><ul><li>Replacing cracked or slipped tiles. Keep spare tiles from the original job if you can, since matching older tiles can be hard.</li><li>Re-setting ridge and hip tiles.</li><li>Fixing flashing at valleys and walls. See <a href="/roof-flashing/">roof flashing</a>.</li><li>Lift-and-relay: removing tiles, installing new underlayment and reinstalling the tiles.</li></ul>
+<h2>Hiring for tile work</h2><p>Not every roofer does tile. Ask how many tile roofs the crew has done, how they walk on the roof without cracking tiles, and whether the quote includes new underlayment and flashing. In hurricane areas, ask how the tiles will be fastened to meet local wind rules.</p>""",
+ "Tile roofs", "home5",
+ [("How long does a tile roof last?", "The tiles often last 50 years or more. The underlayment beneath them usually needs replacing sooner, which can be done by lifting and relaying the tiles."),
+  ("Can you walk on a tile roof?", "Carefully, and ideally only by an experienced roofer. Tiles can crack under weight if stepped on in the wrong place."),
+  ("Is tile more expensive than shingles?", "Yes, tile generally costs more to buy and install, but it can last much longer."),
+  ("Can my house support a tile roof?", "Tile is heavy. Switching from shingles to tile may need an engineer to confirm the framing can carry it.")],
+ "Clay vs concrete, lifespan, underlayment and repairs.",
+ ["/roofing-materials/", "/how-long-does-a-roof-last/", "/roof-underlayment/", "/roof-flashing/"]),
 ]
