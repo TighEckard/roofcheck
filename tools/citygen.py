@@ -12,7 +12,7 @@ from local import CITY_LOCAL, CITY_LOCAL_ST
 HERE = os.path.dirname(os.path.abspath(__file__))
 MIN_POP = int(os.environ.get("MIN_POP", "40000"))
 # Cities under 100,000 people are released in batches, biggest first. Raise this number to release the next batch.
-SMALL_RELEASED = int(os.environ.get("SMALL_RELEASED", "200"))
+SMALL_RELEASED = int(os.environ.get("SMALL_RELEASED", "400"))
 
 KOPPEN = {
  "Af": "tropical rainforest climate, hot and wet all year",
