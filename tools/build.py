@@ -62,7 +62,7 @@ def phone_link(cls="tel"):
 
 import hashlib
 GA_ID = os.environ.get("GA_ID", "")  # Google Analytics 4 measurement ID (G-XXXX). Empty = off.
-CLARITY_ID = os.environ.get("CLARITY_ID", "")  # Microsoft Clarity project ID (session recordings + heatmaps). Empty = off.
+CLARITY_ID = os.environ.get("CLARITY_ID", "zgczdoogv0")  # Microsoft Clarity project ID (session recordings + heatmaps). Empty = off.
 # Third-party analytics load only when the visitor hasn't opted out (Do Not Track, Global Privacy Control, or our opt-out link).
 _OK = "var n=navigator,o=n.doNotTrack==='1'||n.globalPrivacyControl;try{o=o||localStorage.getItem('no_track')}catch(e){}"
 _GA = (f"var g=document.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id={GA_ID}';document.head.appendChild(g);"
