@@ -141,6 +141,18 @@ def form(h="Get a free roof quote", p="q", prop="home"):
         f = f.replace('value="home" checked', 'value="home"').replace(f'value="{prop}"', f'value="{prop}" checked')
     return '<div class="card" id="quote">' + f + '</div>'
 
+QCHECK = """<div class="card qcheck"><form class="qform" novalidate data-form data-clarity-mask="true">
+<h2>Already have a roofing quote?</h2><p class="lead">Not sure it's fair? Send us the price and what's included and a local roofer will call or text you with a free second opinion. No obligation.</p>
+<input type="radio" name="need" value="second opinion on a quote" checked hidden>
+<div class="row"><div><label for="qcn">Full name</label><input id="qcn" name="n" required maxlength="40" autocomplete="name" placeholder="Jane Smith"></div>
+<div><label for="qca">ZIP code</label><input id="qca" name="a" required inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="12345"></div></div>
+<label for="qcp">Mobile phone</label><input id="qcp" name="p" required type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="(555) 555-5555">
+<label for="qcm">Quoted price and what it covers <span class="opt">(optional)</span></label><input id="qcm" name="m" maxlength="45" autocomplete="off" placeholder="e.g. $14,500, full tear-off, architectural">
+<p class="err" role="alert" hidden></p>
+<button class="btn full" type="submit">Get a free second opinion</button>
+<p class="fine">By tapping &ldquo;Get a free second opinion&rdquo; you agree that Bedrock Roof may share your request with an independent roofing contractor serving your ZIP code, and that Bedrock Roof and that contractor may call or text you at the number you entered about your roof, including by automated means. Consent is not a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/privacy/">privacy policy</a>.</p>
+</form><div class="okbox" hidden><h2>Thanks, we got it.</h2><p>A local roofer should reach out soon, usually by call or text, to go over your quote.</p></div></div>"""
+
 def cta(t="Ready for a quote?", s="Tell us about your roof and a local roofer will reach out. Free, no obligation."):
     return f'<section class="cta"><div class="wrap"><h2>{t}</h2><p>{s}</p><a class="btn lg" href="/get-quotes/">Get a free quote</a></div></section>'
 
@@ -164,6 +176,7 @@ def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
     b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
 <div class="wrap narrow inform">{form(_fh or ("Talk to a commercial roofer" if _com else "Get a free quote from a local roofer"), "a", "commercial" if _com else "home")}</div>
+<div class="wrap narrow inform">{"" if _com else QCHECK}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
     return page(path, title, desc, b, sch, [(crumb, path)], og_img=photo)
@@ -736,7 +749,8 @@ def city_page(r):
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
-<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p></div>
+<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p>
+<ul class="ticks"><li>Free inspection and written quote</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
