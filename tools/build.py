@@ -62,8 +62,14 @@ def phone_link(cls="tel"):
 
 import hashlib
 GA_ID = os.environ.get("GA_ID", "")  # Google Analytics 4 measurement ID (G-XXXX). Empty = off.
-GA_TAG = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>'
-          f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA_ID}');</script>") if GA_ID else ""
+CLARITY_ID = os.environ.get("CLARITY_ID", "")  # Microsoft Clarity project ID (session recordings + heatmaps). Empty = off.
+# Third-party analytics load only when the visitor hasn't opted out (Do Not Track, Global Privacy Control, or our opt-out link).
+_OK = "var n=navigator,o=n.doNotTrack==='1'||n.globalPrivacyControl;try{o=o||localStorage.getItem('no_track')}catch(e){}"
+_GA = (f"var g=document.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id={GA_ID}';document.head.appendChild(g);"
+       f"window.dataLayer=window.dataLayer||[];window.gtag=function(){{dataLayer.push(arguments)}};gtag('js',new Date());gtag('config','{GA_ID}');") if GA_ID else ""
+_CL = ("(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;"
+       f"t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}})(window,document,'clarity','script','{CLARITY_ID}');") if CLARITY_ID else ""
+GA_TAG = f"<script>window.TRK=1;(function(){{{_OK}if(o)return;{_GA}{_CL}}})();</script>" if (GA_ID or CLARITY_ID) else ""
 JS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.js"), "rb").read()).hexdigest()[:8]
 CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.css"), "rb").read()).hexdigest()[:8]
 
@@ -106,7 +112,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 </body></html>
 """
 
-FORM = """<form class="qform" novalidate data-form>
+FORM = """<form class="qform" novalidate data-form data-clarity-mask="true">
 <h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time. Homes and commercial buildings.</p>
 <fieldset class="need prop"><legend>Property type</legend>
 <label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
@@ -620,7 +626,7 @@ privacy = f"""<section class="phero short"><div class="wrap narrow"><h1>Privacy 
 <div class="wrap narrow prose">
 <p>This policy explains what information Bedrock Roof ("we") collects on bedrockroof.com and how we use it.</p>
 <h2>Information you give us</h2><p>When you request a quote we collect your name, mobile phone number, ZIP code, the type of help you need and any note you add.</p>
-<h2>Information collected automatically</h2><p>We use our own cookieless analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address. When you send the quote form, a copy of your request is emailed to us through FormSubmit (formsubmit.co), an email delivery service, so we don't miss it.' + (' We also use Google Analytics, which sets cookies, to measure visits and which pages and buttons are used. You can opt out with Google\'s <a href="https://tools.google.com/dlpage/gaoptout">browser add-on</a>.' if GA_ID else '') + '</p>
+<h2>Information collected automatically</h2><p>We use our own analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address. When you send the quote form, a copy of your request is emailed to us through FormSubmit (formsubmit.co), an email delivery service, so we don't miss it.' + (' We also use Google Analytics, which sets cookies, to measure visits and which pages and buttons are used. You can opt out with Google\'s <a href="https://tools.google.com/dlpage/gaoptout">browser add-on</a>.' if GA_ID else '')  + (' We use Microsoft Clarity to record how visitors use the site, including mouse movements, clicks, scrolling and the pages viewed, and to build heatmaps. Clarity masks what you type into forms, so recordings don\\'t capture your name, phone number or ZIP code. Clarity sets cookies; see <a href="https://privacy.microsoft.com/privacystatement">Microsoft\\'s privacy statement</a>.' if CLARITY_ID else '') + ' You can turn off all of our analytics and recordings on this device at any time: <a href="/privacy/?notrack" data-optout>opt out of tracking</a>.' + '</p>
 <h2>How we use and share it</h2><ul><li>To pass your request to an independent roofing contractor serving your area so they can contact you about your roof. Contractors may pay us for these introductions.</li><li>To contact you about your request by call or text, with your consent.</li><li>To run, secure and improve the site.</li><li>When required by law.</li></ul>
 <p>We don't sell your information to data brokers or marketing lists. Once a contractor receives your request, their use of it is governed by their own privacy practices.</p>
 <h2>Calls and texts</h2><p>You can opt out of texts by replying STOP, and you can ask us or the contractor to stop calling at any time.</p>
