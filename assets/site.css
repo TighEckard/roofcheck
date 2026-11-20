@@ -108,3 +108,8 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}th,td{tex
 @media (max-width:760px){.mbar{display:block;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;background:#e8a33d;color:#0c1c33;text-align:center;font-weight:800;padding:14px;border-radius:10px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:transform .2s}.mbar.off{transform:translateY(140%)}body{padding-bottom:70px}.tnote{bottom:74px}}
 #quote{scroll-margin-top:84px}
 @media (max-width:760px){.tnote{font-size:12.5px;padding:9px 11px}}
+
+.tnote{max-width:520px;padding:8px 12px;font-size:13px;line-height:1.4}
+@media (max-width:760px){.tnote{left:8px;right:8px;bottom:auto;top:auto;bottom:76px;padding:6px 10px;font-size:12px;white-space:nowrap}.tnote button{padding:3px 10px;margin:0 0 0 6px}}
+.qcheck{border:2px dashed #e8a33d;margin-top:20px}.qcheck h2{font-size:22px}
+@media(min-width:960px){.city .hgrid{align-items:start}.city .hcopy{padding-top:24px}}
