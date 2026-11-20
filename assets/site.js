@@ -17,6 +17,10 @@ if(!src&&q.get('fbclid'))src='facebook';
 if(!src&&h)src=/facebook\.com$|fb\.com$/.test(h)?'facebook':/instagram\.com$/.test(h)?'instagram':/google\./.test(h)?'google':/bing\.com$/.test(h)?'bing':/nextdoor\.com$/.test(h)?'nextdoor':/(^|\.)t\.co$|twitter\.com$|x\.com$/.test(h)?'x':/youtube\.com$/.test(h)?'youtube':/reddit\.com$/.test(h)?'reddit':h;
 src=('bedrock-'+(src||'direct')).slice(0,60);
 w.RT={vid:vid,src:src};
+if(/[?&]notrack/.test(location.search)){ls('no_track','1')}
+d.addEventListener('click',function(x){var a=x.target.closest&&x.target.closest('[data-optout]');if(a){x.preventDefault();ls('no_track','1');a.textContent='Tracking is off on this device.'}});
+if(w.TRK&&!ls('no_track')&&!ls('t_notice')&&!(nav.doNotTrack==='1'||nav.globalPrivacyControl)){w.addEventListener('DOMContentLoaded',function(){var b=d.createElement('div');b.className='tnote';b.setAttribute('role','region');b.setAttribute('aria-label','Analytics notice');b.innerHTML='We use analytics and session recordings to improve this site. Form entries are masked. <a href="/privacy/">Privacy</a> <button type="button" data-ok>OK</button> <a href="/privacy/?notrack" data-optout>Opt out</a>';d.body.appendChild(b);b.querySelector('[data-ok]').onclick=function(){ls('t_notice','1');b.remove()};b.querySelector('[data-optout]').addEventListener('click',function(){ls('t_notice','1');setTimeout(function(){b.remove()},800)})})}
+
 if(w.top!==w.self||nav.webdriver||/bot|crawl|spider|slurp|headless|lighthouse|preview|facebookexternalhit/i.test(ua)||nav.doNotTrack==='1'||nav.globalPrivacyControl||ls('no_track')||/[?&]notrack/.test(location.search))return;
 var device=/iPad|Tablet/.test(ua)||(/Android/.test(ua)&&!/Mobile/.test(ua))?'tablet':/Mobi|iPhone|Android/.test(ua)?'mobile':'desktop';
 var browser=/FBAN|FBAV/.test(ua)?'Facebook app':/Instagram/.test(ua)?'Instagram app':/Edg\//.test(ua)?'Edge':/OPR\//.test(ua)?'Opera':/Firefox|FxiOS/.test(ua)?'Firefox':/Chrome|CriOS/.test(ua)?'Chrome':/Safari/.test(ua)?'Safari':'Other';
