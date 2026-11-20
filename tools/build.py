@@ -61,6 +61,9 @@ def phone_link(cls="tel"):
     return f'<a class="{cls}" href="tel:{PHONE}">Call {fmt_phone(PHONE)}</a>' if PHONE else ""
 
 import hashlib
+GA_ID = os.environ.get("GA_ID", "")  # Google Analytics 4 measurement ID (G-XXXX). Empty = off.
+GA_TAG = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>'
+          f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA_ID}');</script>") if GA_ID else ""
 JS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.js"), "rb").read()).hexdigest()[:8]
 CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.css"), "rb").read()).hexdigest()[:8]
 
@@ -85,7 +88,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{GA_TAG}
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, separators=(",", ":"))}</script>
 </head><body>
 <header class="top"><div class="wrap bar"><a class="logo" href="/">{LOGO}<span>Bedrock<b>Roof</b></span></a>
@@ -617,7 +620,7 @@ privacy = f"""<section class="phero short"><div class="wrap narrow"><h1>Privacy 
 <div class="wrap narrow prose">
 <p>This policy explains what information Bedrock Roof ("we") collects on bedrockroof.com and how we use it.</p>
 <h2>Information you give us</h2><p>When you request a quote we collect your name, mobile phone number, ZIP code, the type of help you need and any note you add.</p>
-<h2>Information collected automatically</h2><p>We use our own cookieless analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address.</p>
+<h2>Information collected automatically</h2><p>We use our own cookieless analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address. When you send the quote form, a copy of your request is emailed to us through FormSubmit (formsubmit.co), an email delivery service, so we don't miss it.' + (' We also use Google Analytics, which sets cookies, to measure visits and which pages and buttons are used. You can opt out with Google\'s <a href="https://tools.google.com/dlpage/gaoptout">browser add-on</a>.' if GA_ID else '') + '</p>
 <h2>How we use and share it</h2><ul><li>To pass your request to an independent roofing contractor serving your area so they can contact you about your roof. Contractors may pay us for these introductions.</li><li>To contact you about your request by call or text, with your consent.</li><li>To run, secure and improve the site.</li><li>When required by law.</li></ul>
 <p>We don't sell your information to data brokers or marketing lists. Once a contractor receives your request, their use of it is governed by their own privacy practices.</p>
 <h2>Calls and texts</h2><p>You can opt out of texts by replying STOP, and you can ask us or the contractor to stop calling at any time.</p>

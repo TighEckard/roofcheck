@@ -2,6 +2,8 @@
 (function(){
 var SB='https://yhsxxblilclylzgejehk.supabase.co',KEY='sb_publishable_9BiONVmj8Ht4k7lBsxGkkA_Yajbl8Rj',P='/roofing';
 var nav=navigator,ua=nav.userAgent||'',w=window,d=document;
+function ga(n,p){try{if(w.gtag)w.gtag('event',String(n).replace(/[^a-z0-9_]+/gi,'_').slice(0,40),p||{})}catch(e){}}
+w.RTga=ga;
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);sessionStorage.setItem(k,v)}catch(e){return null}}
 var rid=function(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36)};
@@ -32,9 +34,10 @@ d.addEventListener('focusin',function(e){var t=e.target;if(t.tagName!=='INPUT')r
 d.addEventListener('input',function(e){var t=e.target;if(t.tagName==='INPUT'&&!fseen['t'+t.id]){fseen['t'+t.id]=1;ev('form:typing '+t.id)}});
 d.addEventListener('focusout',function(e){var t=e.target;if(t.tagName==='INPUT'&&t.value.trim()&&!fseen['d'+t.id]){fseen['d'+t.id]=1;ev('form:filled '+t.id)}});
 d.addEventListener('click',function(x){if(clicks>=60)return;clicks++;var el=x.target.closest&&x.target.closest('a,button,label,input');var de=d.documentElement,W=Math.max(de.scrollWidth,de.clientWidth);var e=base('click');e.x=Math.max(0,Math.min(1000,Math.round(x.pageX/W*1000)));e.y=Math.round(x.pageY);e.vw=w.innerWidth;e.el=el?(el.tagName.toLowerCase()+':'+(el.id||(el.textContent||'').trim())).slice(0,60):null;push(e)},true);
+d.addEventListener('click',function(x){var a=x.target.closest&&x.target.closest('a');if(!a)return;var hr=a.getAttribute('href')||'';if(/^tel:/.test(hr)){ev('call:'+hr);ga('phone_click',{link_url:hr})}else if(/^mailto:/.test(hr)){ev('email:'+hr);ga('email_click',{link_url:hr})}else if(/get-quotes/.test(hr)||/btn/.test(a.className)){ga('quote_button_click',{link_text:(a.textContent||'').trim().slice(0,60),page:location.pathname})}},true);
 d.addEventListener('visibilitychange',function(){if(d.visibilityState==='hidden'){if(vis){shown+=Date.now()-start;vis=false}leave();shown=0}else if(!vis){vis=true;start=Date.now()}});
 w.addEventListener('pagehide',flush);
-w.RT.ev=function(n){ev(n);flush()};
+w.RT.ev=function(n){ev(n);flush();ga(n)};
 function enter(g){measure();var e=base('view');e.src=src;e.ref_host=h.slice(0,100)||null;e.utm_medium=(q.get('utm_medium')||'').slice(0,100)||null;e.utm_campaign=(q.get('utm_campaign')||('page:'+location.pathname)).slice(0,100);e.new_visitor=isNew;e.device=device;e.browser=browser;e.os=os;e.vw=w.innerWidth;e.vh=w.innerHeight;if(g){e.country=g.country;e.region=g.region;e.city=g.city}push(e)}
 var c=ss('s_geo');if(c){try{return enter(JSON.parse(c))}catch(e){}}
 var done=false,fin=function(g){if(!done){done=true;enter(g)}};setTimeout(function(){fin(null)},1500);
@@ -52,9 +55,10 @@ var nm=v('n'),ph=v('p').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,''),zip=v('a')
 var bad=[];if(nm.length<2)bad.push('your name');if(ph.length!==10)bad.push('a 10-digit mobile number');if(zip.length!==5)bad.push('a 5-digit ZIP code');
 if(bad.length){er.textContent='Please enter '+bad.join(', ')+'.';er.hidden=false;if(RT.ev)RT.ev('form:invalid '+bad.length);return}
 er.hidden=true;if(RT.ev)RT.ev('form:submit_attempt');b.disabled=true;b.textContent='Sending...';
-fetch(U,{method:'POST',headers:{apikey:K,'Content-Type':'application/json',Prefer:'return=minimal'},
-body:JSON.stringify({name:(nm+' | ZIP '+zip+' | '+need+(note?' | '+note:'')).slice(0,100),email:ph+'@roofing.lead',slot:'roofing',source:(RT.src+'|'+(RT.vid||'').slice(0,12)+'|'+location.pathname).slice(0,79)})})
-.then(function(r){if(!r.ok)throw 0;if(RT.ev)RT.ev('form:submitted');f.hidden=true;box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'})})
+var mail=fetch('https://formsubmit.co/ajax/hello@bedrockroof.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'New Bedrock Roof lead: '+need+' '+zip,_template:'table',_captcha:'false',Name:nm,Phone:ph,ZIP:zip,Need:need,Note:note,Page:location.pathname,Source:RT.src})}).then(function(r){if(!r.ok)throw 0;return r}).catch(function(){if(RT.ev)RT.ev('form:email_failed');throw 0});
+var db=fetch(U,{method:'POST',headers:{apikey:K,'Content-Type':'application/json',Prefer:'return=minimal'},
+body:JSON.stringify({name:(nm+' | ZIP '+zip+' | '+need+(note?' | '+note:'')).slice(0,100),email:ph+'@roofing.lead',slot:'roofing',source:(RT.src+'|'+(RT.vid||'').slice(0,12)+'|'+location.pathname).slice(0,79)})}).then(function(r){if(!r.ok)throw 0;return r});
+Promise.all([db.then(function(){return 1},function(){return 0}),mail.then(function(){return 1},function(){return 0})]).then(function(ok){if(!ok[0]&&!ok[1])throw 0;return {ok:true}}).then(function(r){if(!r.ok)throw 0;if(RT.ev)RT.ev('form:submitted');if(window.RTga)window.RTga('generate_lead',{page:location.pathname,need:need});f.hidden=true;box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'})})
 .catch(function(){if(RT.ev)RT.ev('form:submit_failed');b.disabled=false;b.textContent='Get my free quote';er.textContent='Something went wrong. Please try again.';er.hidden=false})});
 });
 var h=document.querySelector('[data-city]');if(!h)return;
