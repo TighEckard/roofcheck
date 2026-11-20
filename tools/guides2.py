@@ -441,4 +441,35 @@ G2 = [
   ("How long does a community roof project take?", "Each building often takes a few days, weather permitting. A whole community may be phased over weeks or years.")],
  "Responsibility, reserve studies, bidding and owner notices.",
  ["/commercial-roofing/", "/roofing-estimate/", "/insurance-roof-replacement/", "/choosing-a-roofer/"]),
+("/free-roof-inspection/", "Free Roof Inspection: Get One From a Local Roofer | Bedrock Roof", "Get a free roof inspection from a local roofer",
+ "Request a free, no-obligation roof inspection from an independent local roofer anywhere in the U.S. What's checked, how it works, and what you get afterward.",
+ "Tell us about your roof and we'll connect you with an independent local roofer for a free inspection and a written quote.",
+ """<div class="callout quick"><b>How it works:</b> fill in the short form on this page (about 30 seconds). We match your request with an independent roofer who serves your ZIP code. They call or text you to set up a time, inspect the roof, and give you their findings and a written quote if work is needed. The inspection is free and you don't have to hire anyone.</div>
+<h2>Good times to get a free inspection</h2><ul><li>After hail, high wind or a hurricane, even if you don't see damage from the ground.</li><li>When you find a leak, a ceiling stain or shingles in the yard.</li><li>When the roof is 15 years old or more.</li><li>Before you buy or sell a home.</li><li>If your insurer has asked about your roof's age or condition.</li></ul>
+<h2>What the roofer checks</h2><p>Shingles or panels, flashing around chimneys and walls, pipe boots and vents, gutters, signs of hail or wind damage, and the attic if it's accessible. Ask for photos of anything they find. See <a href="/roof-inspection/">what happens during a roof inspection</a>.</p>
+<h2>Why use Bedrock Roof</h2><ul><li><b>Free for you.</b> You never pay us. Roofers may pay us for introductions.</li><li><b>One local roofer, not a flood of calls.</b> We try to match each request with one roofer who serves your area.</li><li><b>No pressure.</b> You can get more quotes and take your time. Our <a href="/choosing-a-roofer/">roofer checklist</a> helps you compare.</li></ul>
+<p class="small">Bedrock Roof is a referral service, not a roofing contractor. Roofers are independent businesses. Check any contractor's license and insurance before you sign.</p>""",
+ "Free roof inspection", "crew2",
+ [("Is the roof inspection really free?", "Yes. The roofer we connect you with offers a free inspection and quote, and you never pay Bedrock Roof. You only pay if you choose to hire a roofer for work."),
+  ("How soon can someone come out?", "It depends on the roofer's schedule and the weather, especially after big storms. Most roofers reach out within a business day to set a time."),
+  ("Will the roofer help with my insurance claim?", "Many roofers document storm damage with photos and an estimate you can give your insurer. Your insurance company decides what's covered."),
+  ("Do you inspect commercial roofs?", "Yes. Choose Commercial or Apts / HOA on the form and we'll look for a commercial roofer. See our <a href=\"/commercial-roof-inspection/\">commercial inspection page</a>.")],
+ "Request a free inspection from a local roofer.",
+ ["/roof-inspection/", "/storm-damage/", "/signs-you-need-a-new-roof/", "/choosing-a-roofer/"]),
+
+("/commercial-roof-inspection/", "Free Commercial Roof Inspection and Quote | Bedrock Roof", "Free commercial roof inspection and quote",
+ "Owners and property managers: request a free commercial or flat roof inspection and quote from an independent commercial roofer. What's checked and what to ask for.",
+ "For offices, retail, warehouses, churches, apartments, condos and HOAs. We connect you with an independent commercial roofer for a free inspection.",
+ """<div class="callout quick"><b>How it works:</b> send the short form on this page with Commercial or Apts / HOA selected. We look for an independent commercial roofer serving your ZIP code, who contacts you to inspect the roof and give you a written report and quote. It's free and there's no obligation.</div>
+<h2>What a commercial inspection usually covers</h2><ul><li>Membrane condition, seams and punctures on TPO, EPDM, PVC, modified bitumen or built-up roofs.</li><li>Ponding water, drains, scuppers and gutters.</li><li>Flashing at parapet walls, curbs, HVAC units and other penetrations.</li><li>Roof edges and metal coping.</li><li>Signs of wet insulation; ask whether core samples or an infrared scan are recommended.</li></ul>
+<h2>When to request one</h2><ul><li>Twice a year as routine maintenance, ideally spring and fall.</li><li>After hail, high wind or heavy snow.</li><li>When tenants report leaks or stains.</li><li>Before buying a building, renewing insurance or planning a reserve study.</li></ul>
+<h2>What to ask for afterward</h2><p>Photos, a written condition report, and options: repair, restoration coating, or replacement, each with scope and warranty. Our guides on <a href="/commercial-roof-replacement-cost/">commercial roof cost drivers</a>, <a href="/tpo-vs-epdm/">TPO vs EPDM vs PVC</a> and <a href="/commercial-roof-warranty/">commercial warranties</a> help you compare.</p>
+<p class="small">Bedrock Roof is a referral service, not a roofing contractor. Verify any contractor's license and insurance before signing.</p>""",
+ "Commercial inspection", "roofsky",
+ [("Is a commercial roof inspection free?", "The commercial roofer we connect you with offers a free inspection and quote. Specialized testing, like an infrared moisture survey, may cost extra; ask first."),
+  ("How often should a commercial roof be inspected?", "Most roofing groups recommend twice a year and after major storms."),
+  ("Can you help HOAs and apartment owners?", "Yes. Pick Apts / HOA on the form. See our <a href=\"/hoa-roof-replacement/\">HOA roof replacement guide</a>."),
+  ("Do I need to be the owner?", "Owners, property managers and board members can all request an inspection.")],
+ "Free inspection for commercial, apartment and HOA roofs.",
+ ["/commercial-roofing/", "/commercial-roof-maintenance/", "/commercial-roof-leak/", "/tpo-vs-epdm/"]),
 ]
