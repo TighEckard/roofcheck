@@ -108,6 +108,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
 <div><h4>Company</h4><a href="/about/">About us</a><a href="/editorial-policy/">Editorial policy</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </div><div class="wrap legal">&copy; 2026 {BRAND}. Photos from <a href="https://unsplash.com" rel="nofollow">Unsplash</a>, shown for illustration.</div></footer>
+<a class="mbar" href="/get-quotes/" data-mbar>Get a free roof quote</a>
 <script src="/assets/site.js?v={JS_V}" defer></script>
 </body></html>
 """
@@ -129,12 +130,16 @@ FORM = """<form class="qform" novalidate data-form data-clarity-mask="true">
 <label for="{p}m">Anything the roofer should know? <span class="opt">(optional)</span></label><input id="{p}m" name="m" maxlength="45" autocomplete="off" placeholder="e.g. leak in the kitchen, roof is 20 years old">
 <p class="err" role="alert" hidden></p>
 <button class="btn full" type="submit">Get my free quote</button>
+<ul class="trust"><li>100% free</li><li>No obligation</li><li>Takes about 30 seconds</li></ul>
 <p class="fine">By tapping &ldquo;Get my free quote&rdquo; you agree that Bedrock Roof may share your request with an independent roofing contractor serving your ZIP code, and that Bedrock Roof and that contractor may call or text you at the number you entered about your roof, including by automated means. Consent is not a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/privacy/">privacy policy</a>.</p>
 </form>
 <div class="okbox" hidden><h2>Thanks, we got your request.</h2><p>A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.</p><p><a href="/choosing-a-roofer/">While you wait: 7 questions to ask any roofer &rarr;</a></p></div>"""
 
-def form(h="Get a free roof quote", p="q"):
-    return '<div class="card" id="quote">' + FORM.format(h=h, p=p) + '</div>'
+def form(h="Get a free roof quote", p="q", prop="home"):
+    f = FORM.format(h=h, p=p)
+    if prop != "home":
+        f = f.replace('value="home" checked', 'value="home"').replace(f'value="{prop}"', f'value="{prop}" checked')
+    return '<div class="card" id="quote">' + f + '</div>'
 
 def cta(t="Ready for a quote?", s="Tell us about your roof and a local roofer will reach out. Free, no obligation."):
     return f'<section class="cta"><div class="wrap"><h2>{t}</h2><p>{s}</p><a class="btn lg" href="/get-quotes/">Get a free quote</a></div></section>'
@@ -154,8 +159,10 @@ def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
             "image": img(photo, 1200, 630)}]
     if faq: sch.append(faq_schema(faq))
+    _com = path.startswith("/commercial") or path in ("/flat-roof-types/", "/tpo-vs-epdm/", "/hoa-roof-replacement/")
     b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
+<div class="wrap narrow inform">{form("Talk to a commercial roofer" if _com else "Get a free quote from a local roofer", "a", "commercial" if _com else "home")}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
     return page(path, title, desc, b, sch, [(crumb, path)], og_img=photo)
@@ -771,7 +778,8 @@ def state_page(st):
 <p>Don't see your city? Homeowners anywhere in {sname} can <a href="/get-quotes/">request a free quote</a>. If we can't find a roofer serving your ZIP code, we'll let you know.</p>
 <h2>Common roof problems in {sname}</h2><ul>{risks}</ul><p>{cl['materials']}</p>
 <div class="callout"><b>Tip:</b> {cl['tip']}</div>
-<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>{cta()}"""
+<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>
+<div class="wrap narrow inform">{form(f'Free roof quote in {sname}', 'st')}</div>{cta()}"""
     return path, page(path, f"Roofers in {sname}: Free Roof Quotes by City | {BRAND}",
         f"Find roofers in {sname}. Get a free roof inspection and quote from an independent local roofing contractor in your city.",
         body, [dict(SVC, name=f"Free roofer referrals in {sname}", areaServed={"@type": "State", "name": sname})], [(sname, path)])
