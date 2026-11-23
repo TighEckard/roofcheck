@@ -105,7 +105,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <p>A free referral service that connects homeowners across the U.S. with independent local roofing contractors.</p>
 <p class="disc"><b>Bedrock Roof is not a roofing contractor</b> and does not perform, guarantee or warranty any roofing work. Contractors are independent businesses and may pay us for introductions. Always check a contractor's license, insurance and references before you sign anything.</p></div>
 <div><h4>Homeowners</h4><a href="/get-quotes/">Get a free quote</a><a href="/free-roof-inspection/">Free roof inspection</a><a href="/commercial-roof-inspection/">Commercial inspection</a><a href="/how-it-works/">How it works</a><a href="/roofers/">Find a roofer by state</a><a href="/faq/">FAQ</a></div>
-<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
+<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/roof-cost-calculator/">Roof cost calculator</a><a href="/roof-repair-cost/">Roof repair cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
 <div><h4>Company</h4><a href="/about/">About us</a><a href="/editorial-policy/">Editorial policy</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </div><div class="wrap legal">&copy; 2026 {BRAND}. Photos from <a href="https://unsplash.com" rel="nofollow">Unsplash</a>, shown for illustration.</div></footer>
 <a class="mbar" href="/get-quotes/" data-mbar>Get a free roof quote</a>
@@ -247,6 +247,7 @@ cost = article("/roof-replacement-cost/", "Roof Replacement Cost: 2026 Homeowner
  "Typical U.S. roof replacement costs, what drives the price, and how to compare quotes fairly.",
  "Here are typical national price ranges, the factors that move the number up or down, and how to compare quotes so you're not overpaying.",
  """<div class="callout"><b>Quick answer:</b> A full roof replacement in the U.S. averages about <b>$9,500</b>, and most jobs fall between about <b>$5,800 and $46,000</b>. That works out to roughly <b>$4 to $11 per square foot</b>. <span class="src">Source: Angi data, as reported by <a href="https://www.nerdwallet.com/article/mortgage/roof-replacement-cost" rel="nofollow noopener">NerdWallet</a>.</span></div>
+<p><a class="btn" href="/roof-cost-calculator/">Estimate your roof with our free calculator &rarr;</a></p>
 <p>These are national ballpark figures. Your price depends on your roof and your market, and the only way to know for sure is a written quote after an inspection.</p>
 <h2>What drives the cost</h2>
 <ul><li><b>Roof size.</b> Roofers price by the "square" (100 sq ft of roof). Your roof area is usually larger than your home's floor area.</li>
@@ -611,7 +612,14 @@ GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", 
  ("/commercial-roof-coatings/", "Commercial roof coatings: restore or replace?", "When silicone, acrylic or polyurethane coatings make sense."),
  ("/commercial-roof-maintenance/", "Commercial roof maintenance checklist", "What property managers and HOAs should inspect, and how often.")]
 from guides2 import G2
-G2_PAGES = []
+import guides3
+from guides3 import G3
+G2 = G2 + G3
+GUIDES.insert(1, (guides3.CALC_PATH, guides3.CALC_H1[0].upper() + guides3.CALC_H1[1:], guides3.CALC_BLURB))
+calc = article(guides3.CALC_PATH, guides3.CALC_TITLE, guides3.CALC_H1, guides3.CALC_DESC,
+ "Enter your home's size, roof pitch and material for a ballpark price range, then get a real quote from a local roofer.",
+ guides3.CALC_BODY.replace("WIDGET", guides3.CALC_WIDGET), "Roof cost calculator", P["home2"], guides3.CALC_FAQ)
+G2_PAGES = [(guides3.CALC_PATH, calc)]
 for _p, _t, _h, _d, _i, _b, _c, _ph, _fq, _blurb, _rel in G2:
     G2_PAGES.append((_p, article(_p, _t, _h, _d, _i, _b, _c, P[_ph], _fq)))
     GUIDES.append((_p, _h[0].upper() + _h[1:], _blurb))
@@ -965,7 +973,10 @@ RELATED.update({g[0]: g[10] for g in G2})
 RELATED["/choosing-a-roofer/"] = ["/roofing-scams/", "/roof-warranty/", "/roof-replacement-permit/", "/roof-replacement-cost/"]
 RELATED["/roofing-materials/"] = ["/metal-roof-vs-shingles/", "/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/"]
 RELATED["/signs-you-need-a-new-roof/"] = ["/roof-inspection/", "/how-long-does-a-roof-last/", "/roof-repair-or-replace/", "/best-time-to-replace-roof/"]
-RELATED["/roof-replacement-cost/"] = ["/roofing-materials/", "/metal-roof-vs-shingles/", "/roof-replacement-process/", "/insurance-roof-replacement/"]
+RELATED["/roof-replacement-cost/"] = ["/roof-cost-calculator/", "/roof-repair-cost/", "/metal-roof-vs-shingles/", "/insurance-roof-replacement/"]
+RELATED["/roof-cost-calculator/"] = ["/roof-replacement-cost/", "/roof-repair-cost/", "/roofing-materials/", "/insurance-roof-replacement/"]
+RELATED["/roof-repair-or-replace/"] = ["/roof-repair-cost/", "/roof-cost-calculator/", "/signs-you-need-a-new-roof/", "/roof-leak/"]
+RELATED["/roof-leak/"] = ["/roof-repair-cost/", "/roof-repair-or-replace/", "/storm-damage/", "/roof-insurance-claim/"]
 
 def fill_related(path, doc):
     if "RELATED" not in doc: return doc
