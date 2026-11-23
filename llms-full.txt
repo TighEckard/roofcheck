@@ -43,6 +43,8 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: A full roof replacement in the U.S. averages about $9,500, and most jobs fall between about $5,800 and $46,000. That works out to roughly $4 to $11 per square foot. Source: Angi data, as reported by NerdWallet.
 
+Estimate your roof with our free calculator →
+
 These are national ballpark figures. Your price depends on your roof and your market, and the only way to know for sure is a written quote after an inspection.
 
 ## What drives the cost
@@ -96,7 +98,7 @@ While you wait: 7 questions to ask any roofer →
 A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
-Roofing materials comparedMetal roof vs. asphalt shingles: which is better?What to expect during a roof replacementDoes insurance cover roof replacement?
+Roof replacement cost calculatorHow much does roof repair cost?Metal roof vs. asphalt shingles: which is better?Does insurance cover roof replacement?
 
 ## Frequently asked questions
 
@@ -108,6 +110,114 @@ About $4 to $11 per square foot for a typical replacement, according to Angi dat
 
 ### Why are my quotes so different?
 Quotes vary with the materials, how many layers come off, whether decking needs replacing, ventilation and flashing work, the warranty offered, and the contractor's overhead. Ask each roofer to itemize so you compare the same scope.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-cost-calculator/
+
+Homeowner guide
+
+# Roof replacement cost calculator
+Enter your home's size, roof pitch and material for a ballpark price range, then get a real quote from a local roofer.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: A new roof in the U.S. costs about $9,500 on average, and most jobs fall between about $5,800 and $46,000, or roughly $4 to $11 per square foot of roof with typical materials. Use the calculator below to scale that to your home. Source: Angi data, as reported by NerdWallet.
+
+## Estimate your new roof
+Takes 20 seconds. Nothing is sent until you ask for a quote.
+
+Home size (sq ft of living space)
+
+Stories123
+
+Roof pitch
+Low (walkable, about 4/12)Medium (typical, about 6/12)
+Steep (hard to walk, about 9/12)Very steep (12/12 or more)
+Roofing material
+Asphalt shinglesSynthetic (composite) shingles
+Wood shingles or shakesMetal shingles or panels
+Clay or concrete tileSlate
+Know your roof area? (optional, in sq ft; overrides the size above)
+Show my estimate
+
+ to 
+
+Estimated roof area: sq ft (about roofing squares), including $1,000 to $3,000 for a steep roof.
+
+This is a national ballpark, not a quote. Local labor, tear-off, decking repairs and permits can move it a lot.
+
+Get a real price from a local roofer (free)
+
+## How the calculator works
+
+- Roof area. We divide your living space by the number of stories to get the footprint, add 10% for overhangs, then multiply by a standard pitch factor (1.05 for a low 4/12 roof up to 1.41 for a 12/12 roof). If you enter your roof area, we use that instead.
+
+- Base price. Roof area times $4 to $11 per square foot, the national installed range for a typical asphalt roof reported by NerdWallet from Angi data.
+
+- Material. For other materials we add the difference between that material's cost per square foot and asphalt's ($1 to $1.20), using the same source: synthetic $5–$12, wood $6–$15, metal $6–$16, clay or concrete tile $10–$20, slate $10–$30 per square foot.
+
+- Steep roofs. A steeply sloped roof can add about $1,000 to $3,000, per the same source.
+
+Results are rounded to the nearest $100. They don't include extended warranties (about $500 to $5,000), permit fees (often up to $500) or rotted decking, which a roofer can only price after an inspection.
+
+## Typical cost by house size
+
+Roof area | Typical installed price | 
+
+1,000 sq ft | $4,000 to $11,000 | 
+1,500 sq ft | $6,000 to $16,500 | 
+
+2,000 sq ft | $8,000 to $22,000 | 
+2,500 sq ft | $10,000 to $27,500 | 
+
+3,000 sq ft | $12,000 to $33,000 | 
+
+Source: NerdWallet, typical materials.
+
+## Why your real quote may differ
+
+- Local labor. Labor is often more than half the bill and runs higher in expensive metros and right after big storms.
+
+- Tear-off. Removing one or more old layers adds labor and disposal.
+
+- Decking. Soft or rotted boards are replaced per sheet once the old roof is off. Ask for that price in writing.
+
+- Roof shape. Valleys, dormers, chimneys and skylights add flashing work.
+
+- Insurance. If hail or wind damaged the roof, your policy may cover part of it. See does insurance cover roof replacement?
+
+## Commercial or flat roof?
+Commercial roofs are priced differently (membrane type, insulation, drains and rooftop units). See what drives commercial roof replacement cost or ask for a free commercial inspection below.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
+## Related guides
+How much does a roof replacement cost?How much does roof repair cost?Roofing materials comparedDoes insurance cover roof replacement?
+
+## Frequently asked questions
+
+### How accurate is a roof cost calculator?
+It gives a ballpark range based on national data. Your actual price depends on local labor, your roof's shape, how many layers need to come off and whether the decking needs repair. Only a written quote after an inspection is exact.
+
+### How do I measure my roof area?
+Roofers measure it for you during an inspection, often from satellite imagery. As a rough guide, roof area is your home's footprint plus overhangs, multiplied by a factor for the pitch: about 1.05 for a low roof and up to about 1.41 for a very steep one.
+
+### What is a roofing square?
+A square is 100 square feet of roof. A 2,000 sq ft roof is 20 squares. Quotes and material orders are usually priced by the square.
+
+### Why is my quote higher than the calculator?
+Common reasons are higher local labor rates, a steep or complex roof, extra layers to tear off, decking repairs, upgraded underlayment or an extended warranty. Ask the roofer to itemize the quote, or get a free second opinion.
+
+### Does homeowners insurance pay for a new roof?
+It may, if the roof was damaged by a covered event like hail or wind. Wear and tear from age usually isn't covered, and the final decision is your insurer's.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.
@@ -326,7 +436,7 @@ While you wait: 7 questions to ask any roofer →
 A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
-Should you repair or replace your roof?What to do after storm damage9 signs you might need a new roofHow to file a roof insurance claim, step by step
+How much does roof repair cost?Should you repair or replace your roof?What to do after storm damageHow to file a roof insurance claim, step by step
 
 ## Frequently asked questions
 
@@ -549,7 +659,7 @@ While you wait: 7 questions to ask any roofer →
 A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
-9 signs you might need a new roofHow much does a roof replacement cost?Roof leaking? What to do right nowHow to choose a roofer you can trust
+How much does roof repair cost?Roof replacement cost calculator9 signs you might need a new roofRoof leaking? What to do right now
 
 ## Frequently asked questions
 
@@ -2782,6 +2892,110 @@ Yes. Pick Apts / HOA on the form. See our HOA roof replacement guide.
 
 ### Do I need to be the owner?
 Owners, property managers and board members can all request an inspection.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-repair-cost/
+
+Homeowner guide
+
+# How much does roof repair cost?
+Typical national prices for common roof repairs, and how to tell a fair repair quote from a push to replace.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Most roof repairs in the U.S. cost between about $393 and $1,934, with an average of about $1,155. Small fixes like a vent boot or a patched hole can be a few hundred dollars, while hail damage or sagging can run into the thousands. A full replacement typically costs about $5,900 to $12,900 by comparison. Source: Angi survey of more than 30,000 customers (2025 data).
+
+## Cost by repair type
+
+Repair | Typical cost | 
+
+Vent repair | $75 to $250 | 
+Hole patching | $100 to $1,000 | 
+
+Flashing | $200 to $500 | 
+Ridge cap repair | $200 to $750 | 
+
+Skylight leak | $300 to $800 | 
+Roof leak | $360 to $1,550 | 
+
+Ice dam removal | $500 to $700 | 
+Roof truss | $500 to $5,000 | 
+
+Soffit and fascia | $600 to $6,000 | 
+Hail damage | $700 to $4,000 | 
+
+Sagging roof | $1,500 to $1,700 | 
+Eave repair | $1,500 to $1,700 | 
+
+Source: Angi.
+
+## Cost by size of the damaged area
+
+Area repaired | Typical cost | 
+
+100 sq ft | $350 to $1,200 | 
+200 sq ft | $700 to $2,400 | 
+
+500 sq ft | $1,750 to $6,000 | 
+1,000 sq ft | $3,500 to $12,000 | 
+
+## Average repair cost by roof material
+
+Roof type | Average repair | 
+
+Flat, foam or single-ply | $400 | 
+Composite | $450 | 
+Wood shake | $750 | 
+
+Asphalt shingles | $975 | 
+Tile | $1,000 | 
+Metal | $1,700 | 
+Slate | $1,800 | 
+
+Source: Angi.
+
+## Other costs to expect
+
+- Inspection: about $75 to $600 when it isn't free.
+- Emergency or after-hours call: often an extra $100 to $300 or more.
+- Labor: roughly $45 to $75 per hour.
+
+## Repair or replace?
+Repair usually makes sense when the damage is limited to one area and the roof has years of life left. Replacement starts to make sense when repairs are adding up, damage is spread across the roof, or the roof is near the end of its life. If one repair would cost a large share of a new roof, get a replacement quote too. See repair or replace and use our roof cost calculator to compare.
+
+## How to get a fair repair price
+
+- Ask for photos of the damage and a written scope before work starts.
+- Ask whether the price includes matching shingles and flashing, not just sealant.
+- If the damage came from a storm, ask the roofer to document it before you call your insurer. See filing a roof claim.
+- Be careful with anyone who finds damage you can't see in the photos. See roofing scams.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
+## Related guides
+Roof replacement cost calculatorShould you repair or replace your roof?Roof leaking? What to do right nowHow much does a roof replacement cost?
+
+## Frequently asked questions
+
+### How much does it cost to fix a roof leak?
+Angi reports most roof leak repairs cost about $360 to $1,550, depending on the cause, how easy it is to reach and how much water damage there is underneath.
+
+### Is it worth repairing an old roof?
+If the damage is small and the rest of the roof is sound, a repair can buy years. If the roof is near the end of its expected life or problems keep coming back, putting the money toward a replacement is often better value.
+
+### Does insurance pay for roof repairs?
+It may if the damage came from a sudden covered event like hail, wind or a fallen tree, minus your deductible. Wear and tear and slow leaks from age usually aren't covered.
+
+### Can I get a free roof repair estimate?
+Many roofers inspect and quote repairs for free. You can request a free inspection from a local roofer on this page.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.

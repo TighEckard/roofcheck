@@ -113,3 +113,6 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}th,td{tex
 @media (max-width:760px){.tnote{left:8px;right:8px;bottom:auto;top:auto;bottom:76px;padding:6px 10px;font-size:12px;white-space:nowrap}.tnote button{padding:3px 10px;margin:0 0 0 6px}}
 .qcheck{border:2px dashed #e8a33d;margin-top:20px}.qcheck h2{font-size:22px}
 @media(min-width:960px){.city .hgrid{align-items:start}.city .hcopy{padding-top:24px}}
+.calc{margin:28px 0;border:2px solid var(--amber)}.calc select{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit;background:#fff;margin-bottom:12px}
+.calc-out{margin-top:18px;padding:18px;background:var(--bg);border-radius:12px;text-align:center}.calc-range{font-size:30px;font-weight:800;color:var(--navy);margin:0 0 6px}.calc-sub{font-size:14px;color:var(--mut);margin:6px 0}.calc-out .btn{margin-top:12px}
+.calc label{display:block;font-weight:600;font-size:14px;margin:4px 0 6px}.calc input{width:100%;padding:13px 14px;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);margin-bottom:12px}.calc .opt{font-weight:400;color:var(--mut)}
