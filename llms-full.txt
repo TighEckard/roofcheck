@@ -43,6 +43,8 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
  Quick answer: A full roof replacement in the U.S. averages about $9,500, and most jobs fall between about $5,800 and $46,000. That works out to roughly $4 to $11 per square foot. Source: Angi data, as reported by NerdWallet.
 
+Estimate your roof with our free calculator →
+
 These are national ballpark figures. Your price depends on your roof and your market, and the only way to know for sure is a written quote after an inspection.
 
 ## What drives the cost
@@ -88,8 +90,15 @@ Slate | $$$$ | Premium and very long-lived. Needs a specialist installer. |
 ## Can insurance pay for it?
 Homeowners insurance may cover damage from a sudden event like hail or wind, but usually not wear and tear from age. Coverage depends on your policy and your insurer's decision. A roofer can document damage, but no one can promise approval. See what to do after storm damage.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
-Roofing materials comparedMetal roof vs. asphalt shingles: which is better?What to expect during a roof replacementDoes insurance cover roof replacement?
+Roof replacement cost calculatorHow much does roof repair cost?Metal roof vs. asphalt shingles: which is better?Does insurance cover roof replacement?
 
 ## Frequently asked questions
 
@@ -101,6 +110,114 @@ About $4 to $11 per square foot for a typical replacement, according to Angi dat
 
 ### Why are my quotes so different?
 Quotes vary with the materials, how many layers come off, whether decking needs replacing, ventilation and flashing work, the warranty offered, and the contractor's overhead. Ask each roofer to itemize so you compare the same scope.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-cost-calculator/
+
+Homeowner guide
+
+# Roof replacement cost calculator
+Enter your home's size, roof pitch and material for a ballpark price range, then get a real quote from a local roofer.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: A new roof in the U.S. costs about $9,500 on average, and most jobs fall between about $5,800 and $46,000, or roughly $4 to $11 per square foot of roof with typical materials. Use the calculator below to scale that to your home. Source: Angi data, as reported by NerdWallet.
+
+## Estimate your new roof
+Takes 20 seconds. Nothing is sent until you ask for a quote.
+
+Home size (sq ft of living space)
+
+Stories123
+
+Roof pitch
+Low (walkable, about 4/12)Medium (typical, about 6/12)
+Steep (hard to walk, about 9/12)Very steep (12/12 or more)
+Roofing material
+Asphalt shinglesSynthetic (composite) shingles
+Wood shingles or shakesMetal shingles or panels
+Clay or concrete tileSlate
+Know your roof area? (optional, in sq ft; overrides the size above)
+Show my estimate
+
+ to 
+
+Estimated roof area: sq ft (about roofing squares), including $1,000 to $3,000 for a steep roof.
+
+This is a national ballpark, not a quote. Local labor, tear-off, decking repairs and permits can move it a lot.
+
+Get a real price from a local roofer (free)
+
+## How the calculator works
+
+- Roof area. We divide your living space by the number of stories to get the footprint, add 10% for overhangs, then multiply by a standard pitch factor (1.05 for a low 4/12 roof up to 1.41 for a 12/12 roof). If you enter your roof area, we use that instead.
+
+- Base price. Roof area times $4 to $11 per square foot, the national installed range for a typical asphalt roof reported by NerdWallet from Angi data.
+
+- Material. For other materials we add the difference between that material's cost per square foot and asphalt's ($1 to $1.20), using the same source: synthetic $5–$12, wood $6–$15, metal $6–$16, clay or concrete tile $10–$20, slate $10–$30 per square foot.
+
+- Steep roofs. A steeply sloped roof can add about $1,000 to $3,000, per the same source.
+
+Results are rounded to the nearest $100. They don't include extended warranties (about $500 to $5,000), permit fees (often up to $500) or rotted decking, which a roofer can only price after an inspection.
+
+## Typical cost by house size
+
+Roof area | Typical installed price | 
+
+1,000 sq ft | $4,000 to $11,000 | 
+1,500 sq ft | $6,000 to $16,500 | 
+
+2,000 sq ft | $8,000 to $22,000 | 
+2,500 sq ft | $10,000 to $27,500 | 
+
+3,000 sq ft | $12,000 to $33,000 | 
+
+Source: NerdWallet, typical materials.
+
+## Why your real quote may differ
+
+- Local labor. Labor is often more than half the bill and runs higher in expensive metros and right after big storms.
+
+- Tear-off. Removing one or more old layers adds labor and disposal.
+
+- Decking. Soft or rotted boards are replaced per sheet once the old roof is off. Ask for that price in writing.
+
+- Roof shape. Valleys, dormers, chimneys and skylights add flashing work.
+
+- Insurance. If hail or wind damaged the roof, your policy may cover part of it. See does insurance cover roof replacement?
+
+## Commercial or flat roof?
+Commercial roofs are priced differently (membrane type, insulation, drains and rooftop units). See what drives commercial roof replacement cost or ask for a free commercial inspection below.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
+## Related guides
+How much does a roof replacement cost?How much does roof repair cost?Roofing materials comparedDoes insurance cover roof replacement?
+
+## Frequently asked questions
+
+### How accurate is a roof cost calculator?
+It gives a ballpark range based on national data. Your actual price depends on local labor, your roof's shape, how many layers need to come off and whether the decking needs repair. Only a written quote after an inspection is exact.
+
+### How do I measure my roof area?
+Roofers measure it for you during an inspection, often from satellite imagery. As a rough guide, roof area is your home's footprint plus overhangs, multiplied by a factor for the pitch: about 1.05 for a low roof and up to about 1.41 for a very steep one.
+
+### What is a roofing square?
+A square is 100 square feet of roof. A 2,000 sq ft roof is 20 squares. Quotes and material orders are usually priced by the square.
+
+### Why is my quote higher than the calculator?
+Common reasons are higher local labor rates, a steep or complex roof, extra layers to tear off, decking repairs, upgraded underlayment or an extended warranty. Ask the roofer to itemize the quote, or get a free second opinion.
+
+### Does homeowners insurance pay for a new roof?
+It may, if the roof was damaged by a covered event like hail or wind. Wear and tear from age usually isn't covered, and the final decision is your insurer's.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.
@@ -155,6 +272,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 Roofers we connect you with are independent businesses. We encourage you to run every one through this checklist.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roofing scams and red flagsRoof warranties explainedDo you need a permit to replace your roof?How much does a roof replacement cost?
 
@@ -200,6 +324,13 @@ A roofer can inspect, document damage with photos and give you a written estimat
 ## 6. Watch out for storm chasers
 After big storms, out-of-town crews often go door to door. Check the license and local address, never pay large sums up front, and don't sign anything under pressure. See our roofer checklist.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How to file a roof insurance claim, step by stepHow to tell if hail damaged your roofRoofing scams and red flagsRoof leaking? What to do right now
 
@@ -243,6 +374,13 @@ Hail can leave dark spots where granules were knocked off, soft "bruises" that f
 - Get a roofer's inspection and written findings.
 - Report the damage to your insurer and ask about your deductible. Some states and policies have separate wind and hail deductibles.
 - Be careful with storm chasers knocking on doors. Check the license and local address of anyone you hire. See how to choose a roofer.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Are Class 4 impact-resistant shingles worth it?How to file a roof insurance claim, step by stepWhat to do after storm damageRoofing scams and red flags
@@ -290,8 +428,15 @@ Updated November 18, 2026 · By the Bedrock Roof team
 ## Get it inspected
 Water often travels along rafters before it drips, so the leak on your ceiling may be several feet from the hole in the roof. A roofer can trace it and tell you whether a repair will do or whether the roof is near the end of its life. See repair or replace?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
-Should you repair or replace your roof?What to do after storm damage9 signs you might need a new roofHow to file a roof insurance claim, step by step
+How much does roof repair cost?Should you repair or replace your roof?What to do after storm damageHow to file a roof insurance claim, step by step
 
 ## Frequently asked questions
 
@@ -342,6 +487,13 @@ Most standard homeowners policies cover sudden, accidental damage from covered e
 
 See also: what to do after storm damage and hail damage.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How to file a roof insurance claim, step by stepWhat to do after storm damageHow to tell if hail damaged your roofRoofing scams and red flags
 
@@ -388,6 +540,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 - Rising energy bills together with an old roof can point to ventilation or insulation problems.
 
 One sign alone doesn't always mean you need a whole new roof. A good roofer will explain what they see and whether a repair is enough.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 What happens during a roof inspection?How long does a roof last?Should you repair or replace your roof?When is the best time of year to replace a roof?
@@ -444,6 +603,13 @@ Flat roofs (TPO, EPDM, modified bitumen) | Roughly 15 to 30 years depending on t
 - Fix small problems like loose flashing or cracked pipe boots early.
 - Make sure the attic is properly ventilated and insulated.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roofing materials compared9 signs you might need a new roofHow much does a roof replacement cost?Are Class 4 impact-resistant shingles worth it?
 
@@ -485,8 +651,15 @@ Updated November 18, 2026 · By the Bedrock Roof team
 ## Get an honest opinion
 Ask the roofer to show you photos of what they found and explain why they recommend repair or replacement. For a big decision, a second opinion is always reasonable.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
-9 signs you might need a new roofHow much does a roof replacement cost?Roof leaking? What to do right nowHow to choose a roofer you can trust
+How much does roof repair cost?Roof replacement cost calculator9 signs you might need a new roofRoof leaking? What to do right now
 
 ## Frequently asked questions
 
@@ -548,6 +721,13 @@ With replacement-cost coverage, insurers often pay the depreciated amount first 
 - Paying a large deposit before the claim is approved.
 
 Related: does insurance cover roof replacement? and what to do after storm damage.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Does insurance cover roof replacement?What to do after storm damageRoofing scams and red flagsHow to tell if hail damaged your roof
@@ -624,6 +804,13 @@ Stop payment if you can, keep every document and photo, and report it to your st
 
 For the full hiring checklist, see how to choose a roofer you can trust.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How to choose a roofer you can trustHow to file a roof insurance claim, step by stepWhat to do after storm damageHow much does a roof replacement cost?
 
@@ -696,6 +883,13 @@ Our city pages list the main roof risks and common material choices for each cit
 
 Material is only part of the cost. See roof replacement cost and how long a roof lasts.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Metal roof vs. asphalt shingles: which is better?How long does a roof last?Are Class 4 impact-resistant shingles worth it?How much does a roof replacement cost?
 
@@ -751,6 +945,13 @@ Under UL 2218, steel balls of increasing size are dropped onto the roofing. Clas
 - Keep the product label or invoice showing the UL 2218 Class 4 rating.
 
 Related: how to tell if hail damaged your roof and roofing materials compared.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 How to tell if hail damaged your roofRoofing materials comparedHow to file a roof insurance claim, step by stepHow much does a roof replacement cost?
@@ -831,6 +1032,10 @@ Flat and low-slope roofs don't shed water as quickly as steep roofs, so small pr
 - HOA and condo roof replacement
 - Flat roof types and roof coatings
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Flat roof types comparedCommercial roof coatings: restore or replace?Commercial roof maintenance checklistHow to file a roof insurance claim, step by step
 
@@ -890,6 +1095,10 @@ Rowhouses, mid-century modern homes and additions often have flat or low-slope s
 
 Related: commercial roofing and roof coatings.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Commercial roofing: free inspections and quotesCommercial roof coatings: restore or replace?Roofing materials comparedCommercial roof maintenance checklist
 
@@ -948,6 +1157,10 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 Related: flat roof types compared and commercial roof maintenance checklist.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Flat roof types comparedCommercial roof maintenance checklistCommercial roofing: free inspections and quotesShould you repair or replace your roof?
 
@@ -1000,6 +1213,10 @@ Keep the installation date, contractor, roof system and warranty, plus every ins
 Coordinate access with residents, plan work around weather and occupancy, and keep your reserve study up to date with current roof conditions.
 
 Related: commercial roofing, flat roof types and roof coatings.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
 
 ## Related guides
 Commercial roofing: free inspections and quotesCommercial roof coatings: restore or replace?How to file a roof insurance claim, step by stepRoofing scams and red flags
@@ -1063,6 +1280,13 @@ In hail country, ask your insurer how they treat cosmetic dents on metal. Some p
 ## Get both priced
 Prices vary a lot by region and roof shape, so ask a roofer to quote both a shingle and a metal option on the same visit. Compare the full scope: tear-off, decking repair, underlayment, flashing, ventilation and warranty.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roofing materials comparedHow long does a roof last?Are Class 4 impact-resistant shingles worth it?How much does a roof replacement cost?
 
@@ -1123,6 +1347,13 @@ Be careful if someone damages the roof during the inspection, won't show you pho
 ## When to get one
 After a major hail or wind storm, before buying a home, when your roof is 15+ years old, or any time you see a leak or stain. Commercial roofs should be checked twice a year; see our commercial checklist.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 9 signs you might need a new roofHow to tell if hail damaged your roofHow to choose a roofer you can trustRoofing scams and red flags
 
@@ -1173,6 +1404,13 @@ Some places inspect only at the end. Others also inspect mid-job, for example af
 
 ## HOAs
 If you have an HOA, you may also need its approval for material and color, separate from the city permit.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 How to choose a roofer you can trustHow much does a roof replacement cost?Roofing scams and red flagsWhat to expect during a roof replacement
@@ -1226,6 +1464,13 @@ Covers installation errors such as poor flashing, wrong nailing or bad ventilati
 - Is the warranty transferable if I sell?
 - What do I need to do to keep it valid?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How to choose a roofer you can trustRoofing materials comparedHow long does a roof last?What to expect during a roof replacement
 
@@ -1277,6 +1522,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 - Get quotes a month or two before you want the work.
 - Ask about the roofer's backlog and weather-delay policy.
 - Don't sign with a door-knocker just because a storm just passed. See roofing scams.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 9 signs you might need a new roofWhat to expect during a roof replacementHow much does a roof replacement cost?What to do after storm damage
@@ -1332,6 +1584,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 ## Final walkthrough
 Walk the property with the crew lead. Ask for photos of the decking and underlayment stages, check gutters and the yard for nails, confirm the permit passed inspection, and get warranty paperwork before final payment. See roof warranties.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Do you need a permit to replace your roof?Roof warranties explainedHow to choose a roofer you can trustHow much does a roof replacement cost?
@@ -1393,6 +1652,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 More: roof replacement cost and roofing scams.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How much does a roof replacement cost?How to choose a roofer you can trustRoofing scams and red flagsRoof warranties explained
 
@@ -1447,6 +1713,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 Heat cables can help in trouble spots but don't fix the cause. More: roof leaking now?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roof leaking? What to do right nowRoof and attic ventilation explained9 signs you might need a new roofHow to file a roof insurance claim, step by step
 
@@ -1500,6 +1773,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 - What exhaust will you install, and will it meet the shingle maker's requirements?
 
 Note: some homes use an unvented ("conditioned") attic with insulation under the roof deck. That's a different design, so don't add vents without professional advice.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Ice dams: what causes them and how to prevent themHow long does a roof last?Roof warranties explainedWhat happens during a roof inspection?
@@ -1558,6 +1838,13 @@ Some homeowners qualify for help. Low-income and older homeowners can ask their 
 
 More: does insurance cover roof replacement?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How much does a roof replacement cost?Does insurance cover roof replacement?How to read and compare roofing estimatesShould you repair or replace your roof?
 
@@ -1613,6 +1900,13 @@ Price | Lowest | Somewhat higher |
 ## Beyond architectural
 "Designer" or luxury shingles are heavier still and mimic slate or shake. Class 4 impact-resistant versions are available in many architectural lines. See Class 4 shingles and all roofing materials.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roofing materials comparedMetal roof vs. asphalt shingles: which is better?Are Class 4 impact-resistant shingles worth it?How long does a roof last?
 
@@ -1661,6 +1955,13 @@ Licensed home inspectors, contractors, engineers and other professionals allowed
 If you're replacing your roof, ask the roofer about upgrades that affect the report, such as sealing the deck and re-nailing the decking to current code. Then get a new inspection after the permit passes and send it to your insurer.
 
 More: Florida roofers and licensing and after storm damage.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 What to do after storm damageHow to file a roof insurance claim, step by stepDo you need a permit to replace your roof?Old roof and home insurance: what to know
@@ -1712,6 +2013,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 - Consider durable materials under the array, like architectural shingles or metal.
 - Keep records of both warranties together.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 How long does a roof last?What happens during a roof inspection?Metal roof vs. asphalt shingles: which is better?How to pay for a new roof: financing options
 
@@ -1758,6 +2066,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 - Ask an independent agent to shop other carriers.
 - If you replace the roof, send the permit and invoice to your insurer, and ask about discounts.
 - Contact your state insurance department if you think a notice doesn't follow state rules.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Does insurance cover roof replacement?How to file a roof insurance claim, step by stepWhat happens during a roof inspection?9 signs you might need a new roof
@@ -1808,6 +2123,13 @@ Updated November 18, 2026 · By the Bedrock Roof team
 A tarp is temporary. Sun and wind wear it down, so schedule permanent repairs as soon as possible. After hurricanes, some areas have free federal or local temporary roofing programs; check official announcements.
 
 More: storm damage guide and filing a claim.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 What to do after storm damageRoof leaking? What to do right nowHow to file a roof insurance claim, step by stepRoofing scams and red flags
@@ -1875,6 +2197,13 @@ Some shingle manufacturers limit or exclude warranty coverage for overlays, or o
 - What does the shingle warranty say about overlays?
 - Can you quote both options so I can compare?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 What to expect during a roof replacementHow much does a roof replacement cost?Roof warranties explainedShould you repair or replace your roof?
 
@@ -1930,6 +2259,13 @@ Algae is mostly a looks problem, although dark streaks can make a roof absorb a 
 - Keep gutters and valleys clear of leaves.
 - Zinc or copper strips near the ridge release metal ions in the rain that discourage growth.
 - When you replace the roof, choose algae-resistant (AR) shingles, which contain copper granules.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 9 signs you might need a new roofHow long does a roof last?What happens during a roof inspection?Roofing materials compared
@@ -1988,6 +2324,13 @@ If the roof is in good shape, a roofer can usually replace the failing flashing 
 - Is drip edge included? Many codes now require it.
 - What material are the pipe boots, and how long do they last?
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
 ## Related guides
 Roof leaking? What to do right nowShould you repair or replace your roof?What happens during a roof inspection?How to read and compare roofing estimates
 
@@ -2044,6 +2387,13 @@ Self-adhering membrane (ice and water shield) | Rubberized asphalt with a sticky
 - Whether it meets the shingle maker's requirements for the warranty you're being sold.
 
 Compare quotes line by line with our guide to reading a roofing estimate.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 How to read and compare roofing estimatesIce dams: what causes them and how to prevent themWhat to expect during a roof replacementRoofing materials compared
@@ -2103,6 +2453,13 @@ Lifespan | Often 50+ years | Often 40–50+ years |
 
 ## Hiring for tile work
 Not every roofer does tile. Ask how many tile roofs the crew has done, how they walk on the roof without cracking tiles, and whether the quote includes new underlayment and flashing. In hurricane areas, ask how the tiles will be fastened to meet local wind rules.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
 
 ## Related guides
 Roofing materials comparedHow long does a roof last?Roof underlayment: felt vs. synthetic, and why it mattersRoof flashing: what it is and why it leaks
@@ -2168,6 +2525,10 @@ Relative cost | Moderate | Often lowest | Highest of the three |
 
 More: flat roof types, roof coatings and commercial roofing.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Flat roof types comparedCommercial roofing: free inspections and quotesCommercial roof coatings: restore or replace?What drives commercial roof replacement cost?
 
@@ -2221,6 +2582,10 @@ Updated November 18, 2026 · By the Bedrock Roof team
 ## Repair, coat or replace?
 If the insulation is mostly dry and the membrane is sound, a repair or a restoration coating may extend the roof's life for less. Widespread wet insulation or repeated leaks usually mean replacement. Planned maintenance helps either way; see the maintenance checklist.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Commercial roofing: free inspections and quotesTPO vs. EPDM vs. PVC: which flat roof membrane is best?Commercial roof coatings: restore or replace?Commercial roof maintenance checklist
 
@@ -2273,6 +2638,10 @@ Updated November 18, 2026 · By the Bedrock Roof team
 
 ## Preventing the next one
 Twice-yearly inspections and after-storm checks catch most problems early. Use our commercial roof maintenance checklist.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
 
 ## Related guides
 Commercial roof maintenance checklistCommercial roofing: free inspections and quotesRoof leaking? What to do right nowCommercial roof warranties: manufacturer vs. contractor
@@ -2332,6 +2701,10 @@ Contractor workmanship | Installation mistakes | Often shorter; only as good as 
 
 Homeowner version: residential roof warranties.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Commercial roofing: free inspections and quotesCommercial roof maintenance checklistRoof warranties explainedTPO vs. EPDM vs. PVC: which flat roof membrane is best?
 
@@ -2385,6 +2758,10 @@ Send schedules and notices well ahead: which buildings, which days, parking chan
 ## 5. Insurance and storms
 After hail or wind, check the master policy and deductibles before signing anything. Be wary of contractors going door-to-door asking individual owners to sign. See roofing scams and insurance claims.
 
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
 ## Related guides
 Commercial roofing: free inspections and quotesHow to read and compare roofing estimatesDoes insurance cover roof replacement?How to choose a roofer you can trust
 
@@ -2401,6 +2778,224 @@ Usually, through architectural guidelines, though some states limit restrictions
 
 ### How long does a community roof project take?
 Each building often takes a few days, weather permitting. A whole community may be phased over weeks or years.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/free-roof-inspection/
+
+Homeowner guide
+
+# Get a free roof inspection from a local roofer
+Tell us about your roof and we'll connect you with an independent local roofer for a free inspection and a written quote.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ How it works: fill in the short form on this page (about 30 seconds). We match your request with an independent roofer who serves your ZIP code. They call or text you to set up a time, inspect the roof, and give you their findings and a written quote if work is needed. The inspection is free and you don't have to hire anyone.
+
+## Good times to get a free inspection
+
+- After hail, high wind or a hurricane, even if you don't see damage from the ground.
+- When you find a leak, a ceiling stain or shingles in the yard.
+- When the roof is 15 years old or more.
+- Before you buy or sell a home.
+- If your insurer has asked about your roof's age or condition.
+
+## What the roofer checks
+Shingles or panels, flashing around chimneys and walls, pipe boots and vents, gutters, signs of hail or wind damage, and the attic if it's accessible. Ask for photos of anything they find. See what happens during a roof inspection.
+
+## Why use Bedrock Roof
+
+- Free for you. You never pay us. Roofers may pay us for introductions.
+- One local roofer, not a flood of calls. We try to match each request with one roofer who serves your area.
+- No pressure. You can get more quotes and take your time. Our roofer checklist helps you compare.
+
+Bedrock Roof is a referral service, not a roofing contractor. Roofers are independent businesses. Check any contractor's license and insurance before you sign.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
+## Related guides
+What happens during a roof inspection?What to do after storm damage9 signs you might need a new roofHow to choose a roofer you can trust
+
+## Frequently asked questions
+
+### Is the roof inspection really free?
+Yes. The roofer we connect you with offers a free inspection and quote, and you never pay Bedrock Roof. You only pay if you choose to hire a roofer for work.
+
+### How soon can someone come out?
+It depends on the roofer's schedule and the weather, especially after big storms. Most roofers reach out within a business day to set a time.
+
+### Will the roofer help with my insurance claim?
+Many roofers document storm damage with photos and an estimate you can give your insurer. Your insurance company decides what's covered.
+
+### Do you inspect commercial roofs?
+Yes. Choose Commercial or Apts / HOA on the form and we'll look for a commercial roofer. See our commercial inspection page.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/commercial-roof-inspection/
+
+Commercial roofing
+
+# Free commercial roof inspection and quote
+For offices, retail, warehouses, churches, apartments, condos and HOAs. We connect you with an independent commercial roofer for a free inspection.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ How it works: send the short form on this page with Commercial or Apts / HOA selected. We look for an independent commercial roofer serving your ZIP code, who contacts you to inspect the roof and give you a written report and quote. It's free and there's no obligation.
+
+## What a commercial inspection usually covers
+
+- Membrane condition, seams and punctures on TPO, EPDM, PVC, modified bitumen or built-up roofs.
+- Ponding water, drains, scuppers and gutters.
+- Flashing at parapet walls, curbs, HVAC units and other penetrations.
+- Roof edges and metal coping.
+- Signs of wet insulation; ask whether core samples or an infrared scan are recommended.
+
+## When to request one
+
+- Twice a year as routine maintenance, ideally spring and fall.
+- After hail, high wind or heavy snow.
+- When tenants report leaks or stains.
+- Before buying a building, renewing insurance or planning a reserve study.
+
+## What to ask for afterward
+Photos, a written condition report, and options: repair, restoration coating, or replacement, each with scope and warranty. Our guides on commercial roof cost drivers, TPO vs EPDM vs PVC and commercial warranties help you compare.
+
+Bedrock Roof is a referral service, not a roofing contractor. Verify any contractor's license and insurance before signing.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Related guides
+Commercial roofing: free inspections and quotesCommercial roof maintenance checklistCommercial or flat roof leak: what to do firstTPO vs. EPDM vs. PVC: which flat roof membrane is best?
+
+## Frequently asked questions
+
+### Is a commercial roof inspection free?
+The commercial roofer we connect you with offers a free inspection and quote. Specialized testing, like an infrared moisture survey, may cost extra; ask first.
+
+### How often should a commercial roof be inspected?
+Most roofing groups recommend twice a year and after major storms.
+
+### Can you help HOAs and apartment owners?
+Yes. Pick Apts / HOA on the form. See our HOA roof replacement guide.
+
+### Do I need to be the owner?
+Owners, property managers and board members can all request an inspection.
+
+## Ready for a quote?
+Tell us about your roof and a local roofer will reach out. Free, no obligation.
+Get a free quote
+
+---
+URL: https://bedrockroof.com/roof-repair-cost/
+
+Homeowner guide
+
+# How much does roof repair cost?
+Typical national prices for common roof repairs, and how to tell a fair repair quote from a push to replace.
+Updated November 18, 2026 · By the Bedrock Roof team
+
+ Quick answer: Most roof repairs in the U.S. cost between about $393 and $1,934, with an average of about $1,155. Small fixes like a vent boot or a patched hole can be a few hundred dollars, while hail damage or sagging can run into the thousands. A full replacement typically costs about $5,900 to $12,900 by comparison. Source: Angi survey of more than 30,000 customers (2025 data).
+
+## Cost by repair type
+
+Repair | Typical cost | 
+
+Vent repair | $75 to $250 | 
+Hole patching | $100 to $1,000 | 
+
+Flashing | $200 to $500 | 
+Ridge cap repair | $200 to $750 | 
+
+Skylight leak | $300 to $800 | 
+Roof leak | $360 to $1,550 | 
+
+Ice dam removal | $500 to $700 | 
+Roof truss | $500 to $5,000 | 
+
+Soffit and fascia | $600 to $6,000 | 
+Hail damage | $700 to $4,000 | 
+
+Sagging roof | $1,500 to $1,700 | 
+Eave repair | $1,500 to $1,700 | 
+
+Source: Angi.
+
+## Cost by size of the damaged area
+
+Area repaired | Typical cost | 
+
+100 sq ft | $350 to $1,200 | 
+200 sq ft | $700 to $2,400 | 
+
+500 sq ft | $1,750 to $6,000 | 
+1,000 sq ft | $3,500 to $12,000 | 
+
+## Average repair cost by roof material
+
+Roof type | Average repair | 
+
+Flat, foam or single-ply | $400 | 
+Composite | $450 | 
+Wood shake | $750 | 
+
+Asphalt shingles | $975 | 
+Tile | $1,000 | 
+Metal | $1,700 | 
+Slate | $1,800 | 
+
+Source: Angi.
+
+## Other costs to expect
+
+- Inspection: about $75 to $600 when it isn't free.
+- Emergency or after-hours call: often an extra $100 to $300 or more.
+- Labor: roughly $45 to $75 per hour.
+
+## Repair or replace?
+Repair usually makes sense when the damage is limited to one area and the roof has years of life left. Replacement starts to make sense when repairs are adding up, damage is spread across the roof, or the roof is near the end of its life. If one repair would cost a large share of a new roof, get a replacement quote too. See repair or replace and use our roof cost calculator to compare.
+
+## How to get a fair repair price
+
+- Ask for photos of the damage and a written scope before work starts.
+- Ask whether the price includes matching shingles and flashing, not just sealant.
+- If the damage came from a storm, ask the roofer to document it before you call your insurer. See filing a roof claim.
+- Be careful with anyone who finds damage you can't see in the photos. See roofing scams.
+
+## Thanks, we got your request.
+A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.
+While you wait: 7 questions to ask any roofer →
+
+## Thanks, we got it.
+A local roofer should reach out soon, usually by call or text, to go over your quote.
+
+## Related guides
+Roof replacement cost calculatorShould you repair or replace your roof?Roof leaking? What to do right nowHow much does a roof replacement cost?
+
+## Frequently asked questions
+
+### How much does it cost to fix a roof leak?
+Angi reports most roof leak repairs cost about $360 to $1,550, depending on the cause, how easy it is to reach and how much water damage there is underneath.
+
+### Is it worth repairing an old roof?
+If the damage is small and the rest of the roof is sound, a repair can buy years. If the roof is near the end of its expected life or problems keep coming back, putting the money toward a replacement is often better value.
+
+### Does insurance pay for roof repairs?
+It may if the damage came from a sudden covered event like hail, wind or a fallen tree, minus your deductible. Wear and tear and slow leaks from age usually aren't covered.
+
+### Can I get a free roof repair estimate?
+Many roofers inspect and quote repairs for free. You can request a free inspection from a local roofer on this page.
 
 ## Ready for a quote?
 Tell us about your roof and a local roofer will reach out. Free, no obligation.

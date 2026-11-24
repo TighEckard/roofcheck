@@ -61,6 +61,15 @@ def phone_link(cls="tel"):
     return f'<a class="{cls}" href="tel:{PHONE}">Call {fmt_phone(PHONE)}</a>' if PHONE else ""
 
 import hashlib
+GA_ID = os.environ.get("GA_ID", "")  # Google Analytics 4 measurement ID (G-XXXX). Empty = off.
+CLARITY_ID = os.environ.get("CLARITY_ID", "zgczdoogv0")  # Microsoft Clarity project ID (session recordings + heatmaps). Empty = off.
+# Third-party analytics load only when the visitor hasn't opted out (Do Not Track, Global Privacy Control, or our opt-out link).
+_OK = "var n=navigator,o=n.doNotTrack==='1'||n.globalPrivacyControl;try{o=o||localStorage.getItem('no_track')}catch(e){}"
+_GA = (f"var g=document.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id={GA_ID}';document.head.appendChild(g);"
+       f"window.dataLayer=window.dataLayer||[];window.gtag=function(){{dataLayer.push(arguments)}};gtag('js',new Date());gtag('config','{GA_ID}');") if GA_ID else ""
+_CL = ("(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;"
+       f"t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}})(window,document,'clarity','script','{CLARITY_ID}');") if CLARITY_ID else ""
+GA_TAG = f"<script>window.TRK=1;(function(){{{_OK}if(o)return;{_GA}{_CL}}})();</script>" if (GA_ID or CLARITY_ID) else ""
 JS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.js"), "rb").read()).hexdigest()[:8]
 CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets", "site.css"), "rb").read()).hexdigest()[:8]
 
@@ -85,7 +94,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{GA_TAG}
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, separators=(",", ":"))}</script>
 </head><body>
 <header class="top"><div class="wrap bar"><a class="logo" href="/">{LOGO}<span>Bedrock<b>Roof</b></span></a>
@@ -95,15 +104,16 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <div><a class="logo" href="/">{LOGO}<span>Bedrock<b>Roof</b></span></a>
 <p>A free referral service that connects homeowners across the U.S. with independent local roofing contractors.</p>
 <p class="disc"><b>Bedrock Roof is not a roofing contractor</b> and does not perform, guarantee or warranty any roofing work. Contractors are independent businesses and may pay us for introductions. Always check a contractor's license, insurance and references before you sign anything.</p></div>
-<div><h4>Homeowners</h4><a href="/get-quotes/">Get a free quote</a><a href="/how-it-works/">How it works</a><a href="/roofers/">Find a roofer by state</a><a href="/faq/">FAQ</a></div>
-<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
+<div><h4>Homeowners</h4><a href="/get-quotes/">Get a free quote</a><a href="/free-roof-inspection/">Free roof inspection</a><a href="/commercial-roof-inspection/">Commercial inspection</a><a href="/how-it-works/">How it works</a><a href="/roofers/">Find a roofer by state</a><a href="/faq/">FAQ</a></div>
+<div><h4>Guides</h4><a href="/roof-replacement-cost/">Roof replacement cost</a><a href="/roof-cost-calculator/">Roof cost calculator</a><a href="/roof-repair-cost/">Roof repair cost</a><a href="/choosing-a-roofer/">How to choose a roofer</a><a href="/storm-damage/">After storm damage</a><a href="/hail-damage-roof/">Hail damage</a><a href="/roof-leak/">Roof leaks</a><a href="/roof-insurance-claim/">Filing a roof claim</a><a href="/roofing-scams/">Roofing scams</a><a href="/roofing-materials/">Roofing materials</a><a href="/guides/">All guides</a></div>
 <div><h4>Company</h4><a href="/about/">About us</a><a href="/editorial-policy/">Editorial policy</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </div><div class="wrap legal">&copy; 2026 {BRAND}. Photos from <a href="https://unsplash.com" rel="nofollow">Unsplash</a>, shown for illustration.</div></footer>
+<a class="mbar" href="/get-quotes/" data-mbar>Get a free roof quote</a>
 <script src="/assets/site.js?v={JS_V}" defer></script>
 </body></html>
 """
 
-FORM = """<form class="qform" novalidate data-form>
+FORM = """<form class="qform" novalidate data-form data-clarity-mask="true">
 <h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time. Homes and commercial buildings.</p>
 <fieldset class="need prop"><legend>Property type</legend>
 <label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
@@ -120,12 +130,28 @@ FORM = """<form class="qform" novalidate data-form>
 <label for="{p}m">Anything the roofer should know? <span class="opt">(optional)</span></label><input id="{p}m" name="m" maxlength="45" autocomplete="off" placeholder="e.g. leak in the kitchen, roof is 20 years old">
 <p class="err" role="alert" hidden></p>
 <button class="btn full" type="submit">Get my free quote</button>
+<ul class="trust"><li>100% free</li><li>No obligation</li><li>Takes about 30 seconds</li></ul>
 <p class="fine">By tapping &ldquo;Get my free quote&rdquo; you agree that Bedrock Roof may share your request with an independent roofing contractor serving your ZIP code, and that Bedrock Roof and that contractor may call or text you at the number you entered about your roof, including by automated means. Consent is not a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/privacy/">privacy policy</a>.</p>
 </form>
 <div class="okbox" hidden><h2>Thanks, we got your request.</h2><p>A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.</p><p><a href="/choosing-a-roofer/">While you wait: 7 questions to ask any roofer &rarr;</a></p></div>"""
 
-def form(h="Get a free roof quote", p="q"):
-    return '<div class="card" id="quote">' + FORM.format(h=h, p=p) + '</div>'
+def form(h="Get a free roof quote", p="q", prop="home"):
+    f = FORM.format(h=h, p=p)
+    if prop != "home":
+        f = f.replace('value="home" checked', 'value="home"').replace(f'value="{prop}"', f'value="{prop}" checked')
+    return '<div class="card" id="quote">' + f + '</div>'
+
+QCHECK = """<div class="card qcheck"><form class="qform" novalidate data-form data-clarity-mask="true">
+<h2>Already have a roofing quote?</h2><p class="lead">Not sure it's fair? Send us the price and what's included and a local roofer will call or text you with a free second opinion. No obligation.</p>
+<input type="radio" name="need" value="second opinion on a quote" checked hidden>
+<div class="row"><div><label for="qcn">Full name</label><input id="qcn" name="n" required maxlength="40" autocomplete="name" placeholder="Jane Smith"></div>
+<div><label for="qca">ZIP code</label><input id="qca" name="a" required inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="12345"></div></div>
+<label for="qcp">Mobile phone</label><input id="qcp" name="p" required type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="(555) 555-5555">
+<label for="qcm">Quoted price and what it covers <span class="opt">(optional)</span></label><input id="qcm" name="m" maxlength="45" autocomplete="off" placeholder="e.g. $14,500, full tear-off, architectural">
+<p class="err" role="alert" hidden></p>
+<button class="btn full" type="submit">Get a free second opinion</button>
+<p class="fine">By tapping &ldquo;Get a free second opinion&rdquo; you agree that Bedrock Roof may share your request with an independent roofing contractor serving your ZIP code, and that Bedrock Roof and that contractor may call or text you at the number you entered about your roof, including by automated means. Consent is not a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/privacy/">privacy policy</a>.</p>
+</form><div class="okbox" hidden><h2>Thanks, we got it.</h2><p>A local roofer should reach out soon, usually by call or text, to go over your quote.</p></div></div>"""
 
 def cta(t="Ready for a quote?", s="Tell us about your roof and a local roofer will reach out. Free, no obligation."):
     return f'<section class="cta"><div class="wrap"><h2>{t}</h2><p>{s}</p><a class="btn lg" href="/get-quotes/">Get a free quote</a></div></section>'
@@ -145,8 +171,12 @@ def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
             "image": img(photo, 1200, 630)}]
     if faq: sch.append(faq_schema(faq))
+    _com = path.startswith("/commercial") or path in ("/flat-roof-types/", "/tpo-vs-epdm/", "/hoa-roof-replacement/")
+    _fh = {"/free-roof-inspection/": "Request your free roof inspection", "/commercial-roof-inspection/": "Request a free commercial roof inspection"}.get(path)
     b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
 <div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
+<div class="wrap narrow inform">{form(_fh or ("Talk to a commercial roofer" if _com else "Get a free quote from a local roofer"), "a", "commercial" if _com else "home")}</div>
+<div class="wrap narrow inform">{"" if _com else QCHECK}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
 {faq_block(faq) if faq else ''}{cta()}"""
     return page(path, title, desc, b, sch, [(crumb, path)], og_img=photo)
@@ -217,6 +247,7 @@ cost = article("/roof-replacement-cost/", "Roof Replacement Cost: 2026 Homeowner
  "Typical U.S. roof replacement costs, what drives the price, and how to compare quotes fairly.",
  "Here are typical national price ranges, the factors that move the number up or down, and how to compare quotes so you're not overpaying.",
  """<div class="callout"><b>Quick answer:</b> A full roof replacement in the U.S. averages about <b>$9,500</b>, and most jobs fall between about <b>$5,800 and $46,000</b>. That works out to roughly <b>$4 to $11 per square foot</b>. <span class="src">Source: Angi data, as reported by <a href="https://www.nerdwallet.com/article/mortgage/roof-replacement-cost" rel="nofollow noopener">NerdWallet</a>.</span></div>
+<p><a class="btn" href="/roof-cost-calculator/">Estimate your roof with our free calculator &rarr;</a></p>
 <p>These are national ballpark figures. Your price depends on your roof and your market, and the only way to know for sure is a written quote after an inspection.</p>
 <h2>What drives the cost</h2>
 <ul><li><b>Roof size.</b> Roofers price by the "square" (100 sq ft of roof). Your roof area is usually larger than your home's floor area.</li>
@@ -581,7 +612,14 @@ GUIDES = [("/roof-replacement-cost/", "How much does a roof replacement cost?", 
  ("/commercial-roof-coatings/", "Commercial roof coatings: restore or replace?", "When silicone, acrylic or polyurethane coatings make sense."),
  ("/commercial-roof-maintenance/", "Commercial roof maintenance checklist", "What property managers and HOAs should inspect, and how often.")]
 from guides2 import G2
-G2_PAGES = []
+import guides3
+from guides3 import G3
+G2 = G2 + G3
+GUIDES.insert(1, (guides3.CALC_PATH, guides3.CALC_H1[0].upper() + guides3.CALC_H1[1:], guides3.CALC_BLURB))
+calc = article(guides3.CALC_PATH, guides3.CALC_TITLE, guides3.CALC_H1, guides3.CALC_DESC,
+ "Enter your home's size, roof pitch and material for a ballpark price range, then get a real quote from a local roofer.",
+ guides3.CALC_BODY.replace("WIDGET", guides3.CALC_WIDGET), "Roof cost calculator", P["home2"], guides3.CALC_FAQ)
+G2_PAGES = [(guides3.CALC_PATH, calc)]
 for _p, _t, _h, _d, _i, _b, _c, _ph, _fq, _blurb, _rel in G2:
     G2_PAGES.append((_p, article(_p, _t, _h, _d, _i, _b, _c, P[_ph], _fq)))
     GUIDES.append((_p, _h[0].upper() + _h[1:], _blurb))
@@ -617,7 +655,7 @@ privacy = f"""<section class="phero short"><div class="wrap narrow"><h1>Privacy 
 <div class="wrap narrow prose">
 <p>This policy explains what information Bedrock Roof ("we") collects on bedrockroof.com and how we use it.</p>
 <h2>Information you give us</h2><p>When you request a quote we collect your name, mobile phone number, ZIP code, the type of help you need and any note you add.</p>
-<h2>Information collected automatically</h2><p>We use our own cookieless analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address.</p>
+<h2>Information collected automatically</h2><p>We use our own analytics to understand how the site is used: pages viewed, how you arrived (for example a search engine or a link), device and browser type, approximate city and region based on your IP address, scroll depth and clicks, and whether a form was started or sent. We don't store your IP address with these records. We honor Do Not Track and Global Privacy Control signals by turning this analytics off. The site uses a third-party service (ipwho.is) to estimate your city from your IP address. When you send the quote form, a copy of your request is emailed to us through FormSubmit (formsubmit.co), an email delivery service, so we don't miss it.' + (' We also use Google Analytics, which sets cookies, to measure visits and which pages and buttons are used. You can opt out with Google\'s <a href="https://tools.google.com/dlpage/gaoptout">browser add-on</a>.' if GA_ID else '')  + (' We use Microsoft Clarity to record how visitors use the site, including mouse movements, clicks, scrolling and the pages viewed, and to build heatmaps. Clarity masks what you type into forms, so recordings don\\'t capture your name, phone number or ZIP code. Clarity sets cookies; see <a href="https://privacy.microsoft.com/privacystatement">Microsoft\\'s privacy statement</a>.' if CLARITY_ID else '') + ' You can turn off all of our analytics and recordings on this device at any time: <a href="/privacy/?notrack" data-optout>opt out of tracking</a>.' + '</p>
 <h2>How we use and share it</h2><ul><li>To pass your request to an independent roofing contractor serving your area so they can contact you about your roof. Contractors may pay us for these introductions.</li><li>To contact you about your request by call or text, with your consent.</li><li>To run, secure and improve the site.</li><li>When required by law.</li></ul>
 <p>We don't sell your information to data brokers or marketing lists. Once a contractor receives your request, their use of it is governed by their own privacy practices.</p>
 <h2>Calls and texts</h2><p>You can opt out of texts by replying STOP, and you can ask us or the contractor to stop calling at any time.</p>
@@ -719,7 +757,8 @@ def city_page(r):
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
 <p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
-<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p></div>
+<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p>
+<ul class="ticks"><li>Free inspection and written quote</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
@@ -762,7 +801,8 @@ def state_page(st):
 <p>Don't see your city? Homeowners anywhere in {sname} can <a href="/get-quotes/">request a free quote</a>. If we can't find a roofer serving your ZIP code, we'll let you know.</p>
 <h2>Common roof problems in {sname}</h2><ul>{risks}</ul><p>{cl['materials']}</p>
 <div class="callout"><b>Tip:</b> {cl['tip']}</div>
-<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>{cta()}"""
+<h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>
+<div class="wrap narrow inform">{form(f'Free roof quote in {sname}', 'st')}</div>{cta()}"""
     return path, page(path, f"Roofers in {sname}: Free Roof Quotes by City | {BRAND}",
         f"Find roofers in {sname}. Get a free roof inspection and quote from an independent local roofing contractor in your city.",
         body, [dict(SVC, name=f"Free roofer referrals in {sname}", areaServed={"@type": "State", "name": sname})], [(sname, path)])
@@ -933,7 +973,10 @@ RELATED.update({g[0]: g[10] for g in G2})
 RELATED["/choosing-a-roofer/"] = ["/roofing-scams/", "/roof-warranty/", "/roof-replacement-permit/", "/roof-replacement-cost/"]
 RELATED["/roofing-materials/"] = ["/metal-roof-vs-shingles/", "/how-long-does-a-roof-last/", "/impact-resistant-shingles/", "/roof-replacement-cost/"]
 RELATED["/signs-you-need-a-new-roof/"] = ["/roof-inspection/", "/how-long-does-a-roof-last/", "/roof-repair-or-replace/", "/best-time-to-replace-roof/"]
-RELATED["/roof-replacement-cost/"] = ["/roofing-materials/", "/metal-roof-vs-shingles/", "/roof-replacement-process/", "/insurance-roof-replacement/"]
+RELATED["/roof-replacement-cost/"] = ["/roof-cost-calculator/", "/roof-repair-cost/", "/metal-roof-vs-shingles/", "/insurance-roof-replacement/"]
+RELATED["/roof-cost-calculator/"] = ["/roof-replacement-cost/", "/roof-repair-cost/", "/roofing-materials/", "/insurance-roof-replacement/"]
+RELATED["/roof-repair-or-replace/"] = ["/roof-repair-cost/", "/roof-cost-calculator/", "/signs-you-need-a-new-roof/", "/roof-leak/"]
+RELATED["/roof-leak/"] = ["/roof-repair-cost/", "/roof-repair-or-replace/", "/storm-damage/", "/roof-insurance-claim/"]
 
 def fill_related(path, doc):
     if "RELATED" not in doc: return doc
