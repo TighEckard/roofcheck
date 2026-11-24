@@ -220,7 +220,7 @@ home = f"""
 <div class="mosaic">{pic(P['crew1'], 'Two roofers installing shingles', 720, 0.75)}{pic(P['home2'], 'House with a brown metal roof', 720, 0.75)}{pic(P['shingles'], 'Roofer carrying a bundle of shingles', 720, 0.75)}{pic(P['home4'], 'Brick house with a new roof', 720, 0.75)}</div></section>
 
 <section class="guides wrap"><p class="kick">Free homeowner guides</p><h2>Know before you hire</h2><div class="gcards">
-<a class="gcard" href="/roof-replacement-cost/">{pic(P['tearoff'], 'Old shingles being removed', 720, 0.6)}<h3>How much does a new roof cost?</h3><p>National price ranges, what drives the cost and how to compare quotes.</p></a>
+<a class="gcard" href="/roof-cost-calculator/">{pic(P['tearoff'], 'Old shingles being removed', 720, 0.6)}<h3>What will a new roof cost?</h3><p>Free calculator: a ballpark range by home size, pitch and material in 20 seconds.</p></a>
 <a class="gcard" href="/choosing-a-roofer/">{pic(P['crew3'], 'Roofing crew on a residential roof', 720, 0.6)}<h3>How to choose a roofer</h3><p>Check the license, insurance and warranty, and the red flags to avoid.</p></a>
 <a class="gcard" href="/storm-damage/">{pic(P['roofsky'], 'Roof against a blue sky', 720, 0.6)}<h3>What to do after storm damage</h3><p>Safety, photos, insurance and how to avoid storm chasers.</p></a>
 </div></section>
@@ -762,6 +762,7 @@ def city_page(r):
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
+<p><a href="/roof-cost-calculator/">Estimate what a new roof could cost with our free calculator &rarr;</a></p>
 {recent_storms_html(c, st)}
 <h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
 <h3>{c} roofing snapshot</h3>{table}
