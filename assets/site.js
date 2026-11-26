@@ -51,13 +51,19 @@ try{fetch('https://ipwho.is/?fields=success,country,region,city').then(function(
 (function(){
 var U='https://yhsxxblilclylzgejehk.supabase.co/rest/v1/signups',K='sb_publishable_9BiONVmj8Ht4k7lBsxGkkA_Yajbl8Rj';
 document.querySelectorAll('[data-form]').forEach(function(f){
-var box=f.parentNode.querySelector('.okbox'),er=f.querySelector('.err'),b=f.querySelector('button');
+var box=f.parentNode.querySelector('.okbox'),er=f.querySelector('.s2 .err')||f.querySelector('.err'),b=f.querySelector('button[type=submit]');
+var nx=f.querySelector('[data-next]');if(nx){var e1=f.querySelector('.e1'),za=f.elements.a,sm=f.querySelector('[data-sum]');
+var go2=function(){var z=(za.value||'').replace(/\D/g,'');if(z.length!==5){e1.textContent='Please enter a 5-digit ZIP code.';e1.hidden=false;za.focus();if(window.RT&&RT.ev)RT.ev('form:zip_invalid');return}
+e1.hidden=true;var nd=f.querySelector('input[name=need]:checked');sm.textContent=(nd?nd.parentNode.textContent:'')+' \u00b7 ZIP '+z;f.classList.add('on2');if(window.RT&&RT.ev)RT.ev('form:step2');var i=f.elements.n;setTimeout(function(){i.focus({preventScroll:true});f.scrollIntoView({behavior:'smooth',block:'nearest'})},50)};
+nx.addEventListener('click',go2);za.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go2()}});
+f.querySelector('[data-back]').addEventListener('click',function(){f.classList.remove('on2');za.focus()});
+f.querySelectorAll('.s1 input[name=need]').forEach(function(r){r.addEventListener('change',function(){if(!za.value)za.focus({preventScroll:true})})})}
 f.addEventListener('submit',function(e){e.preventDefault();var RT=window.RT||{src:'bedrock-direct',vid:''};
 var v=function(n){return (f.elements[n].value||'').trim()};
 var need=(f.querySelector('input[name=need]:checked')||{}).value||'';var prop=(f.querySelector('input[name=prop]:checked')||{}).value||'home';if(prop!=='home')need=(prop==='commercial'?'COMMERCIAL ':'MULTIFAMILY/HOA ')+need;
 var nm=v('n'),ph=v('p').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,''),zip=v('a').replace(/\D/g,''),note=v('m');
 var bad=[];if(nm.length<2)bad.push('your name');if(ph.length!==10)bad.push('a 10-digit mobile number');if(zip.length!==5)bad.push('a 5-digit ZIP code');
-if(bad.length){er.textContent='Please enter '+bad.join(', ')+'.';er.hidden=false;if(RT.ev)RT.ev('form:invalid '+bad.length);return}
+if(bad.length){if(nx&&zip.length!==5){f.classList.remove('on2')}er.textContent='Please enter '+bad.join(', ')+'.';er.hidden=false;if(RT.ev)RT.ev('form:invalid '+bad.length);return}
 er.hidden=true;if(RT.ev)RT.ev('form:submit_attempt');b.disabled=true;b.textContent='Sending...';
 var mail=fetch('https://formsubmit.co/ajax/hello@bedrockroof.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'New Bedrock Roof lead: '+need+' '+zip,_template:'table',_captcha:'false',Name:nm,Phone:ph,ZIP:zip,Need:need,Note:note,Page:location.pathname,Source:RT.src})}).then(function(r){if(!r.ok)throw 0;return r}).catch(function(){if(RT.ev)RT.ev('form:email_failed');throw 0});
 var db=fetch(U,{method:'POST',headers:{apikey:K,'Content-Type':'application/json',Prefer:'return=minimal'},
