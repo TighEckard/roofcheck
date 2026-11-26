@@ -110,9 +110,28 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}th,td{tex
 @media (max-width:760px){.tnote{font-size:12.5px;padding:9px 11px}}
 
 .tnote{max-width:520px;padding:8px 12px;font-size:13px;line-height:1.4}
-@media (max-width:760px){.tnote{left:8px;right:8px;bottom:auto;top:auto;bottom:76px;padding:6px 10px;font-size:12px;white-space:nowrap}.tnote button{padding:3px 10px;margin:0 0 0 6px}}
+@media (max-width:760px){.tnote{left:8px;right:8px;bottom:8px;padding:6px 10px;font-size:12px;white-space:nowrap}.tnote button{padding:3px 10px;margin:0 0 0 6px}}
 .qcheck{border:2px dashed #e8a33d;margin-top:20px}.qcheck h2{font-size:22px}
 @media(min-width:960px){.city .hgrid{align-items:start}.city .hcopy{padding-top:24px}}
 .calc{margin:28px 0;border:2px solid var(--amber)}.calc select{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;font:inherit;background:#fff;margin-bottom:12px}
 .calc-out{margin-top:18px;padding:18px;background:var(--bg);border-radius:12px;text-align:center}.calc-range{font-size:30px;font-weight:800;color:var(--navy);margin:0 0 6px}.calc-sub{font-size:14px;color:var(--mut);margin:6px 0}.calc-out .btn{margin-top:12px}
 .calc label{display:block;font-weight:600;font-size:14px;margin:4px 0 6px}.calc input{width:100%;padding:13px 14px;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);margin-bottom:12px}.calc .opt{font-weight:400;color:var(--mut)}
+
+/* two-step quote form (2026-11-26) */
+.js .qsteps .s2{display:none}.js .qsteps.on2 .s1{display:none}.js .qsteps.on2 .s2{display:block}
+.qsteps .s1 label[for]{margin-top:14px}
+.btn.nx{margin-top:14px}
+.back{margin:10px 0 0;font-size:14px;color:var(--mut)}.lnk{background:none;border:0;padding:0;font:inherit;color:var(--navy2);text-decoration:underline;cursor:pointer;margin-right:6px}
+.qform .trust{margin-top:12px}
+.qlink{font-size:15px;margin:14px 0 0}.hero .qlink a,.phero.city .qlink a{color:#f3c27a}
+.ctabar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;background:#eef3fa;border:1px solid #d6e1f0;border-radius:12px;padding:14px 16px;margin:20px 0}.ctabar p{margin:0;font-weight:600}.ctabar .btn{padding:11px 18px;font-size:15px}
+.cities{padding-top:56px}.cities .chips{margin-top:12px}
+@media (max-width:760px){
+ .hero .sub,.phero.city .sub,.hero .ticks,.phero.city .ticks{display:none}
+ .hero h1,.phero.city h1{font-size:26px;margin-bottom:0}
+ .hero .kick,.phero.city .kick{font-size:11.5px;margin-bottom:6px}
+ .hgrid{gap:16px;padding-top:18px;padding-bottom:28px}
+ .card{padding:20px 16px}.card h2{font-size:20px}.card .lead{font-size:14px}
+ .hero .qlink,.phero.city .qlink{display:none}
+}
+.step b{position:static;margin:20px 0 0 20px}

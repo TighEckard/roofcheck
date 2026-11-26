@@ -15,7 +15,7 @@ EMAIL = "hello@bedrockroof.com"
 PREVIEW = os.environ.get("PREVIEW", "1") == "1"
 BASE = os.environ.get("BASE", "")  # "/roofcheck" for the github.io preview, "" on bedrockroof.com
 PHONE = os.environ.get("PHONE", "")  # e.g. "+13055550123" once the Twilio number exists
-UPDATED = "2026-11-18"
+UPDATED = "2026-11-26"
 INDEXNOW_KEY = "6a9a6bc3df0969e92c11df1a8493d526"  # public key for IndexNow (Bing, Yandex, etc.); the matching file is served at /<key>.txt
 
 def img(id_, w, h=None, q=60):
@@ -94,7 +94,7 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{GA_TAG}
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}"><script>document.documentElement.className+=" js"</script>{GA_TAG}
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, separators=(",", ":"))}</script>
 </head><body>
 <header class="top"><div class="wrap bar"><a class="logo" href="/">{LOGO}<span>Bedrock<b>Roof</b></span></a>
@@ -113,25 +113,32 @@ def page(path, title, desc, body, schema=None, crumbs=None, og_img=P["hero"]):
 </body></html>
 """
 
-FORM = """<form class="qform" novalidate data-form data-clarity-mask="true">
-<h2>{h}</h2><p class="lead">Free and no obligation. A local roofer will call or text you to set up a time. Homes and commercial buildings.</p>
-<fieldset class="need prop"><legend>Property type</legend>
-<label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
-<label><input type="radio" name="prop" value="commercial"><span>Commercial</span></label>
-<label><input type="radio" name="prop" value="multifamily"><span>Apts / HOA</span></label></fieldset>
+FORM = """<form class="qform qsteps" novalidate data-form data-clarity-mask="true">
+<h2>{h}</h2><p class="lead">Free, no obligation. Takes about 30 seconds.</p>
+<div class="s1">
 <fieldset class="need"><legend>What do you need?</legend>
 <label><input type="radio" name="need" value="replacement" checked><span>New roof</span></label>
 <label><input type="radio" name="need" value="repair"><span>Repair or leak</span></label>
 <label><input type="radio" name="need" value="storm"><span>Storm damage</span></label>
 <label><input type="radio" name="need" value="inspection"><span>Inspection</span></label></fieldset>
-<div class="row"><div><label for="{p}n">Full name</label><input id="{p}n" name="n" required maxlength="40" autocomplete="name" placeholder="Jane Smith"></div>
-<div><label for="{p}a">ZIP code</label><input id="{p}a" name="a" required inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="12345"></div></div>
-<label for="{p}p">Mobile phone</label><input id="{p}p" name="p" required type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="(555) 555-5555">
+<label for="{p}a">ZIP code of the property</label><input id="{p}a" name="a" required inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="12345">
+<p class="err e1" role="alert" hidden></p>
+<button class="btn full nx" type="button" data-next>Next: get my free quote &rarr;</button>
+</div>
+<div class="s2">
+<p class="back"><button type="button" class="lnk" data-back>&larr; Back</button> <span data-sum></span></p>
+<fieldset class="need prop"><legend>Property type</legend>
+<label><input type="radio" name="prop" value="home" checked><span>Home</span></label>
+<label><input type="radio" name="prop" value="commercial"><span>Commercial</span></label>
+<label><input type="radio" name="prop" value="multifamily"><span>Apts / HOA</span></label></fieldset>
+<label for="{p}n">Full name</label><input id="{p}n" name="n" required maxlength="40" autocomplete="name" placeholder="Jane Smith">
+<label for="{p}p">Mobile phone <span class="opt">(the roofer calls or texts to set a time)</span></label><input id="{p}p" name="p" required type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="(555) 555-5555">
 <label for="{p}m">Anything the roofer should know? <span class="opt">(optional)</span></label><input id="{p}m" name="m" maxlength="45" autocomplete="off" placeholder="e.g. leak in the kitchen, roof is 20 years old">
 <p class="err" role="alert" hidden></p>
 <button class="btn full" type="submit">Get my free quote</button>
-<ul class="trust"><li>100% free</li><li>No obligation</li><li>Takes about 30 seconds</li></ul>
 <p class="fine">By tapping &ldquo;Get my free quote&rdquo; you agree that Bedrock Roof may share your request with an independent roofing contractor serving your ZIP code, and that Bedrock Roof and that contractor may call or text you at the number you entered about your roof, including by automated means. Consent is not a condition of any purchase. Msg &amp; data rates may apply. Reply STOP to opt out. See our <a href="/privacy/">privacy policy</a>.</p>
+</div>
+<ul class="trust"><li>100% free</li><li>No obligation</li><li>One local roofer, not a flood of calls</li></ul>
 </form>
 <div class="okbox" hidden><h2>Thanks, we got your request.</h2><p>A local roofer should reach out soon, usually by call or text. If we can't find a roofer serving your area, we'll let you know.</p><p><a href="/choosing-a-roofer/">While you wait: 7 questions to ask any roofer &rarr;</a></p></div>"""
 
@@ -141,7 +148,7 @@ def form(h="Get a free roof quote", p="q", prop="home"):
         f = f.replace('value="home" checked', 'value="home"').replace(f'value="{prop}"', f'value="{prop}" checked')
     return '<div class="card" id="quote">' + f + '</div>'
 
-QCHECK = """<div class="card qcheck"><form class="qform" novalidate data-form data-clarity-mask="true">
+QCHECK = """<div class="card qcheck" id="qcheck"><form class="qform" novalidate data-form data-clarity-mask="true">
 <h2>Already have a roofing quote?</h2><p class="lead">Not sure it's fair? Send us the price and what's included and a local roofer will call or text you with a free second opinion. No obligation.</p>
 <input type="radio" name="need" value="second opinion on a quote" checked hidden>
 <div class="row"><div><label for="qcn">Full name</label><input id="qcn" name="n" required maxlength="40" autocomplete="name" placeholder="Jane Smith"></div>
@@ -166,6 +173,14 @@ def faq_schema(items):
     return {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in items]}
 
 import datetime as _dt0
+def _early_cta(body, com=False):
+    bar = ('<div class="ctabar"><p>' + ("Want a real number for your building?" if com else "Want a real price for your roof?") +
+           ' A local roofer can inspect it and give you a free written quote.</p><a class="btn" href="#quote">Get a free quote</a></div>')
+    if body.lstrip().startswith('<div class="callout'):
+        i = body.index("</div>") + len("</div>")
+        return body[:i] + bar + body[i:]
+    return bar + body
+
 def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
     sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": UPDATED, "dateModified": UPDATED,
             "author": {"@id": SITE + "/#org"}, "publisher": {"@id": SITE + "/#org"}, "mainEntityOfPage": SITE + path,
@@ -174,7 +189,7 @@ def article(path, title, h1, desc, intro, body, crumb, photo, faq=None):
     _com = path.startswith("/commercial") or path in ("/flat-roof-types/", "/tpo-vs-epdm/", "/hoa-roof-replacement/")
     _fh = {"/free-roof-inspection/": "Request your free roof inspection", "/commercial-roof-inspection/": "Request a free commercial roof inspection"}.get(path)
     b = f"""<section class="phero"><div class="wrap narrow"><p class="kick">{"Commercial roofing" if path.startswith("/commercial") or path == "/flat-roof-types/" else "Homeowner guide"}</p><h1>{h1}</h1><p class="sub">{intro}</p><p class="meta">Updated {_dt0.date.fromisoformat(UPDATED).strftime("%B %-d, %Y")} &middot; By the {BRAND} team</p></div></section>
-<div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{body}</div>
+<div class="wrap narrow prose"><figure class="lead-img">{pic(photo, h1, 1200, 0.5, lazy=False, sizes="(min-width:760px) 720px, 100vw")}</figure>{_early_cta(body, _com)}</div>
 <div class="wrap narrow inform">{form(_fh or ("Talk to a commercial roofer" if _com else "Get a free quote from a local roofer"), "a", "commercial" if _com else "home")}</div>
 <div class="wrap narrow inform">{"" if _com else QCHECK}</div>
 <div class="wrap narrow prose"><h2>Related guides</h2><p class="links">RELATED</p></div>
@@ -197,7 +212,8 @@ home = f"""
 <div class="wrap hgrid"><div class="hcopy"><p class="kick light">Free roof quotes, anywhere in the U.S.</p>
 <h1 data-city>Need a new roof? Get a free quote from a local roofer.</h1>
 <p class="sub">Tell us what's going on with your roof. We'll connect you with an independent roofing contractor near you for a free inspection and a written quote.</p>
-<ul class="ticks"><li>Free for homeowners</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul></div>
+<ul class="ticks"><li>Free for homeowners</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul>
+<p class="qlink"><a href="#qcheck">Already have a quote? Get a free second opinion &rarr;</a><br><a href="/roof-cost-calculator/">Or estimate your roof cost in 20 seconds &rarr;</a></p></div>
 {form()}</div></section>
 
 <section class="band"><div class="wrap three">
@@ -207,17 +223,19 @@ home = f"""
 <div class="wrap"><p class="center"><b>Own or manage a commercial building, apartments or an HOA?</b> We connect you with commercial roofers too. <a href="/commercial-roofing/">Commercial roofing &rarr;</a></p></div></section>
 
 <section class="how wrap"><p class="kick">How it works</p><h2>Three simple steps</h2><div class="steps">
-<div class="step">{pic(P['home1'], 'Two-story suburban home', 720, 0.66)}<b>1</b><h3>Tell us about your roof</h3><p>Pick what you need and enter your name, phone and ZIP code.</p></div>
-<div class="step">{pic(P['crew2'], 'Roofer working on a shingle roof', 720, 0.66)}<b>2</b><h3>A local roofer reaches out</h3><p>An independent contractor serving your area calls or texts to book a free inspection.</p></div>
-<div class="step">{pic(P['couple'], 'Homeowners relaxing at home', 720, 0.66)}<b>3</b><h3>Get a written quote</h3><p>Compare it, ask questions and decide on your own time. No pressure, no obligation.</p></div>
+<div class="step"><b>1</b><h3>Tell us about your roof</h3><p>Pick what you need and enter your name, phone and ZIP code.</p></div>
+<div class="step"><b>2</b><h3>A local roofer reaches out</h3><p>An independent contractor serving your area calls or texts to book a free inspection.</p></div>
+<div class="step"><b>3</b><h3>Get a written quote</h3><p>Compare it, ask questions and decide on your own time. No pressure, no obligation.</p></div>
 </div><p class="center"><a href="/how-it-works/">More about how it works &rarr;</a></p></section>
 
-<section class="split wrap"><div class="stext"><p class="kick">Why homeowners use Bedrock Roof</p><h2>Straight answers, no runaround</h2>
-<p>Finding a roofer usually means calling around, waiting on callbacks and getting pushed for a quick signature. We keep it simple: one request, one local roofer, and honest guides so you know what a fair quote looks like.</p>
+<section class="wrap narrow"><p class="kick">Why homeowners use Bedrock Roof</p><h2>Straight answers, no runaround</h2>
 <div class="feat"><div><h4>Honest about how we work</h4><p>We're a referral service, not a contractor, and we say so on every page. Roofers may pay us for introductions. You never do.</p></div>
 <div><h4>Your number isn't blasted out</h4><p>We aim to share your request with one roofer serving your ZIP code, not a dozen.</p></div>
-<div><h4>Know what to check</h4><p>Our free guides show you how to verify a license and insurance, read a quote and spot red flags.</p></div></div></div>
-<div class="mosaic">{pic(P['crew1'], 'Two roofers installing shingles', 720, 0.75)}{pic(P['home2'], 'House with a brown metal roof', 720, 0.75)}{pic(P['shingles'], 'Roofer carrying a bundle of shingles', 720, 0.75)}{pic(P['home4'], 'Brick house with a new roof', 720, 0.75)}</div></section>
+<div><h4>Know what to check</h4><p>Our free guides show you how to verify a license and insurance, read a quote and spot red flags.</p></div></div></section>
+
+<section class="wrap narrow inform">{QCHECK}</section>
+
+<section class="cities wrap"><p class="kick">Find a roofer near you</p><h2>Popular cities</h2><p class="chips">TOPCITIES</p><p><a href="/roofers/">All states and cities &rarr;</a></p></section>
 
 <section class="guides wrap"><p class="kick">Free homeowner guides</p><h2>Know before you hire</h2><div class="gcards">
 <a class="gcard" href="/roof-cost-calculator/">{pic(P['tearoff'], 'Old shingles being removed', 720, 0.6)}<h3>What will a new roof cost?</h3><p>Free calculator: a ballpark range by home size, pitch and material in 20 seconds.</p></a>
@@ -728,6 +746,7 @@ def city_page(r):
     risks = "".join(f"<li>{x}.</li>" for x in rl)
     mats = citygen.materials(r, cl["materials"])
     near = [(n, s2, mi) for n, s2, mi in r["nearby"] if (slug(n), s2) in PAGE_KEYS]
+    near_sub = (" and nearby " + " and ".join(n for n, _, _ in r["nearby"][:2])) if r["nearby"] else ""
     near_html = "".join(f'<a href="{city_path(n, s2)}">{n}</a> <span class="mi">({mi} mi)</span>' for n, s2, mi in near)
     more = [x for x in RECS if x["st"] == st and x is not r and (x["n"], x["st"]) not in {(n, s2) for n, s2, _ in near}][:10]
     more_html = "".join(f'<a href="{city_path(x["n"], st)}">{x["n"]}</a>' for x in more)
@@ -752,13 +771,15 @@ def city_page(r):
              + f" {lic1} Compare at least two written quotes before you hire.")
     fq = [
      (f"How much does a new roof cost in {c}?", f"Nationally, Angi data reported by NerdWallet puts the average near $9,500, with most jobs between about $5,800 and $46,000. Your price in {c} depends on size, pitch, material and local labor, so get a written quote."),
+     (f"How much does roof repair cost in {c}?", f"Most roof repairs in the U.S. run about $393 to $1,934, about $1,155 on average (Angi survey). Small fixes like a vent boot or a few shingles cost less; hail damage or rotted decking costs more. A roofer serving {c} can give you a written price after a free inspection."),
      (f"Will insurance pay for roof damage in {c}?", citygen.insurance(r, c)),
      (f"Do I need a permit to replace my roof in {c}?", f"Usually, yes. Your roofer should pull it with the {c} building department{f' or {cty}' if cty else ''} and show it to you before work starts."),
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
-<p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>Roofers near {c}, {st}</h1>
-<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}, for homes and commercial buildings. Free, no obligation.</p>
-<ul class="ticks"><li>Free inspection and written quote</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul></div>
+<p class="kick light"><a href="{state_path(st)}">{sname}</a> &rsaquo; {c}</p><h1>{c} roofers: free roof repair and replacement quotes</h1>
+<p class="sub">Get a free roof inspection and written quote from an independent roofing contractor serving {c}{near_sub}, for homes and commercial buildings. Free, no obligation.</p>
+<ul class="ticks"><li>Free inspection and written quote</li><li>No obligation to hire</li><li>One local roofer, not a flood of calls</li></ul>
+<p class="qlink"><a href="#qcheck">Already have a quote? Get a free second opinion &rarr;</a></p></div>
 {form(f'Free roof quote in {c}', 'c')}</div></section>
 <div class="wrap narrow prose">
 <div class="callout quick"><b>Quick answer:</b> {quick}</div>
@@ -767,12 +788,14 @@ def city_page(r):
 <h2>Roofing in {c}: what to know</h2><p>{r['local']}</p>
 <h3>{c} roofing snapshot</h3>{table}
 <h2>What wears out roofs around {c}</h2><ul>{risks}</ul>
+<h2>Roof repair in {c}</h2><p>Not every problem needs a new roof. Most roof repairs in the U.S. cost about $393 to $1,934, roughly $1,155 on average, according to an Angi survey. Around {c}, repairs usually follow {risk_phrase}. A local roofer can tell you whether a repair will hold or a replacement makes more sense. See <a href="/roof-repair-cost/">roof repair costs</a> and <a href="/roof-repair-or-replace/">repair or replace?</a></p>
 <h2>Best roofing materials for {c}</h2><p>{mats}</p>
 <h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
 <h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
 <h2>Commercial roofing in {c}</h2><p>Own or manage a commercial building, apartments or an HOA in {c}? We also connect property owners and managers with independent commercial roofers for flat and low-slope roofs (TPO, EPDM, PVC, modified bitumen), metal roofs and roof coatings. Choose "Commercial" or "Apts / HOA" on the form, or read our <a href="/commercial-roofing/">commercial roofing guide</a>.</p>
 <p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
+</div><div class="wrap narrow inform">{QCHECK}</div><div class="wrap narrow prose">
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
 {f'<h2>Roofers in nearby cities</h2><p class="links">{near_html}</p>' if near_html else ''}
 {f'<h2>More {sname} cities</h2><p class="links">{more_html}</p>' if more_html else ''}
@@ -781,8 +804,8 @@ def city_page(r):
     city = {"@type": "City", "name": f"{c}, {sname}", "containedInPlace": {"@type": "State", "name": sname}}
     if r["lat"]: city["geo"] = {"@type": "GeoCoordinates", "latitude": round(r["lat"], 4), "longitude": round(r["lon"], 4)}
     sch = [dict(SVC, name=f"Free roofer referrals in {c}, {st}", areaServed=city), faq_schema(fq)]
-    return path, page(path, f"Roofers Near {c}, {st}: Free Roof Inspection & Quote | {BRAND}",
-        f"Free roof inspection and quote from an independent roofer near {c}, {st}. Main local roof risk: {short[0]}. Plus {st} license rules and FAQs.",
+    return path, page(path, f"{c}, {st} Roofing: Free Repair & Replacement Quotes",
+        f"Roof repair or a new roof in {c}, {st}? Get a free inspection and written quote from one local roofer. No obligation. Typical U.S. repair about $1,155, new roof about $9,500.",
         body, sch, [(sname, state_path(st)), (c, path)], og_img=P[cl['photo']])
 
 def state_page(st):
@@ -804,7 +827,7 @@ def state_page(st):
 <div class="callout"><b>Tip:</b> {cl['tip']}</div>
 <h2>Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]}</p><p>Ask every contractor for their license or registration number and check it before you sign. Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p></div>
 <div class="wrap narrow inform">{form(f'Free roof quote in {sname}', 'st')}</div>{cta()}"""
-    return path, page(path, f"Roofers in {sname}: Free Roof Quotes by City | {BRAND}",
+    return path, page(path, f"{sname} Roofers: Free Roof Repair & Replacement Quotes by City",
         f"Find roofers in {sname}. Get a free roof inspection and quote from an independent local roofing contractor in your city.",
         body, [dict(SVC, name=f"Free roofer referrals in {sname}", areaServed={"@type": "State", "name": sname})], [(sname, path)])
 
@@ -979,7 +1002,16 @@ RELATED["/roof-cost-calculator/"] = ["/roof-replacement-cost/", "/roof-repair-co
 RELATED["/roof-repair-or-replace/"] = ["/roof-repair-cost/", "/roof-cost-calculator/", "/signs-you-need-a-new-roof/", "/roof-leak/"]
 RELATED["/roof-leak/"] = ["/roof-repair-cost/", "/roof-repair-or-replace/", "/storm-damage/", "/roof-insurance-claim/"]
 
+TOP = [("Denver", "CO"), ("Raleigh", "NC"), ("Oklahoma City", "OK"), ("Wilmington", "NC"), ("Kent", "WA"), ("Portland", "OR"),
+       ("Albuquerque", "NM"), ("Tampa", "FL"), ("Plano", "TX"), ("Cincinnati", "OH"), ("Tucson", "AZ"), ("Springfield", "MO"),
+       ("St. Louis", "MO"), ("Indianapolis", "IN"), ("Louisville", "KY"), ("Colorado Springs", "CO"), ("Tulsa", "OK"), ("Fort Myers", "FL"),
+       ("Houston", "TX"), ("Dallas", "TX"), ("Bellevue", "WA"), ("Cleveland", "OH"), ("Provo", "UT"), ("Rockford", "IL")]
+def top_cities():
+    out = [f'<a class="chip" href="{city_path(c, st)}">{c}, {st}</a>' for c, st in TOP if (slug(c), st) in PAGE_KEYS]
+    return "".join(out)
+
 def fill_related(path, doc):
+    if "TOPCITIES" in doc: doc = doc.replace("TOPCITIES", top_cities())
     if "RELATED" not in doc: return doc
     t = {u: x for u, x, _ in GUIDES}
     return doc.replace("RELATED", "".join(f'<a href="{u}">{t[u]}</a>' for u in RELATED.get(path, [])))
