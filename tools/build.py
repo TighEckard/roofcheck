@@ -734,6 +734,43 @@ def city_guides(clim):
     t = {u: t for u, t, _ in GUIDES}
     return "".join(f'<a href="{u}">{t[u]}</a>' for u in urls)
 
+SVC_INSPECT = {"hail": "bruised or cracked shingles and granule loss after hail, which is hard to see from the ground",
+ "snow": "damage at the eaves from ice dams, attic ventilation and insulation",
+ "ice": "ice damage at the eaves and gutters after winter storms",
+ "hurricane": "lifted or creased shingles, loose flashing and soft decking after high winds",
+ "noreaster": "wind-lifted shingles and flashing after nor'easters",
+ "salt": "corroded flashing, fasteners and vents from salt air",
+ "heat": "sun-baked, brittle shingles, cracked tiles and worn underlayment",
+ "wildfire": "debris in gutters and valleys, and whether vents keep out embers",
+ "rain": "moss, clogged gutters and soft spots from long wet seasons",
+ "humid": "algae streaks, worn pipe boots and leaks after thunderstorms",
+ "tropical": "rusted metal, worn sealants and sun damage",
+ "severe": "missing or lifted shingles after spring wind and storm damage"}
+SVC_EMERG = {"hurricane": "a hurricane or tropical storm", "noreaster": "a nor'easter", "hail": "a hailstorm",
+ "snow": "an ice dam or heavy snow", "ice": "an ice storm", "severe": "a spring windstorm", "humid": "a summer thunderstorm",
+ "wildfire": "a wildfire or windstorm", "rain": "a winter windstorm", "heat": "a monsoon or desert windstorm", "tropical": "a tropical downpour"}
+SVC_FLAT = {"heat": "In strong sun, white TPO or PVC membranes and reflective coatings help keep the building cooler.",
+ "snow": "With winter snow, drainage matters most: water that ponds near drains and scuppers can freeze and open seams.",
+ "ice": "With winter freeze-thaw cycles, ponding water near drains and scuppers is the usual cause of split seams.",
+ "hail": "Hail can puncture or bruise membranes, so ask about thicker membranes or a cover board under them.",
+ "hurricane": "In high winds, how the membrane is fastened or adhered at the edges matters as much as the membrane itself.",
+ "rain": "With long wet seasons, keep drains and scuppers clear and ask about seams over the low spots.",
+ "humid": "Heavy summer rain is hard on clogged drains, so ask about tapered insulation if water ponds for days."}
+
+def services_html(r, c, cty):
+    fl = r["flags"]
+    insp = [SVC_INSPECT[f] for f in fl if f in SVC_INSPECT][:3]
+    em = next((SVC_EMERG[f] for f in fl if f in SVC_EMERG), "a storm")
+    flat = next((SVC_FLAT[f] for f in fl if f in SVC_FLAT), "Ask how water drains off the roof, since ponding is the most common cause of flat roof leaks.")
+    mshort = [citygen.MAT_SHORT[f] for f in fl if f in citygen.MAT_SHORT][:2]
+    shing = (f"Around {c}, ask about {' and '.join(mshort)}." if mshort else f"Ask any roofer in {c} which shingle line and warranty they are quoting.")
+    where = f"{c}{f' and the rest of {cty}' if cty else ''}"
+    return f"""<h2>Roofing services in {c}</h2><p>Every request goes to an independent local roofer serving {where}. Here's what to expect for the most common jobs.</p>
+<h3>Roof inspection in {c}</h3><p>A good inspection covers the shingles or membrane, flashing, vents, gutters and the attic. Around {c}, roofers look closely at {citygen.join(insp) if insp else 'wear, leaks and storm damage'}. Get one before you buy a home, after any big storm, or every couple of years on an older roof. Inspections through Bedrock Roof are free.</p>
+<h3>Emergency roof repair and tarping in {c}</h3><p>If {em} leaves you with a leak or missing shingles, take photos first, then get the damaged area tarped to keep water out until a permanent repair. Most home insurance policies expect you to take reasonable steps to prevent more damage, so keep every receipt. Pick "Repair or leak" or "Storm damage" on the form above and a local roofer will call you back.</p>
+<h3>Asphalt shingle roofing in {c}</h3><p>Asphalt shingles cover most U.S. homes because they're the most affordable option and any roofer can repair them. Architectural shingles usually carry higher wind ratings than basic 3-tab. {shing} See our <a href="/roofing-materials/">roofing materials guide</a>.</p>
+<h3>Flat and rubber (EPDM) roofs in {c}</h3><p>Flat and low-slope roofs on homes (porches, additions, garages) and on commercial buildings are usually EPDM rubber, TPO, PVC or modified bitumen. {flat} Read more on <a href="/flat-roof-types/">flat roof types</a>.</p>"""
+
 RECS = citygen.load()
 PAGE_KEYS = {(slug(r["n"]), r["st"]) for r in RECS}
 
@@ -773,6 +810,8 @@ def city_page(r):
      (f"How much does a new roof cost in {c}?", f"Nationally, Angi data reported by NerdWallet puts the average near $9,500, with most jobs between about $5,800 and $46,000. Your price in {c} depends on size, pitch, material and local labor, so get a written quote."),
      (f"How much does roof repair cost in {c}?", f"Most roof repairs in the U.S. run about $393 to $1,934, about $1,155 on average (Angi survey). Small fixes like a vent boot or a few shingles cost less; hail damage or rotted decking costs more. A roofer serving {c} can give you a written price after a free inspection."),
      (f"Will insurance pay for roof damage in {c}?", citygen.insurance(r, c)),
+     (f"Can I get emergency roof repair in {c}?", f"Yes. Pick \"Repair or leak\" or \"Storm damage\" on the form. A roofer serving {c} can tarp the damage to stop water getting in, then quote the permanent repair. Take photos first for your insurer."),
+     (f"Do you help with flat, rubber (EPDM) and commercial roofs in {c}?", f"Yes. We connect homeowners and property managers in {c} with roofers for EPDM, TPO, PVC and modified bitumen roofs, roof coatings and full commercial roof replacement."),
      (f"Do I need a permit to replace my roof in {c}?", f"Usually, yes. Your roofer should pull it with the {c} building department{f' or {cty}' if cty else ''} and show it to you before work starts."),
     ]
     body = f"""<section class="phero city">{pic(P[cl['photo']], f'Home in the {c} area', 1600, 0.45, 'bg', lazy=False, sizes='100vw')}<div class="wrap hgrid"><div class="hcopy">
@@ -793,7 +832,8 @@ def city_page(r):
 <h2>Best time to replace a roof in {c}</h2><p>{when_a}</p>
 <div class="callout"><b>Local tip:</b> {cl['tip']}</div>
 <h2 id="license">Checking a roofer's license in {sname}</h2><p>{STATE_LICENSE[st]} Our <a href="/choosing-a-roofer/">roofer checklist</a> covers the rest.</p>
-<h2>Commercial roofing in {c}</h2><p>Own or manage a commercial building, apartments or an HOA in {c}? We also connect property owners and managers with independent commercial roofers for flat and low-slope roofs (TPO, EPDM, PVC, modified bitumen), metal roofs and roof coatings. Choose "Commercial" or "Apts / HOA" on the form, or read our <a href="/commercial-roofing/">commercial roofing guide</a>.</p>
+{services_html(r, c, cty)}
+<h2>Commercial roofing in {c}</h2><p>Own or manage a commercial building, apartments, an HOA or several properties in {c}? We also connect property owners and managers with independent commercial roofers for flat and low-slope roofs (TPO, EPDM, PVC, modified bitumen), metal roofs and roof coatings, from a single repair to a full commercial roof replacement. A roofer can tell you whether a coating, a repair or a tear-off makes the most sense. Choose "Commercial" or "Apts / HOA" on the form, or read our <a href="/commercial-roofing/">commercial roofing guide</a> and <a href="/commercial-roof-coatings/">coating vs. replacement</a>.</p>
 <p class="small">Bedrock Roof is a free referral service, not a roofing contractor. Roofers may pay us for introductions. <a href="/how-it-works/">How it works</a>.</p>
 </div><div class="wrap narrow inform">{QCHECK}</div><div class="wrap narrow prose">
 <h2>Helpful guides</h2><p class="links">{city_guides(clim)}</p>
